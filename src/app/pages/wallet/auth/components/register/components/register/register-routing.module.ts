@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { RegisterComponent } from 'src/app/pages/wallet/auth/components/register/components/register/components/register.component';
 
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./auth/auth.module').then((a) => a.AuthModule),
+    component: RegisterComponent,
   },
 ];
 
@@ -12,4 +13,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class WalletRoutingModule {}
+export class RegisterRoutingModule {}
