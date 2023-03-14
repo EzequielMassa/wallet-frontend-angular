@@ -1,8 +1,73 @@
 .footer {
-  width: 100%;
+  width: 90%;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
 }
+
+.footer__logo__container {
+  width: 20%;
+}
+
 .footer__logo {
-  width: 2rem;
+  width: 2.5rem;
+}
+.footer__social__container {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.fooer__social__item {
+  font-size: 1.2rem;
+}
+.fooer__social__item:visited {
+  color: transparent;
+}
+
+.footer__social__item--text,
+.footer__login__btn {
+  display: none;
+}
+
+/* RESPONSIBE TABLET */
+
+@media (min-width: 768px) {
+  .fooer__social__item {
+    font-size: 1.6rem;
+  }
+
+  .footer__logo {
+    width: 3rem;
+  }
+
+  .footer__login__btn {
+    display: inline-block;
+    padding: 0.6em 2em;
+    background-color: rgb(115, 0, 208);
+    border-radius: 1.5rem;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: white;
+  }
+}
+
+/* RESPONSIVE DESKTOP */
+
+@media (min-width: 992px) {
+  .fooer__social__item {
+    font-size: 1.9rem;
+  }
+
+  .footer__social__item--text {
+    display: inline-block;
+    font-size: 1rem;
+    padding-left: 10px;
+  }
 }

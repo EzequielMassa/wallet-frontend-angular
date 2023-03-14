@@ -1,0 +1,45 @@
+.login {
+  width: 90%;
+  height: 80vh;
+  background-color: red;
+  margin: 0 auto;
+}
+
+.login__container__top {
+  width: 100%;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login__top__banner {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 10px;
+}
+
+.login__top__banner--img {
+  display: inline-block;
+  width: 3rem;
+  padding-right: 15px;
+}
+
+.login__top__banner--text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.login__top__banner--text h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.login__bottom__banner--img {
+  width: 150px;
+  display: inline-block;
+}
