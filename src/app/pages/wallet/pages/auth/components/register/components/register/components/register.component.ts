@@ -1,5 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {RegisterRequestInterface} from "../../../../../store/types/registerRequest.interface";
+import {Store} from "@ngrx/store";
+import {registerAction} from "../../../../../store/actions/register.action";
 
 @Component({
   selector: 'wal-register',
@@ -8,7 +11,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 })
 export class RegisterComponent implements OnInit{
   registerForm!: FormGroup;
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private store:Store) {}
   ngOnInit(): void {
     this.initializeLoginForm();
   }
@@ -23,7 +26,10 @@ export class RegisterComponent implements OnInit{
   }
 
   onSubmit(): void {
-    console.log(this.registerForm.value);
+   const request:RegisterRequestInterface = {
+     user: this.registerForm.value
+   }
+  this.store.dispatch(registerAction({request}))
   }
 }
 

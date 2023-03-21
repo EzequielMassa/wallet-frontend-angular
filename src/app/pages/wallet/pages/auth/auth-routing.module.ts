@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { RegisterModule } from 'src/app/pages/wallet/auth/components/register/components/register/register.module';
+import { RegisterModule } from 'src/app/pages/wallet/pages/auth/components/register/components/register/register.module';
 
 const routes: Routes = [
   {
