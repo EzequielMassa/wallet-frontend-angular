@@ -1,1 +1,46 @@
-<p>register works!</p>
+<section class="login">
+  <div class="login__container__top">
+    <div class="login__top__banner">
+      <img
+        class="login__top__banner--img"
+        src="../../../../../../../../../assets/images/wallet.png"
+        alt="logo wallet"
+      />
+      <div class="login__top__banner--text">
+        <h1>Wallet</h1>
+        <h5>The best Wallet</h5>
+      </div>
+    </div>
+    <div class="login__bottom__banner">
+      <img
+        src="../../../../../../../../../assets/images/Wavy_Tech-31_Single-01.jpg"
+        alt=""
+        class="login__bottom__banner--img"
+      />
+    </div>
+  </div>
+  <div class="login__container__bottom">
+    <h2>Welcome</h2>
+    <form class="login__form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <fieldset class="login__form__fieldset">
+        <label for="firstNameInput">First Name </label>
+        <input type="text" id="firstNameInput" formControlName="firstname" />
+      </fieldset>
+      <fieldset class="login__form__fieldset">
+        <label for="lastNameInput">Last Name</label>
+        <input type="text" id="lastNameInput" formControlName="lastname" />
+      </fieldset>
+      <fieldset class="login__form__fieldset">
+        <label for="emailInput">Email Address </label>
+        <input type="email" id="emailInput" formControlName="email" />
+      </fieldset>
+      <fieldset class="login__form__fieldset">
+        <label for="passwordInput">Password</label>
+        <input type="password" id="passwordInput" formControlName="password" />
+      </fieldset>
+      <div class="login__form__btn__container">
+        <button type="submit">Register</button>
+      </div>
+    </form>
+  </div>
+</section>
