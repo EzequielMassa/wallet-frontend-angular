@@ -21,10 +21,7 @@
   </div>
   <div class="login__container__bottom">
     <h2>Welcome</h2>
-    <wal-backend-error-messages
-      *ngIf="backendError$ | async"
-      [backendErrors]="backendError$ | async">
-    </wal-backend-error-messages>
+
     <form class="login__form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
       <fieldset class="login__form__fieldset">
         <label for="firstNameInput">First Name </label>
