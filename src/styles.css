@@ -2,6 +2,7 @@ html,
 body {
   height: 100%;
 }
+
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
@@ -134,4 +135,8 @@ input:-webkit-autofill:active {
   border: none;
   font-weight: bold;
   font-size: 1.1rem;
+}
+
+.error {
+  color: red;
 }

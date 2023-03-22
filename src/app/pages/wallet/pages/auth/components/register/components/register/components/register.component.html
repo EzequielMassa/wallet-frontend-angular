@@ -25,19 +25,75 @@
     <form class="login__form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
       <fieldset class="login__form__fieldset">
         <label for="firstNameInput">First Name </label>
-        <input type="text" id="firstNameInput" formControlName="firstname"/>
+        <input type="text" id="firstNameInput" formControlName="firstname"
+               [ngClass]="{
+                    'is-invalid': registerForm.get('firstname')?.errors && registerForm.get('firstname')?.touched,
+                    'is-valid': !registerForm.get('firstname')?.errors && registerForm.get('firstname')?.touched
+                  }"
+        />
+        <div *ngIf="registerForm.get('firstname')?.errors && registerForm.get('firstname')?.touched">
+          <p *ngIf="registerForm.get('firstname')?.hasError('required')" class="error">
+            El nombre es requerido
+          </p>
+          <p *ngIf="registerForm.get('firstname')?.errors?.['minlength']" class="error">
+            El nombre debe contener 3 o mas caracteres
+          </p>
+          <p *ngIf="registerForm.get('firstname')?.errors?.['maxlength']" class="error">
+            El nombre debe contener menos de 15 caracteres
+          </p>
+        </div>
       </fieldset>
       <fieldset class="login__form__fieldset">
         <label for="lastNameInput">Last Name</label>
-        <input type="text" id="lastNameInput" formControlName="lastname"/>
+        <input type="text" id="lastNameInput" formControlName="lastname" [ngClass]="{
+                    'is-invalid': registerForm.get('lastname')?.errors && registerForm.get('lastname')?.touched,
+                    'is-valid': !registerForm.get('lastname')?.errors && registerForm.get('lastname')?.touched
+                  }"/>
+        <div *ngIf="registerForm.get('lastname')?.errors && registerForm.get('lastname')?.touched">
+          <p *ngIf="registerForm.get('lastname')?.hasError('required')" class="error">
+            El apellido es requerido
+          </p>
+          <p *ngIf="registerForm.get('lastname')?.errors?.['minlength']" class="error">
+            El apellido debe contener 3 o mas caracteres
+          </p>
+          <p *ngIf="registerForm.get('lastname')?.errors?.['maxlength']" class="error">
+            El apellido debe contener menos de 15 caracteres
+          </p>
+        </div>
       </fieldset>
       <fieldset class="login__form__fieldset">
         <label for="emailInput">Email Address </label>
-        <input type="email" id="emailInput" formControlName="email"/>
+        <input type="email" id="emailInput" formControlName="email"
+               [ngClass]="{
+                    'is-invalid': registerForm.get('email')?.errors && registerForm.get('email')?.touched,
+                    'is-valid': !registerForm.get('email')?.errors && registerForm.get('email')?.touched
+                  }"
+        />
+        <div *ngIf="registerForm.get('email')?.errors && registerForm.get('email')?.touched">
+          <p *ngIf="registerForm.get('email')?.hasError('required')" class="error">
+            El email es requerido
+          </p>
+          <p *ngIf="registerForm.get('email')?.errors?.['email']" class="error">
+            El email debe contener un formato valido
+          </p>
+        </div>
       </fieldset>
       <fieldset class="login__form__fieldset">
         <label for="passwordInput">Password</label>
-        <input type="password" id="passwordInput" formControlName="password"/>
+        <input type="password" id="passwordInput" formControlName="password"
+               [ngClass]="{
+                    'is-invalid': registerForm.get('password')?.errors && registerForm.get('password')?.touched,
+                    'is-valid': !registerForm.get('password')?.errors && registerForm.get('password')?.touched
+                  }"
+        />
+        <div *ngIf="registerForm.get('password')?.errors && registerForm.get('password')?.touched">
+          <p *ngIf="registerForm.get('password')?.hasError('required')" class="error">
+            El password es requerido
+          </p>
+          <p *ngIf="registerForm.get('password')?.errors?.['minlength']" class="error">
+            El password debe contener 4 o mas caracteres
+          </p>
+        </div>
       </fieldset>
       <div class="login__form__btn__container">
         <button type="submit">Register</button>
