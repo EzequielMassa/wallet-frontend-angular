@@ -1,46 +1,53 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {RegisterRequestInterface} from "../../../../../store/types/registerRequest.interface";
+
 import {select, Store} from "@ngrx/store";
 import {registerAction} from "../../../../../store/actions/register.action";
+import {RegisterRequestInterface} from "../../../../../types/registerRequest.interface";
 import {Observable} from "rxjs";
-import {isSubmittingSelector} from "../../../../../store/selectors/auth.selector";
+import {BackendErrorsInterface} from "../../../../../../../../../shared/types/backendErrors.interface";
+import {isSubmittingSelector, validationErrorsSelector} from "../../../../../store/selectors/auth.selector";
 
 @Component({
   selector: 'wal-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit{
+export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
-  isSubmitting$!:Observable<boolean>;
-  constructor(private fb: FormBuilder, private store:Store) {}
+  isSubmitting$!: Observable<boolean>;
+  backendError$!: Observable<BackendErrorsInterface | null>;
+
+  constructor(private fb: FormBuilder, private store: Store) {
+  }
+
   ngOnInit(): void {
     this.initializeLoginForm();
-    this.initializeValues()
+    this.inializeValues()
   }
 
   initializeLoginForm(): void {
     this.registerForm = this.fb.group({
-      firstname: ['', [Validators.required, Validators.minLength(3),Validators.maxLength(15)]],
-      lastname: ['', [Validators.required, Validators.minLength(3),Validators.maxLength(15)]],
+      firstname: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(15)]],
+      lastname: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(15)]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(4)]],
     });
   }
 
-  initializeValues(){
-    this.isSubmitting$ = this.store.pipe(
-     select(isSubmittingSelector)
-    )
+  private inializeValues(): void {
+    this.isSubmitting$ = this.store.pipe(select(isSubmittingSelector))
+    this.backendError$ = this.store.pipe(select(validationErrorsSelector))
+
   }
 
   onSubmit(): void {
-   const request:RegisterRequestInterface = {
-     user: this.registerForm.value
-   }
-  this.store.dispatch(registerAction({request}))
+    const request: RegisterRequestInterface = this.registerForm.value
+
+    this.store.dispatch(registerAction({request}))
   }
+
+
 }
 
 
