@@ -1,9 +1,10 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
-import { AuthRoutingModule } from './auth-routing.module';
+import {AuthRoutingModule} from './auth-routing.module';
 import {HttpClientModule} from "@angular/common/http";
 import {AuthService} from "./services/auth.service";
+import {PersistanceService} from "../../../../shared/services/persistance.service";
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import {AuthService} from "./services/auth.service";
     AuthRoutingModule,
     HttpClientModule
   ],
-  providers: [AuthService]
+  providers: [AuthService, PersistanceService]
 })
-export class AuthModule { }
+export class AuthModule {
+}

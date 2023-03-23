@@ -7,6 +7,9 @@ import {
 import {LoginRoutingModule} from './login-routing.module';
 import {StoreModule} from "@ngrx/store";
 import {reducers} from "../../../../store/reducers/auth.reducers";
+import {HttpClientModule} from "@angular/common/http";
+import {LoginEffect} from "../../../../store/effects/login.effect";
+import {EffectsModule} from '@ngrx/effects';
 
 @NgModule({
   declarations: [LoginComponent],
@@ -14,7 +17,11 @@ import {reducers} from "../../../../store/reducers/auth.reducers";
     CommonModule,
     LoginRoutingModule,
     ReactiveFormsModule,
-    StoreModule.forFeature('auth', reducers),],
+    HttpClientModule,
+    StoreModule.forFeature('auth', reducers),
+    EffectsModule.forFeature([LoginEffect]),
+  ],
+
 })
 export class LoginModule {
 }
