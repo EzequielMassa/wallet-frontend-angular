@@ -1,5 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {select, Store} from "@ngrx/store";
+import {Observable} from "rxjs";
+import {isSubmittingSelector} from "../../../../../store/selectors/auth.selector";
+import {LoginRequestInterface} from "../../../../../types/loginRequest.interface";
+import {loginAction} from "../../../../../store/actions/login.actions";
+
 @Component({
   selector: 'wal-login',
   templateUrl: './login.component.html',
@@ -7,9 +13,14 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
-  constructor(private fb: FormBuilder) {}
+  isSubmitting$!: Observable<boolean>;
+
+  constructor(private fb: FormBuilder, private store: Store) {
+  }
+
   ngOnInit(): void {
     this.initializeLoginForm();
+    this.initializeValues()
   }
 
   initializeLoginForm(): void {
@@ -19,7 +30,15 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  private initializeValues() {
+    this.isSubmitting$ = this.store.pipe(select(isSubmittingSelector));
+  }
+
   onSubmit(): void {
-    console.log(this.loginForm.value);
+    if (this.loginForm.valid) {
+      const request: LoginRequestInterface = this.loginForm.value
+
+      this.store.dispatch(loginAction({request}))
+    }
   }
 }
