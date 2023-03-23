@@ -22,14 +22,50 @@
   <div class="login__container__bottom">
     <h2>Welcom Back</h2>
     <form class="login__form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-      <!-- //todo -->
+
       <fieldset class="login__form__fieldset">
         <label for="emailInput">Email Address </label>
-        <input type="email" id="emailInput" formControlName="email" />
+        <input type="email" id="emailInput" formControlName="email" [class.invalid]="
+         loginForm.get('email')?.invalid &&
+         (loginForm.get('email')?.touched ||
+          loginForm.get('email')?.dirty)
+"/>
+        <span class="error" *ngIf="(
+        loginForm.get('email')?.hasError('required') &&
+        (loginForm.get('email')?.dirty ||
+        loginForm.get('email')?.touched)
+        )">
+          Este campo es requerido.
+       </span>
+        <span class="error" *ngIf="(
+        loginForm.get('email')?.hasError('email') &&
+        (loginForm.get('email')?.dirty ||
+        loginForm.get('email')?.touched)
+        )">
+          El formato es incorrecto.
+       </span>
       </fieldset>
       <fieldset class="login__form__fieldset">
         <label for="passwordInput">Password</label>
-        <input type="password" id="passwordInput" formControlName="password" />
+        <input type="password" id="passwordInput" formControlName="password" [class.invalid]="
+         loginForm.get('password')?.invalid &&
+         (loginForm.get('password')?.touched ||
+          loginForm.get('password')?.dirty)
+"/>
+        <span class="error" *ngIf="(
+        loginForm.get('password')?.hasError('required') &&
+        (loginForm.get('password')?.dirty ||
+        loginForm.get('password')?.touched)
+        )">
+          Este campo es requerido.
+       </span>
+        <span class="error" *ngIf="(
+        loginForm.get('password')?.hasError('minlength') &&
+        (loginForm.get('password')?.dirty ||
+        loginForm.get('password')?.touched)
+        )">
+          El password debe contener al menos 4 caracteres.
+       </span>
       </fieldset>
       <div class="login__form__btn__container">
         <a href="">Forgot Password?</a>
