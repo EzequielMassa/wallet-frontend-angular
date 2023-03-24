@@ -2,7 +2,7 @@ import {Injectable} from "@angular/core";
 
 @Injectable()
 export class PersistanceService {
-  set(key: string, data: any): void {
+  set(key: any, data: any): void {
     try {
       localStorage.setItem(key, JSON.stringify(data));
     } catch (error) {

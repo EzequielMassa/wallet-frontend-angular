@@ -16,6 +16,7 @@ export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
   isSubmitting$!: Observable<boolean>;
 
+
   constructor(private fb: FormBuilder, private store: Store) {
   }
 
@@ -42,9 +43,8 @@ export class RegisterComponent implements OnInit {
     if (this.registerForm.valid) {
       const request: RegisterRequestInterface = this.registerForm.value
 
-      this.store.dispatch(registerAction({request}))
 
-      console.log(this.registerForm.value)
+      this.store.dispatch(registerAction({request}))
     }
 
   }

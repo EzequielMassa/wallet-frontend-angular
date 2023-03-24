@@ -8,6 +8,8 @@ import {reducers} from "../../../../store/reducers/auth.reducers";
 import {StoreModule} from "@ngrx/store";
 import {EffectsModule} from '@ngrx/effects';
 import {RegisterEffect} from "../../../../store/effects/register.effect";
+import {AuthService} from "../../../../services/auth.service";
+import {PersistanceService} from "../../../../../../../../shared/services/persistance.service";
 
 @NgModule({
   declarations: [RegisterComponent],
@@ -18,6 +20,8 @@ import {RegisterEffect} from "../../../../store/effects/register.effect";
     StoreModule.forFeature('auth', reducers),
     EffectsModule.forFeature([RegisterEffect]),
   ],
+  providers: [AuthService, PersistanceService]
+
 })
 export class RegisterModule {
 }

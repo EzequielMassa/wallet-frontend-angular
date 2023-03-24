@@ -10,6 +10,8 @@ import {reducers} from "../../../../store/reducers/auth.reducers";
 import {HttpClientModule} from "@angular/common/http";
 import {LoginEffect} from "../../../../store/effects/login.effect";
 import {EffectsModule} from '@ngrx/effects';
+import {AuthService} from "../../../../services/auth.service";
+import {PersistanceService} from "../../../../../../../../shared/services/persistance.service";
 
 @NgModule({
   declarations: [LoginComponent],
@@ -21,6 +23,7 @@ import {EffectsModule} from '@ngrx/effects';
     StoreModule.forFeature('auth', reducers),
     EffectsModule.forFeature([LoginEffect]),
   ],
+  providers: [AuthService, PersistanceService]
 
 })
 export class LoginModule {
