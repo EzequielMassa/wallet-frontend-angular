@@ -1,10 +1,14 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'auth',
     loadChildren: () => import('./pages/auth/auth.module').then((a) => a.AuthModule),
+  },
+  {
+    path: 'home',
+    loadChildren: () => import('./pages/home/home.module').then((m) => m.HomeModule),
   },
 ];
 
@@ -12,4 +16,5 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class WalletRoutingModule {}
+export class WalletRoutingModule {
+}
