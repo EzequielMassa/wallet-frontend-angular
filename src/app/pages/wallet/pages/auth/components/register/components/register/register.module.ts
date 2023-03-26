@@ -9,8 +9,6 @@ import {StoreModule} from "@ngrx/store";
 import {EffectsModule} from '@ngrx/effects';
 import {RegisterEffect} from "../../../../store/effects/register.effect";
 import {AuthService} from "../../../../services/auth.service";
-import {PersistanceService} from "../../../../../../../../shared/services/persistance.service";
-import {AuthInterceptorProvider} from "../../../../interceptors/auth.interceptor";
 
 @NgModule({
   declarations: [RegisterComponent],
@@ -21,7 +19,7 @@ import {AuthInterceptorProvider} from "../../../../interceptors/auth.interceptor
     StoreModule.forFeature('auth', reducers),
     EffectsModule.forFeature([RegisterEffect]),
   ],
-  providers: [AuthService, PersistanceService, AuthInterceptorProvider]
+  providers: [AuthService]
 
 })
 export class RegisterModule {
