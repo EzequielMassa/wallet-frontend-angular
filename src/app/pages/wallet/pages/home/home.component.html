@@ -1,1 +1,4 @@
-<h1>Home works</h1>
+<div *ngFor="let account of userAccounts$ | async">
+  <wal-balance [accountNumber]="account.accountId" [accountBalance]="account.balance"></wal-balance>
+</div>
+

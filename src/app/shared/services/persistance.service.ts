@@ -1,4 +1,4 @@
-import {Injectable} from "@angular/core";
+import {Injectable} from '@angular/core';
 
 @Injectable()
 export class PersistanceService {
@@ -11,12 +11,7 @@ export class PersistanceService {
   }
 
   get(key: any): any {
-    try {
-      const keyResult: any = localStorage.getItem(key);
-      return JSON.parse(keyResult)
-    } catch (error) {
-      console.error('error getting from local storage ', error);
-      return null;
-    }
+    let keyResult: any = localStorage.getItem(key);
+    return JSON.parse(keyResult);
   }
 }

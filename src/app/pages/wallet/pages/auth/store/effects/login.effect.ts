@@ -15,7 +15,8 @@ export class LoginEffect {
       switchMap(({ request }) => {
         return this.authService.login(request).pipe(
           map((currentUser: CurrentUserInterface) => {
-            this.persistanceService.set('accesToken', currentUser.token);
+            this.persistanceService.set('accessToken', currentUser.token);
+            this.persistanceService.set('userId', currentUser.id);
             return loginSuccessAction({ currentUser });
           })
         );
