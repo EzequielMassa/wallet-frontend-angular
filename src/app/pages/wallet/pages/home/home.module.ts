@@ -10,9 +10,10 @@ import {StoreModule} from "@ngrx/store";
 import {homeReducers} from "./store/reducers/home.reducers";
 import {AccountsEffect} from "./store/effects/accounts.effect";
 import {EffectsModule} from "@ngrx/effects";
+import { NewAccountComponent } from './components/newAccount/new-account.component';
 
 @NgModule({
-  declarations: [HomeComponent, BalanceComponent],
+  declarations: [HomeComponent, BalanceComponent, NewAccountComponent],
   imports: [
     CommonModule,
     HttpClientModule,

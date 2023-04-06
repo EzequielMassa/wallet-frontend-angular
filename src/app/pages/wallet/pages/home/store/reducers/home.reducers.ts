@@ -1,12 +1,17 @@
 import {HomeStateInterface} from "../types/homeState.interface";
 import {Action, createReducer, on} from "@ngrx/store";
-import {getUserAccountsAction, getUserAccountsSuccesAction} from "../actions/accounts.action";
+import {
+  createNewUserAccountAction,
+  createNewUserAccountSuccessAction,
+  getUserAccountsAction,
+  getUserAccountsSuccesAction
+} from "../actions/accounts.action";
 
 const initialState: HomeStateInterface = {
   isLoading: false,
   currentUserAccounts: [],
-
 }
+
 
 const homeReducer = createReducer(
   initialState,
@@ -21,6 +26,18 @@ const homeReducer = createReducer(
       ...state,
       isLoading: false,
       currentUserAccounts: action.currentUserAccounts,
+    })
+  ),
+  on(
+    createNewUserAccountAction, (state): HomeStateInterface => ({
+      ...state,
+      isLoading: true,
+    })
+  ),
+  on(
+    createNewUserAccountSuccessAction, (state, action): HomeStateInterface => ({
+      ...state,
+      isLoading: false,
     })
   ),
 )

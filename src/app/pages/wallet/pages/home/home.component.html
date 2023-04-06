@@ -1,4 +1,5 @@
-<div *ngFor="let account of userAccounts$ | async">
+<div class="wal-balance-container" *ngFor="let account of userAccounts$ | async">
   <wal-balance [accountNumber]="account.accountId" [accountBalance]="account.balance"></wal-balance>
 </div>
 
+<wal-new-account></wal-new-account>

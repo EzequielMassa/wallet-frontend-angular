@@ -12,11 +12,16 @@ export class AccountService {
   constructor(private http: HttpClient, private persistanceService: PersistanceService) {
   }
 
+  private id: number = this.persistanceService.get('userId')
+
   getUserAccounts(): Observable<UserAccountInterface[]> {
-    const id: number = this.persistanceService.get('userId')
-    const url: string = environment.apiUrl + `/api/v1/accounts/getAccounts/id/${id}`;
+    const url: string = environment.apiUrl + `/api/v1/accounts/getAccounts/id/${this.id}`;
     return this.http.get<UserAccountInterface[]>(url);
   }
 
+  createNewUserAccount(): Observable<UserAccountInterface> {
+    const url: string = environment.apiUrl + `/api/v1/accounts/newAccount/${this.id}`;
+    return this.http.post<UserAccountInterface>(url, {})
+  }
 
 }

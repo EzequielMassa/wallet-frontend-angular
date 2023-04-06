@@ -14,3 +14,15 @@ export const getUserAccountsSuccesAction = createAction(
 export const getUserAccountsFailureAction = createAction(
   ActionTypesHome.GETACCOUNTS_FAILURE
 )
+
+export const createNewUserAccountAction = createAction(
+  ActionTypesHome.CREATE_NEW_ACCOUNT,
+)
+
+export const createNewUserAccountSuccessAction = createAction(
+  ActionTypesHome.CREATE_NEW_ACCOUNT_SUCCESS,
+)
+
+export const createNewUserAccountFailureAction = createAction(
+  ActionTypesHome.CREATE_NEW_ACCOUNT_FAILURE
+)
