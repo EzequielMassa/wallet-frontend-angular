@@ -18,6 +18,7 @@ export class TransactionsServicesComponent {
   openDialog(event: any): void {
     this.dialog.open(GenericModalComponent, {
       width: '80%',
+      height: 'auto',
       data: {target: event.target},
     });
   }

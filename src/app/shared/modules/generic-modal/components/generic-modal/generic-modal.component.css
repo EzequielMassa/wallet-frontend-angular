@@ -1,3 +1,7 @@
 .mat-card-actions-btns {
   margin-right: 20px;
 }
+
+.mt__card__container {
+  height: 100%;
+}

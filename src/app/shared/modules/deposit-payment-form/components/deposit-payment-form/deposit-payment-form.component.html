@@ -1,79 +1,75 @@
-<mat-card>
-  <mat-card-content>
-    <form [formGroup]="form">
+<form [formGroup]="form">
+
+  <ng-container>
+
+    <mat-form-field appearance="fill">
+      <ng-container *ngIf="(formTypeProps == 'deposit') || (formTypeProps == 'payment') ; else labelTransfer">
+        <mat-label>Select account to {{formTypeProps}}</mat-label>
+      </ng-container>
 
       <ng-container>
-
-        <mat-form-field appearance="fill">
-          <ng-container *ngIf="(formTypeProps == 'deposit') || (formTypeProps == 'payment') ; else labelTransfer">
-            <mat-label>Select account to {{formTypeProps}}</mat-label>
-          </ng-container>
-
-          <ng-container>
-            <ng-template #labelTransfer>
-              <mat-label>Select Origin account {{formTypeProps}}</mat-label>
-            </ng-template>
-          </ng-container>
-
-          <mat-select id="inputAccounts" formControlName="accountId" [(value)]="selected">
-            <mat-option *ngFor="
-              let account of userAccounts$ | async" value="{{account.accountId}}">Cuenta
-              Nº{{account.accountId}}</mat-option>
-          </mat-select>
-          <mat-error *ngIf="form.get('accountId')?.hasError('required')">
-            This field is <strong>required</strong>
-          </mat-error>
-        </mat-form-field>
-
-        <ng-container *ngIf="(formTypeProps == 'transfer')">
-          <mat-form-field appearance="fill" floatLabel="always">
-            <mat-label>Destiny Account</mat-label>
-            <input id="inputDestiny" type="number" matInput formControlName="destinyAccount"
-                   [errorStateMatcher]="matcher"
-                   class="example-right-align" placeholder="Destiny Account Nº">
-
-            <mat-hint>Ingrese el numero de cuenta a transferir</mat-hint>
-            <mat-error *ngIf="form.get('destinyAccount')?.hasError('required')">
-              This field is <strong>required</strong>
-            </mat-error>
-            <mat-error *ngIf="form.get('destinyAccount')?.hasError('min')">
-              You must provide an existing account
-            </mat-error>
-          </mat-form-field>
-        </ng-container>
-
-        <mat-form-field appearance="fill" floatLabel="always">
-          <mat-label>Amount</mat-label>
-          <input id="inputAmount" type="number" matInput formControlName="amount" [errorStateMatcher]="matcher"
-                 class="example-right-align" placeholder="0">
-          <span matTextPrefix>$&nbsp;</span>
-          <mat-hint>Ingrese un valor mayor que 0</mat-hint>
-          <mat-error *ngIf="form.get('amount')?.hasError('required')">
-            This field is <strong>required</strong>
-          </mat-error>
-          <mat-error *ngIf="form.get('amount')?.hasError('min')">
-            The ammount must be greater than 1
-          </mat-error>
-        </mat-form-field>
-
-        <mat-form-field appearance="fill" floatLabel="always">
-          <mat-label>Description</mat-label>
-          <input id="inputConcept" type="text" matInput formControlName="description" [errorStateMatcher]="matcher"
-                 class="example-right-align" placeholder="Ingrese una descripcion">
-
-          <mat-hint>Entre 3 y 15 caracteres</mat-hint>
-          <mat-error *ngIf="form.get('description')?.hasError('required')">
-            This field is <strong>required</strong>
-          </mat-error>
-          <mat-error *ngIf="form.get('description')?.hasError('minlength')">
-            Please enter a minimum of 3 characters.
-          </mat-error>
-          <mat-error *ngIf="form.get('description')?.hasError('maxlength')">
-            Please enter a maximum of 15 characters.
-          </mat-error>
-        </mat-form-field>
-
+        <ng-template #labelTransfer>
+          <mat-label>Select Origin account {{formTypeProps}}</mat-label>
+        </ng-template>
       </ng-container>
-    </form>
-  </mat-card-content>
-</mat-card>
+
+      <mat-select id="inputAccounts" formControlName="accountId" [(value)]="selected">
+        <mat-option *ngFor="
+              let account of userAccounts$ | async" value="{{account.accountId}}">Cuenta
+          Nº{{account.accountId}}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.get('accountId')?.hasError('required')">
+        This field is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <ng-container *ngIf="(formTypeProps == 'transfer')">
+      <mat-form-field appearance="fill" floatLabel="always">
+        <mat-label>Destiny Account</mat-label>
+        <input id="inputDestiny" type="number" matInput formControlName="destinyAccount"
+               [errorStateMatcher]="matcher"
+               class="example-right-align" placeholder="Destiny Account Nº">
+
+        <mat-hint>Ingrese el numero de cuenta a transferir</mat-hint>
+        <mat-error *ngIf="form.get('destinyAccount')?.hasError('required')">
+          This field is <strong>required</strong>
+        </mat-error>
+        <mat-error *ngIf="form.get('destinyAccount')?.hasError('min')">
+          You must provide an existing account
+        </mat-error>
+      </mat-form-field>
+    </ng-container>
+
+    <mat-form-field appearance="fill" floatLabel="always">
+      <mat-label>Amount</mat-label>
+      <input id="inputAmount" type="number" matInput formControlName="amount" [errorStateMatcher]="matcher"
+             class="example-right-align" placeholder="0">
+      <span matTextPrefix>$&nbsp;</span>
+      <mat-hint>Ingrese un valor mayor que 0</mat-hint>
+      <mat-error *ngIf="form.get('amount')?.hasError('required')">
+        This field is <strong>required</strong>
+      </mat-error>
+      <mat-error *ngIf="form.get('amount')?.hasError('min')">
+        The ammount must be greater than 1
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" floatLabel="always">
+      <mat-label>Description</mat-label>
+      <input id="inputConcept" type="text" matInput formControlName="description" [errorStateMatcher]="matcher"
+             class="example-right-align" placeholder="Ingrese una descripcion">
+
+      <mat-hint>Entre 3 y 15 caracteres</mat-hint>
+      <mat-error *ngIf="form.get('description')?.hasError('required')">
+        This field is <strong>required</strong>
+      </mat-error>
+      <mat-error *ngIf="form.get('description')?.hasError('minlength')">
+        Please enter a minimum of 3 characters.
+      </mat-error>
+      <mat-error *ngIf="form.get('description')?.hasError('maxlength')">
+        Please enter a maximum of 15 characters.
+      </mat-error>
+    </mat-form-field>
+
+  </ng-container>
+</form>
