@@ -1,6 +1,8 @@
 import {HomeStateInterface} from "../types/homeState.interface";
 import {Action, createReducer, on} from "@ngrx/store";
 import {
+  createNewDepositPaymentAction,
+  createNewDepositPaymentSuccessAction,
   createNewUserAccountAction,
   createNewUserAccountSuccessAction,
   getUserAccountsAction,
@@ -36,6 +38,18 @@ const homeReducer = createReducer(
   ),
   on(
     createNewUserAccountSuccessAction, (state, action): HomeStateInterface => ({
+      ...state,
+      isLoading: false,
+    })
+  ),
+  on(
+    createNewDepositPaymentAction, (state): HomeStateInterface => ({
+      ...state,
+      isLoading: true,
+    })
+  ),
+  on(
+    createNewDepositPaymentSuccessAction, (state, action): HomeStateInterface => ({
       ...state,
       isLoading: false,
     })

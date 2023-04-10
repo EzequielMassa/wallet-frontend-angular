@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import {environment} from "../../../../../../environments/environment.development";
 import {UserAccountInterface} from "../types/userAccount.interface";
 import {PersistanceService} from "../../../../../shared/services/persistance.service";
+import {DepositPaymentInterface} from "../types/DepositPayment.interface";
 
 @Injectable({
   providedIn: 'root',
@@ -24,4 +25,22 @@ export class AccountService {
     return this.http.post<UserAccountInterface>(url, {})
   }
 
+  createDepositPayment(depositPayment: DepositPaymentInterface): Observable<any> {
+    const idAcc = depositPayment.accountId
+    const transactionType = depositPayment.type
+    let urlDynamic: string;
+
+
+    if (transactionType == 'deposit') {
+      urlDynamic = environment.apiUrl + `/api/v1/deposits/newDeposit/${idAcc}`;
+    } else {
+      urlDynamic = environment.apiUrl + `/api/v1/payments/newPayment/${idAcc}`;
+    }
+    const depPayRequest = {
+      'amount': depositPayment.amount,
+      'description': depositPayment.description
+    }
+    return this.http.post<any>(urlDynamic, depPayRequest)
+  }
 }
+

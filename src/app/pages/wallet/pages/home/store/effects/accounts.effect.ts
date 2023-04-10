@@ -2,6 +2,8 @@ import {Injectable} from "@angular/core";
 import {Actions, createEffect, ofType} from "@ngrx/effects";
 import {map, switchMap} from "rxjs";
 import {
+  createNewDepositPaymentAction,
+  createNewDepositPaymentSuccessAction,
   createNewUserAccountAction,
   createNewUserAccountSuccessAction,
   getUserAccountsAction,
@@ -34,6 +36,20 @@ export class AccountsEffect {
           map(() => {
             this.store.dispatch(getUserAccountsAction())
             return createNewUserAccountSuccessAction();
+          })
+        );
+      })
+    )
+  )
+
+  depositPayment = createEffect(() =>
+    this.actions$.pipe(
+      ofType(createNewDepositPaymentAction),
+      switchMap(({request}) => {
+        return this.accountService.createDepositPayment(request).pipe(
+          map(() => {
+            this.store.dispatch(getUserAccountsAction())
+            return createNewDepositPaymentSuccessAction({request});
           })
         );
       })

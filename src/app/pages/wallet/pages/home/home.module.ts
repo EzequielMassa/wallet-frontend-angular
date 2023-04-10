@@ -10,21 +10,32 @@ import {StoreModule} from "@ngrx/store";
 import {homeReducers} from "./store/reducers/home.reducers";
 import {AccountsEffect} from "./store/effects/accounts.effect";
 import {EffectsModule} from "@ngrx/effects";
-import { NewAccountComponent } from './components/newAccount/new-account.component';
+import {NewAccountComponent} from './components/newAccount/new-account.component';
+import {TransactionsServicesComponent} from "./components/transactions-services/transactions-services.component";
+import {ReactiveFormsModule} from "@angular/forms";
+import {GenericModalModule} from "../../../../shared/modules/generic-modal/generic-modal.module";
+import {MatDialogModule} from '@angular/material/dialog';
+import {DepositPaymentFormModule} from "../../../../shared/modules/deposit-payment-form/deposit-payment-form.module";
+import {GenericModalService} from "../../../../shared/modules/deposit-payment-form/services/generic-modal.service";
+
 
 @NgModule({
-  declarations: [HomeComponent, BalanceComponent, NewAccountComponent],
+  declarations: [HomeComponent, BalanceComponent, NewAccountComponent, TransactionsServicesComponent],
   imports: [
     CommonModule,
     HttpClientModule,
     HomeRoutingModule,
+    ReactiveFormsModule,
+    MatDialogModule,
+    GenericModalModule,
+    DepositPaymentFormModule,
     StoreModule.forFeature('home', homeReducers),
     EffectsModule.forFeature([AccountsEffect])
   ],
   exports: [
     HomeComponent,
   ],
-  providers: [AccountService, AuthInterceptorProvider],
+  providers: [AccountService, AuthInterceptorProvider, GenericModalService],
 })
 export class HomeModule {
   constructor() {
