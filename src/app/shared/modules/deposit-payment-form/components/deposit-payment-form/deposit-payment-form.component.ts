@@ -5,11 +5,15 @@ import {UserAccountInterface} from "../../../../../pages/wallet/pages/home/types
 import {select, Store} from "@ngrx/store";
 import {userAccountsSelector} from "../../../../../pages/wallet/pages/home/store/selectors/home.selectors";
 import {GenericModalService} from "../../services/generic-modal.service";
-import {createNewDepositPaymentAction} from "../../../../../pages/wallet/pages/home/store/actions/accounts.action";
+import {
+  createNewDepositPaymentAction,
+  createNewTransferAction
+} from "../../../../../pages/wallet/pages/home/store/actions/accounts.action";
 import {DepositPaymentInterface} from "../../../../../pages/wallet/pages/home/types/DepositPayment.interface";
 import {MyErrorStateMatcher} from "../../../../utils/error-state-mantcher";
 import {MatDialogRef} from "@angular/material/dialog";
 import {GenericModalComponent} from "../../../generic-modal/components/generic-modal/generic-modal.component";
+import {TransferInterface} from "../../../../../pages/wallet/pages/home/types/Transfer.interface";
 
 
 @Component({
@@ -54,15 +58,27 @@ export class DepositPaymentFormComponent implements OnInit, OnDestroy {
   }
 
   private initializeTransferForm() {
-
+    this.form = this.fb.group({
+      accountId: [null, Validators.required],
+      destinyAccount: ['', [Validators.required, Validators.min(1)]],
+      amount: ['', [Validators.required, Validators.min(1)]],
+      description: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(15)]],
+      type: this.formTypeProps.toLowerCase()
+    })
   }
 
 
   onSubmit() {
     if (this.form.valid) {
-      const request: DepositPaymentInterface = this.form.value
-      this.store.dispatch(createNewDepositPaymentAction({request}))
-      this.dialogRef.close()
+      if (this.formTypeProps.toLowerCase() == 'deposit' || this.formTypeProps.toLowerCase() == 'payment') {
+        const request: DepositPaymentInterface = this.form.value
+        this.store.dispatch(createNewDepositPaymentAction({request}))
+        this.dialogRef.close()
+      } else {
+        const request: TransferInterface = this.form.value
+        this.store.dispatch(createNewTransferAction({request}))
+        this.dialogRef.close()
+      }
     }
   }
 

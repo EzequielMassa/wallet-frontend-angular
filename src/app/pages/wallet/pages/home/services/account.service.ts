@@ -5,6 +5,7 @@ import {environment} from "../../../../../../environments/environment.developmen
 import {UserAccountInterface} from "../types/userAccount.interface";
 import {PersistanceService} from "../../../../../shared/services/persistance.service";
 import {DepositPaymentInterface} from "../types/DepositPayment.interface";
+import {TransferInterface} from "../types/Transfer.interface";
 
 @Injectable({
   providedIn: 'root',
@@ -41,6 +42,21 @@ export class AccountService {
       'description': depositPayment.description
     }
     return this.http.post<any>(urlDynamic, depPayRequest)
+  }
+
+
+  createTransfer(transfer: TransferInterface): Observable<any> {
+    const idAcc = transfer.accountId
+    const idDestiny = transfer.destinyAccount
+
+
+    const url = environment.apiUrl + `/api/v1/transfers/newTransfer/origin/${idAcc}/destiny/${idDestiny}`;
+
+    const transRequest = {
+      'amount': transfer.amount,
+      'description': transfer.description
+    }
+    return this.http.post<any>(url, transRequest)
   }
 }
 

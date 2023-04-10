@@ -1,12 +1,21 @@
 <mat-card>
   <mat-card-content>
     <form [formGroup]="form">
-      <ng-container
-        *ngIf="(formTypeProps == 'deposit' )|| (formTypeProps == 'payment');else formTransfer">
+
+      <ng-container>
 
         <mat-form-field appearance="fill">
-          <mat-label>Select account to {{formTypeProps}}</mat-label>
-          <mat-select id="inputAccounts" name="inputAccounts" formControlName="accountId" [(value)]="selected">
+          <ng-container *ngIf="(formTypeProps == 'deposit') || (formTypeProps == 'payment') ; else labelTransfer">
+            <mat-label>Select account to {{formTypeProps}}</mat-label>
+          </ng-container>
+
+          <ng-container>
+            <ng-template #labelTransfer>
+              <mat-label>Select Origin account {{formTypeProps}}</mat-label>
+            </ng-template>
+          </ng-container>
+
+          <mat-select id="inputAccounts" formControlName="accountId" [(value)]="selected">
             <mat-option *ngFor="
               let account of userAccounts$ | async" value="{{account.accountId}}">Cuenta
               Nº{{account.accountId}}</mat-option>
@@ -15,6 +24,23 @@
             This field is <strong>required</strong>
           </mat-error>
         </mat-form-field>
+
+        <ng-container *ngIf="(formTypeProps == 'transfer')">
+          <mat-form-field appearance="fill" floatLabel="always">
+            <mat-label>Destiny Account</mat-label>
+            <input id="inputDestiny" type="number" matInput formControlName="destinyAccount"
+                   [errorStateMatcher]="matcher"
+                   class="example-right-align" placeholder="Destiny Account Nº">
+
+            <mat-hint>Ingrese el numero de cuenta a transferir</mat-hint>
+            <mat-error *ngIf="form.get('destinyAccount')?.hasError('required')">
+              This field is <strong>required</strong>
+            </mat-error>
+            <mat-error *ngIf="form.get('destinyAccount')?.hasError('min')">
+              You must provide an existing account
+            </mat-error>
+          </mat-form-field>
+        </ng-container>
 
         <mat-form-field appearance="fill" floatLabel="always">
           <mat-label>Amount</mat-label>
@@ -29,6 +55,7 @@
             The ammount must be greater than 1
           </mat-error>
         </mat-form-field>
+
         <mat-form-field appearance="fill" floatLabel="always">
           <mat-label>Description</mat-label>
           <input id="inputConcept" type="text" matInput formControlName="description" [errorStateMatcher]="matcher"
@@ -47,9 +74,6 @@
         </mat-form-field>
 
       </ng-container>
-      <ng-template #formTransfer>
-        form transfer
-      </ng-template>
     </form>
   </mat-card-content>
 </mat-card>

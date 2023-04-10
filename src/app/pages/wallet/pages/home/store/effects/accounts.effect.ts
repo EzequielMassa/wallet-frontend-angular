@@ -4,6 +4,8 @@ import {map, switchMap} from "rxjs";
 import {
   createNewDepositPaymentAction,
   createNewDepositPaymentSuccessAction,
+  createNewTransferAction,
+  createNewTransferSuccessAction,
   createNewUserAccountAction,
   createNewUserAccountSuccessAction,
   getUserAccountsAction,
@@ -42,7 +44,7 @@ export class AccountsEffect {
     )
   )
 
-  depositPayment = createEffect(() =>
+  depositPayment$ = createEffect(() =>
     this.actions$.pipe(
       ofType(createNewDepositPaymentAction),
       switchMap(({request}) => {
@@ -50,6 +52,21 @@ export class AccountsEffect {
           map(() => {
             this.store.dispatch(getUserAccountsAction())
             return createNewDepositPaymentSuccessAction({request});
+          })
+        );
+      })
+    )
+  )
+
+
+  transfer$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(createNewTransferAction),
+      switchMap(({request}) => {
+        return this.accountService.createTransfer(request).pipe(
+          map(() => {
+            this.store.dispatch(getUserAccountsAction())
+            return createNewTransferSuccessAction({request});
           })
         );
       })

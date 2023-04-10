@@ -8,5 +8,8 @@ export enum ActionTypesHome {
   CREATE_NEW_DEPOSIT_PAYMENT = '[HOME] Create New Deposit | Payment',
   CREATE_NEW_DEPOSIT_PAYMENT_SUCCESS = '[HOME] Create New Deposit | Payment Success',
   CREATE_NEW_DEPOSIT_PAYMENT_FAILURE = '[HOME] Create New Deposit | Payment Failure',
-  
+  CREATE_NEW_TRANSFER = '[HOME] Create New Transfer',
+  CREATE_NEW_TRANSFER_SUCCESS = '[HOME] Create New Transfer Success',
+  CREATE_NEW_TRANSFER_FAILURE = '[HOME] Create New TransferFailure',
+
 }

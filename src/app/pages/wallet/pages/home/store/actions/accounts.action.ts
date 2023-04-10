@@ -2,6 +2,7 @@ import {createAction, props} from "@ngrx/store";
 import {ActionTypesHome} from "../types/ActionTypesHome";
 import {UserAccountInterface} from "../../types/userAccount.interface";
 import {DepositPaymentInterface} from "../../types/DepositPayment.interface";
+import {TransferInterface} from "../../types/Transfer.interface";
 
 
 //GET ACCOUNTS ACTIONS
@@ -45,4 +46,19 @@ export const createNewDepositPaymentSuccessAction = createAction(
 
 export const createNewDepositPaymentFailureAction = createAction(
   ActionTypesHome.CREATE_NEW_DEPOSIT_PAYMENT_FAILURE
+)
+
+//CREATE NEW TRANSFER ACTIONS
+export const createNewTransferAction = createAction(
+  ActionTypesHome.CREATE_NEW_TRANSFER,
+  props<{ request: TransferInterface }>()
+)
+
+export const createNewTransferSuccessAction = createAction(
+  ActionTypesHome.CREATE_NEW_TRANSFER_SUCCESS,
+  props<{ request: TransferInterface }>()
+)
+
+export const createNewTransferFailureAction = createAction(
+  ActionTypesHome.CREATE_NEW_TRANSFER_FAILURE
 )
