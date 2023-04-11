@@ -1,9 +1,52 @@
 .balance__container {
-  background-color: red;
+  background-image: linear-gradient(45deg, #0045c7, #ff2c7d);
   max-width: 300px;
   display: flex;
   flex-direction: column;
-  margin-bottom: 20px;
-  padding: 2px 10px;
-  border-radius: 5px;
+  padding: 4px 10px;
+  border-radius: 15px;
+  overflow: hidden;
+  margin-right: 5px;
+  position: relative;
+  gap: 10px;
+}
+
+.balance__item {
+  width: 100%;
+  height: 100%;
+
+}
+
+.balance__item--header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.balance__item--header h3 {
+  line-height: 42px;
+  color: #fff;
+  font-weight: 900;
+}
+
+.balance__item--header img {
+  width: 32px;
+  height: 32px;
+  display: inline-block;
+}
+
+
+.map__img {
+  width: 100%;
+  position: absolute;
+  opacity: 0.3;
+}
+
+.balance__item--body {
+  color: #fff;
+  position: relative;
+}
+
+.balance__item--footer {
+  position: relative;
+  color: #fff
 }

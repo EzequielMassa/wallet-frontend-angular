@@ -1,6 +1,15 @@
-<div class="wal-balance-container" *ngFor="let account of userAccounts$ | async">
-  <wal-balance [accountNumber]="account.accountId" [accountBalance]="account.balance"></wal-balance>
-</div>
+<ngx-slick-carousel class="carousel carousel--container"
+                    #slickModal="slick-carousel"
+                    [config]="slideConfig">
+  <div ngxSlickItem *ngFor="let account of userAccounts$ | async" class="slide">
+    <wal-balance [accountNumber]="account.accountId" [accountBalance]="account.balance"
+                 class="slide--item"></wal-balance>
+  </div>
+</ngx-slick-carousel>
+
+
+<button (click)="slickModal.slickGoTo(1)">Next Account</button>
+
 
 <wal-new-account></wal-new-account>
 <wal-transactions-services></wal-transactions-services>

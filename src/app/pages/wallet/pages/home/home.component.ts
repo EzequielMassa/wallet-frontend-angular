@@ -16,6 +16,40 @@ export class HomeComponent implements OnInit {
   userAccounts$!: Observable<UserAccountInterface[]>;
   isLoading$!: Observable<boolean>;
 
+  slideConfig = {
+    centerMode: true,
+    centerPadding: '70px',
+    slidesToShow: 3,
+    arrows: true,
+    dots: true,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          arrows: false,
+          centerMode: true,
+          slidesToShow: 3
+        }
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          arrows: false,
+          centerMode: true,
+          slidesToShow: 1
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          arrows: false,
+          centerMode: true,
+          slidesToShow: 1
+        }
+      }
+    ]
+  }
+
   constructor(private accountService: AccountService, private store: Store) {
   }
 
