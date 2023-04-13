@@ -1,0 +1,9 @@
+.new-account-btn {
+  cursor: pointer;
+  font-size: 20px;
+  background-color: #ff2c7d;
+  color: #7300d0;
+  padding: 10px;
+  border-radius: 50%;
+}
+

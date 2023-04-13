@@ -1,9 +1,16 @@
 .carousel--container {
-  width: 90%;
-  margin: 50px auto;
-}
-
-.slide--item {
+  width: 88%;
+  margin: 30px auto;
 
 }
 
+.carousel__actions, .new__account--container {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.carousel__actions i {
+  cursor: pointer;
+  color: #ff2c7d;
+}

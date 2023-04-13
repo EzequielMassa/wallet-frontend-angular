@@ -18,32 +18,26 @@ export class HomeComponent implements OnInit {
 
   slideConfig = {
     centerMode: true,
-    centerPadding: '70px',
-    slidesToShow: 3,
-    arrows: true,
     dots: true,
+    slidesToShow: 1,
+    variableWidth: true,
+    swipeToSlide: true,
+    arrows: true,
+    prevArrow: ('.prev-arrow'),
+    nextArrow: ('.next-arrow'),
     responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          arrows: false,
-          centerMode: true,
-          slidesToShow: 3
-        }
-      },
       {
         breakpoint: 768,
         settings: {
-          arrows: false,
           centerMode: true,
-          slidesToShow: 1
+          slidesToShow: 1,
         }
       },
       {
         breakpoint: 480,
         settings: {
-          arrows: false,
           centerMode: true,
+          centerPadding: '40px',
           slidesToShow: 1
         }
       }
