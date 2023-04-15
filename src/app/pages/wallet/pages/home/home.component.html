@@ -1,13 +1,36 @@
 <div class="carousel--container">
+
   <ngx-slick-carousel class="carousel"
-                      #slickModal="slick-carousel"
-                      [config]="slideConfig">
-    <div ngxSlickItem *ngFor="let account of userAccounts$ | async" class="slide">
+
+                      [config]="slideConfig"
+  >
+    <div ngxSlickItem *ngFor="let account of userAccounts$ | async" class="slide slide-balance"
+         (select)="setActive(account.accountId)">
+
       <wal-balance [accountNumber]="account.accountId" [accountBalance]="account.balance"
-                   class="slide--item"></wal-balance>
+                   class="slide--item"
+      >
+      </wal-balance>
+
+
+      <ng-container *ngIf="account.accountId == activeAccount;else btnInactive">
+        <button type="button" class="slide-btn active" [disabled]="true"
+        >active
+        </button>
+      </ng-container>
+
+      <ng-template #btnInactive>
+        <button type="button" class="slide-btn inactive" (click)="
+      setActive(account.accountId)"
+        >set active
+        </button>
+      </ng-template>
+
+      <!--[ngClass]="account.accountId == activeAccount ? 'active' : 'inactive'"-->
     </div>
 
   </ngx-slick-carousel>
+
   <div class="carousel__actions"><i class="fa-solid fa-chevron-left prev-arrow"></i>
     <i class="fa-solid fa-chevron-right next-arrow"></i></div>
 </div>
@@ -17,3 +40,5 @@
   <wal-new-account></wal-new-account>
 </div>
 <wal-transactions-services></wal-transactions-services>
+
+<wal-generic-operation-list [title]="title" [operations]="latestAccountMovements$"></wal-generic-operation-list>

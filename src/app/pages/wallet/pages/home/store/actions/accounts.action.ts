@@ -3,6 +3,7 @@ import {ActionTypesHome} from "../types/ActionTypesHome";
 import {UserAccountInterface} from "../../types/userAccount.interface";
 import {DepositPaymentInterface} from "../../types/DepositPayment.interface";
 import {TransferInterface} from "../../types/Transfer.interface";
+import {OperationInterface} from "../../../../../../shared/types/operation.interface";
 
 
 //GET ACCOUNTS ACTIONS
@@ -61,4 +62,19 @@ export const createNewTransferSuccessAction = createAction(
 
 export const createNewTransferFailureAction = createAction(
   ActionTypesHome.CREATE_NEW_TRANSFER_FAILURE
+)
+
+//GET LATEST ACCOUNT MOVEMENTS
+export const getLatestAccountMovementsAction = createAction(
+  ActionTypesHome.GETLATESTACCOUNTMOVEMENTS,
+  props<{ activeAccount: number }>()
+)
+
+export const getLatestAccountMovementsSuccessAction = createAction(
+  ActionTypesHome.GETLATESTACCOUNTMOVEMENTS_SUCCESS,
+  props<{ latestMovements: OperationInterface[] }>()
+)
+
+export const getLatestAccountMovementsFailureAction = createAction(
+  ActionTypesHome.GETLATESTACCOUNTMOVEMENTS_FAILURE
 )

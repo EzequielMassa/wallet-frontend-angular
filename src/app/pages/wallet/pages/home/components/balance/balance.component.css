@@ -38,6 +38,7 @@
   width: 100%;
   position: absolute;
   opacity: 0.3;
+  overflow: hidden;
 }
 
 .balance__item--body {
@@ -49,3 +50,5 @@
   position: relative;
   color: #fff
 }
+
+

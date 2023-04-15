@@ -1,0 +1,27 @@
+<h2>{{titleProps}}</h2>
+<!--<ul>
+  <li *ngFor="let operation of operationsProps | async">
+    {{operation.amount | currency}} {{operation.description}} {{operation.type}} {{operation.date}}
+  </li>
+</ul>-->
+
+<mat-form-field>
+  <mat-label>Filter</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+</mat-form-field>
+
+<table mat-table [dataSource]="operationsProps" class="mat-elevation-z8 demo-table">
+  <ng-container *ngFor="let column of columns" [matColumnDef]="column.columnDef">
+    <th mat-header-cell *matHeaderCellDef>
+      {{column.header}}
+    </th>
+    <td mat-cell *matCellDef="let row">
+      {{column.cell(row)}}
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+

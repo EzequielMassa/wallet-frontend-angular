@@ -1,5 +1,5 @@
 .carousel--container {
-  width: 88%;
+  width: 330px;
   margin: 30px auto;
 
 }
@@ -14,3 +14,34 @@
   cursor: pointer;
   color: #ff2c7d;
 }
+
+.slide {
+  position: relative;
+}
+
+.slide-btn {
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+  z-index: 999999999999999999999999999999999999999999 !important;
+}
+
+.inactive {
+  background-color: red;
+  visibility: visible;
+  content: "Set Active";
+
+}
+
+.active {
+  background-color: green;
+  visibility: visible;
+  content: "Active";
+}
+
+/*@media (max-width: 480px) {
+  .carousel--container {
+    width: 80%;
+  }
+
+}*/

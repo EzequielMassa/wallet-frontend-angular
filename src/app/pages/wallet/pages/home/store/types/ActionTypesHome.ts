@@ -11,5 +11,8 @@ export enum ActionTypesHome {
   CREATE_NEW_TRANSFER = '[HOME] Create New Transfer',
   CREATE_NEW_TRANSFER_SUCCESS = '[HOME] Create New Transfer Success',
   CREATE_NEW_TRANSFER_FAILURE = '[HOME] Create New TransferFailure',
+  GETLATESTACCOUNTMOVEMENTS = '[HOME] Get Latest Account Movements',
+  GETLATESTACCOUNTMOVEMENTS_SUCCESS = '[HOME] Get Latest Account Movements Success',
+  GETLATESTACCOUNTMOVEMENTS_FAILURE = '[HOME] Get Latest Account Movements Failure',
 
 }

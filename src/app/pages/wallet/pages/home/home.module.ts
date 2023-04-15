@@ -18,6 +18,9 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {DepositPaymentFormModule} from "../../../../shared/modules/deposit-payment-form/deposit-payment-form.module";
 import {GenericModalService} from "../../../../shared/modules/deposit-payment-form/services/generic-modal.service";
 import {SlickCarouselModule} from "ngx-slick-carousel";
+import {
+  GenericOperationListModule
+} from "../../../../shared/modules/generic-operation-list/generic-operation-list.module";
 
 
 @NgModule({
@@ -30,6 +33,7 @@ import {SlickCarouselModule} from "ngx-slick-carousel";
     MatDialogModule,
     SlickCarouselModule,
     GenericModalModule,
+    GenericOperationListModule,
     DepositPaymentFormModule,
     StoreModule.forFeature('home', homeReducers),
     EffectsModule.forFeature([AccountsEffect]),

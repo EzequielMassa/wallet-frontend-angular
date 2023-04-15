@@ -14,3 +14,8 @@ export const userAccountsSelector = createSelector(
   homeFeatureSelector,
   (homeState: HomeStateInterface) => homeState.currentUserAccounts
 );
+
+export const latestAccountMovementsSelector = createSelector(
+  homeFeatureSelector,
+  (homeState: HomeStateInterface) => homeState.latestAccountMovements
+);

@@ -8,12 +8,16 @@ import {
   createNewTransferSuccessAction,
   createNewUserAccountAction,
   createNewUserAccountSuccessAction,
+  getLatestAccountMovementsAction,
+  getLatestAccountMovementsSuccessAction,
   getUserAccountsAction,
   getUserAccountsSuccesAction
 } from "../actions/accounts.action";
 import {AccountService} from "../../services/account.service";
 import {UserAccountInterface} from "../../types/userAccount.interface";
 import {Store} from "@ngrx/store";
+import {OperationInterface} from "../../../../../../shared/types/operation.interface";
+import {PersistanceService} from "../../../../../../shared/services/persistance.service";
 
 @Injectable()
 export class AccountsEffect {
@@ -23,6 +27,7 @@ export class AccountsEffect {
       switchMap(() => {
         return this.accountService.getUserAccounts().pipe(
           map((currentUserAccounts: UserAccountInterface[]) => {
+            this.persistanceService.set('activeAccount', currentUserAccounts[0].accountId);
             return getUserAccountsSuccesAction({currentUserAccounts});
           })
         );
@@ -51,6 +56,8 @@ export class AccountsEffect {
         return this.accountService.createDepositPayment(request).pipe(
           map(() => {
             this.store.dispatch(getUserAccountsAction())
+            const activeAccount = parseInt(this.persistanceService.get('activeAccount'))
+            this.store.dispatch(getLatestAccountMovementsAction({activeAccount: activeAccount}))
             return createNewDepositPaymentSuccessAction({request});
           })
         );
@@ -66,6 +73,8 @@ export class AccountsEffect {
         return this.accountService.createTransfer(request).pipe(
           map(() => {
             this.store.dispatch(getUserAccountsAction())
+            const activeAccount = parseInt(this.persistanceService.get('activeAccount'))
+            this.store.dispatch(getLatestAccountMovementsAction({activeAccount: activeAccount}))
             return createNewTransferSuccessAction({request});
           })
         );
@@ -73,6 +82,20 @@ export class AccountsEffect {
     )
   )
 
-  constructor(private actions$: Actions, private accountService: AccountService, private store: Store) {
+  latestMovements$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(getLatestAccountMovementsAction),
+      switchMap(({activeAccount}) => {
+        return this.accountService.getLatestAccountMovements(activeAccount).pipe(
+          map((latestMovements: OperationInterface[]) => {
+            return getLatestAccountMovementsSuccessAction({latestMovements});
+          })
+        );
+      })
+    )
+  )
+
+
+  constructor(private actions$: Actions, private accountService: AccountService, private store: Store, private persistanceService: PersistanceService) {
   }
 }

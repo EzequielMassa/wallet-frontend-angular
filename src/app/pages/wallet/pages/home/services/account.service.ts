@@ -6,6 +6,7 @@ import {UserAccountInterface} from "../types/userAccount.interface";
 import {PersistanceService} from "../../../../../shared/services/persistance.service";
 import {DepositPaymentInterface} from "../types/DepositPayment.interface";
 import {TransferInterface} from "../types/Transfer.interface";
+import {OperationInterface} from "../../../../../shared/types/operation.interface";
 
 @Injectable({
   providedIn: 'root',
@@ -57,6 +58,11 @@ export class AccountService {
       'description': transfer.description
     }
     return this.http.post<any>(url, transRequest)
+  }
+
+  getLatestAccountMovements(activeAccount: number): Observable<OperationInterface[]> {
+    const url: string = environment.apiUrl + `/api/v1/movements/id/${activeAccount}`;
+    return this.http.get<OperationInterface[]>(url);
   }
 }
 

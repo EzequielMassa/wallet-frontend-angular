@@ -7,6 +7,8 @@ import {
   createNewTransferSuccessAction,
   createNewUserAccountAction,
   createNewUserAccountSuccessAction,
+  getLatestAccountMovementsAction,
+  getLatestAccountMovementsSuccessAction,
   getUserAccountsAction,
   getUserAccountsSuccesAction
 } from "../actions/accounts.action";
@@ -14,6 +16,7 @@ import {
 const initialState: HomeStateInterface = {
   isLoading: false,
   currentUserAccounts: [],
+  latestAccountMovements: []
 }
 
 
@@ -66,6 +69,19 @@ const homeReducer = createReducer(
     createNewTransferSuccessAction, (state, action): HomeStateInterface => ({
       ...state,
       isLoading: false,
+    })
+  ),
+  on(
+    getLatestAccountMovementsAction, (state): HomeStateInterface => ({
+      ...state,
+      isLoading: true,
+    })
+  ),
+  on(
+    getLatestAccountMovementsSuccessAction, (state, action): HomeStateInterface => ({
+      ...state,
+      isLoading: false,
+      latestAccountMovements: action.latestMovements,
     })
   ),
 )
