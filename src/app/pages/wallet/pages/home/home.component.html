@@ -4,8 +4,7 @@
 
                       [config]="slideConfig"
   >
-    <div ngxSlickItem *ngFor="let account of userAccounts$ | async" class="slide slide-balance"
-         (select)="setActive(account.accountId)">
+    <div ngxSlickItem *ngFor="let account of userAccounts$ | async" class="slide slide-balance">
 
       <wal-balance [accountNumber]="account.accountId" [accountBalance]="account.balance"
                    class="slide--item"
