@@ -13,19 +13,16 @@
 
 
       <ng-container *ngIf="account.accountId == activeAccount;else btnInactive">
-        <button type="button" class="slide-btn active" [disabled]="true"
-        >active
-        </button>
+        <mat-slide-toggle class="slide-btn" checked disabled><span class="active">Active</span>
+        </mat-slide-toggle>
       </ng-container>
 
       <ng-template #btnInactive>
-        <button type="button" class="slide-btn inactive" (click)="
+        <mat-slide-toggle (click)="
       setActive(account.accountId)"
-        >set active
-        </button>
+                          class="slide-btn inactive"><span class="inactive">Set Active</span>
+        </mat-slide-toggle>
       </ng-template>
-
-      <!--[ngClass]="account.accountId == activeAccount ? 'active' : 'inactive'"-->
     </div>
 
   </ngx-slick-carousel>

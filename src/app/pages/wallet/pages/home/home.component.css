@@ -26,17 +26,14 @@
   z-index: 999999999999999999999999999999999999999999 !important;
 }
 
-.inactive {
-  background-color: red;
-  visibility: visible;
-  content: "Set Active";
-
+.active {
+  color: #1cd900;
+  font-weight: 700;
 }
 
-.active {
-  background-color: green;
-  visibility: visible;
-  content: "Active";
+.inactive {
+  color: #ff0000;
+  font-weight: 700;
 }
 
 /*@media (max-width: 480px) {

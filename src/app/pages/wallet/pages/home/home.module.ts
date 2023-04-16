@@ -21,6 +21,7 @@ import {SlickCarouselModule} from "ngx-slick-carousel";
 import {
   GenericOperationListModule
 } from "../../../../shared/modules/generic-operation-list/generic-operation-list.module";
+import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import {
     SlickCarouselModule,
     GenericModalModule,
     GenericOperationListModule,
+    MatSlideToggleModule,
     DepositPaymentFormModule,
     StoreModule.forFeature('home', homeReducers),
     EffectsModule.forFeature([AccountsEffect]),
