@@ -22,6 +22,7 @@ import {
   GenericOperationListModule
 } from "../../../../shared/modules/generic-operation-list/generic-operation-list.module";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
+import {OperationsGraphicsModule} from "../../../../shared/modules/operations-graphics/operations-graphics.module";
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
     GenericOperationListModule,
     MatSlideToggleModule,
     DepositPaymentFormModule,
+    OperationsGraphicsModule,
     StoreModule.forFeature('home', homeReducers),
     EffectsModule.forFeature([AccountsEffect]),
   ],

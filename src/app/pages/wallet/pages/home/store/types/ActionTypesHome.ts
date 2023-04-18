@@ -14,5 +14,4 @@ export enum ActionTypesHome {
   GETLATESTACCOUNTMOVEMENTS = '[HOME] Get Latest Account Movements',
   GETLATESTACCOUNTMOVEMENTS_SUCCESS = '[HOME] Get Latest Account Movements Success',
   GETLATESTACCOUNTMOVEMENTS_FAILURE = '[HOME] Get Latest Account Movements Failure',
-
 }

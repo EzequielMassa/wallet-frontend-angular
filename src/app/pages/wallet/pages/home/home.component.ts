@@ -73,6 +73,7 @@ export class HomeComponent implements OnInit {
     this.latestAccountMovements$ = this.store.pipe(select(latestAccountMovementsSelector))
     this.activeAccount = this.persistanceService.get('activeAccount')
     this.setActive(this.activeAccount)
+
   }
 
   setActive(accountId: number) {
