@@ -1,5 +1,5 @@
 <canvas baseChart class="chart"
-        [data]="barChartData"
+        [data]="barChartProps"
         [options]="barChartOptions"
         [plugins]="barChartPlugins"
         [type]="barChartType"
@@ -7,4 +7,4 @@
         (chartClick)="chartClicked($event)">
 </canvas>
 
-<button mat-button mat-raised-button color="primary" (click)="randomize()">Update</button>
+<!--<button mat-button mat-raised-button color="primary" (click)="randomize()">Update</button>-->

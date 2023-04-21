@@ -64,5 +64,15 @@ export class AccountService {
     const url: string = environment.apiUrl + `/api/v1/movements/id/${activeAccount}`;
     return this.http.get<OperationInterface[]>(url);
   }
+
+  getAccountIncomingsByMonthAndYear(activeAccount: number, month: number, year: number): Observable<any> {
+    const url: string = environment.apiUrl + `/api/v1/movements/incomings/id/${activeAccount}/month/${month}/year/${year}`;
+    return this.http.get<any>(url);
+  }
+
+  getAccountExpensesByMonthAndYear(activeAccount: number, month: number, year: number): Observable<any> {
+    const url: string = environment.apiUrl + `/api/v1/movements/expenses/id/${activeAccount}/month/${month}/year/${year}`;
+    return this.http.get<any>(url);
+  }
 }
 
