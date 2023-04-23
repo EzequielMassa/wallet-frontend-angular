@@ -20,7 +20,7 @@ export class OperationsGraphicsComponent implements OnInit, OnDestroy {
     scales: {
       x: {},
       y: {
-        min: 10
+        min: 0
       }
     },
     plugins: {
@@ -38,21 +38,13 @@ export class OperationsGraphicsComponent implements OnInit, OnDestroy {
     DataLabelsPlugin
   ];
 
-  /*  public barChartData: ChartData<'bar'> = {
-      labels: ["April"],
-      datasets: [
-        {data: [96], label: 'Ingresos'},
-        {data: [87], label: 'Egresos'}
-      ]
-    };*/
-
   // events
   public chartClicked({event, active}: { event?: ChartEvent, active?: {}[] }): void {
     console.log(event, active);
   }
 
   public chartHovered({event, active}: { event?: ChartEvent, active?: {}[] }): void {
-    console.log(event, active);
+
   }
 
   ngOnInit(): void {
@@ -61,20 +53,6 @@ export class OperationsGraphicsComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
 
   }
-
-  /*  public randomize(): void {
-      // Only Change 3 values
-      this.barChartData.datasets[0].data = [
-        Math.round(Math.random() * 100),
-        59,
-        80,
-        Math.round(Math.random() * 100),
-        56,
-        Math.round(Math.random() * 100),
-        40];
-
-      this.chart?.update();
-    }*/
 
   constructor() {
 

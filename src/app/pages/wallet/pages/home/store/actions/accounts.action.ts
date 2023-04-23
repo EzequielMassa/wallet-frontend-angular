@@ -4,6 +4,8 @@ import {UserAccountInterface} from "../../types/userAccount.interface";
 import {DepositPaymentInterface} from "../../types/DepositPayment.interface";
 import {TransferInterface} from "../../types/Transfer.interface";
 import {OperationInterface} from "../../../../../../shared/types/operation.interface";
+import {IncomingsMonthResponseInterface} from "../../../../../../shared/types/incomingsMonthResponse.interface";
+import {ExpensesMonthResponseInterface} from "../../../../../../shared/types/ExpensesMonthResponse.interface";
 
 
 //GET ACCOUNTS ACTIONS
@@ -77,4 +79,31 @@ export const getLatestAccountMovementsSuccessAction = createAction(
 
 export const getLatestAccountMovementsFailureAction = createAction(
   ActionTypesHome.GETLATESTACCOUNTMOVEMENTS_FAILURE
+)
+
+//GET CURRENT  MONTH INCOMINGS / EXPENSES
+export const getCurrentMonthIncomingsAction = createAction(
+  ActionTypesHome.GET_CURRENT_MONTH_INCOMINGS_ACTION,
+)
+
+export const getCurrentMonthIncomingsSuccessAction = createAction(
+  ActionTypesHome.GET_CURRENT_MONTH_INCOMINGS_ACTION_SUCCESS,
+  props<{ monthIncomings: IncomingsMonthResponseInterface[] }>()
+)
+
+export const getCurrentMonthIncomingsFailureAction = createAction(
+  ActionTypesHome.GET_CURRENT_MONTH_INCOMINGS_ACTION_FAILURE
+)
+
+export const getCurrentMonthExpensesAction = createAction(
+  ActionTypesHome.GET_CURRENT_MONTH_EXPENSES_ACTION,
+)
+
+export const getCurrentMonthExpensesSuccessAction = createAction(
+  ActionTypesHome.GET_CURRENT_MONTH_EXPENSES_ACTION_SUCCESS,
+  props<{ monthExpenses: ExpensesMonthResponseInterface[] }>()
+)
+
+export const getCurrentMonthExpensesFailureAction = createAction(
+  ActionTypesHome.GET_CURRENT_MONTH_EXPENSES_ACTION_FAILURE
 )

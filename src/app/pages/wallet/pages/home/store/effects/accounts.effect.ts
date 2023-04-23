@@ -8,6 +8,10 @@ import {
   createNewTransferSuccessAction,
   createNewUserAccountAction,
   createNewUserAccountSuccessAction,
+  getCurrentMonthExpensesAction,
+  getCurrentMonthExpensesSuccessAction,
+  getCurrentMonthIncomingsAction,
+  getCurrentMonthIncomingsSuccessAction,
   getLatestAccountMovementsAction,
   getLatestAccountMovementsSuccessAction,
   getUserAccountsAction,
@@ -18,6 +22,8 @@ import {UserAccountInterface} from "../../types/userAccount.interface";
 import {Store} from "@ngrx/store";
 import {OperationInterface} from "../../../../../../shared/types/operation.interface";
 import {PersistanceService} from "../../../../../../shared/services/persistance.service";
+import {IncomingsMonthResponseInterface} from "../../../../../../shared/types/incomingsMonthResponse.interface";
+import {ExpensesMonthResponseInterface} from "../../../../../../shared/types/ExpensesMonthResponse.interface";
 
 @Injectable()
 export class AccountsEffect {
@@ -27,7 +33,9 @@ export class AccountsEffect {
       switchMap(() => {
         return this.accountService.getUserAccounts().pipe(
           map((currentUserAccounts: UserAccountInterface[]) => {
-            this.persistanceService.set('activeAccount', currentUserAccounts[0].accountId);
+            if (!this.persistanceService.get('activeAccount')) {
+              this.persistanceService.set('activeAccount', currentUserAccounts[0].accountId);
+            }
             return getUserAccountsSuccesAction({currentUserAccounts});
           })
         );
@@ -42,6 +50,8 @@ export class AccountsEffect {
         return this.accountService.createNewUserAccount().pipe(
           map(() => {
             this.store.dispatch(getUserAccountsAction())
+            const activeAccount = parseInt(this.persistanceService.get('activeAccount'))
+            this.store.dispatch(getLatestAccountMovementsAction({activeAccount: activeAccount}))
             return createNewUserAccountSuccessAction();
           })
         );
@@ -88,7 +98,41 @@ export class AccountsEffect {
       switchMap(({activeAccount}) => {
         return this.accountService.getLatestAccountMovements(activeAccount).pipe(
           map((latestMovements: OperationInterface[]) => {
+            this.store.dispatch(getCurrentMonthIncomingsAction())
+            this.store.dispatch(getCurrentMonthExpensesAction())
             return getLatestAccountMovementsSuccessAction({latestMovements});
+          })
+        );
+      })
+    )
+  )
+
+  currentMonthIncomings$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(getCurrentMonthIncomingsAction),
+      switchMap(() => {
+        return this.accountService.getAccountIncomingsByMonthAndYear().pipe(
+          map((currentMonthIncomings: IncomingsMonthResponseInterface[]) => {
+            if (currentMonthIncomings == null) {
+              currentMonthIncomings = [];
+            }
+            return getCurrentMonthIncomingsSuccessAction({monthIncomings: currentMonthIncomings});
+          })
+        );
+      })
+    )
+  )
+
+  currentMonthExpenses$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(getCurrentMonthExpensesAction),
+      switchMap(() => {
+        return this.accountService.getAccountExpensesByMonthAndYear().pipe(
+          map((currentMonthExpenses: ExpensesMonthResponseInterface[]) => {
+            if (currentMonthExpenses == null) {
+              currentMonthExpenses = [];
+            }
+            return getCurrentMonthExpensesSuccessAction({monthExpenses: currentMonthExpenses});
           })
         );
       })

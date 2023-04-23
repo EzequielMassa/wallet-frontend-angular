@@ -19,3 +19,13 @@ export const latestAccountMovementsSelector = createSelector(
   homeFeatureSelector,
   (homeState: HomeStateInterface) => homeState.latestAccountMovements
 );
+
+export const currentMonthIncomingsSelector = createSelector(
+  homeFeatureSelector,
+  (homeState: HomeStateInterface) => homeState.currentMonthIncomings
+);
+
+export const currentMonthExpensesSelector = createSelector(
+  homeFeatureSelector,
+  (homeState: HomeStateInterface) => homeState.currentMonthExpenses
+);

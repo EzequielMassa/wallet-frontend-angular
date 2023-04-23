@@ -7,6 +7,7 @@ import {PersistanceService} from "../../../../../shared/services/persistance.ser
 import {DepositPaymentInterface} from "../types/DepositPayment.interface";
 import {TransferInterface} from "../types/Transfer.interface";
 import {OperationInterface} from "../../../../../shared/types/operation.interface";
+import * as moment from "moment/moment";
 
 @Injectable({
   providedIn: 'root',
@@ -65,14 +66,21 @@ export class AccountService {
     return this.http.get<OperationInterface[]>(url);
   }
 
-  getAccountIncomingsByMonthAndYear(activeAccount: number, month: number, year: number): Observable<any> {
-    const url: string = environment.apiUrl + `/api/v1/movements/incomings/id/${activeAccount}/month/${month}/year/${year}`;
+  getAccountIncomingsByMonthAndYear(): Observable<any> {
+    const activeAccount: number = this.persistanceService.get('activeAccount')
+    const currentMonth: number = moment().get("month") + 1
+    const currentYear: number = moment().get("year")
+    const url: string = environment.apiUrl + `/api/v1/movements/incomings/id/${activeAccount}/month/${currentMonth}/year/${currentYear}`;
     return this.http.get<any>(url);
   }
 
-  getAccountExpensesByMonthAndYear(activeAccount: number, month: number, year: number): Observable<any> {
-    const url: string = environment.apiUrl + `/api/v1/movements/expenses/id/${activeAccount}/month/${month}/year/${year}`;
+  getAccountExpensesByMonthAndYear(): Observable<any> {
+    const activeAccount: number = this.persistanceService.get('activeAccount')
+    const currentMonth: number = moment().get("month") + 1
+    const currentYear: number = moment().get("year")
+    const url: string = environment.apiUrl + `/api/v1/movements/expenses/id/${activeAccount}/month/${currentMonth}/year/${currentYear}`;
     return this.http.get<any>(url);
   }
+  
 }
 

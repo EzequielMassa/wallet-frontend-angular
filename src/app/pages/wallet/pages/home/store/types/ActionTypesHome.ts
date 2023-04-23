@@ -14,4 +14,10 @@ export enum ActionTypesHome {
   GETLATESTACCOUNTMOVEMENTS = '[HOME] Get Latest Account Movements',
   GETLATESTACCOUNTMOVEMENTS_SUCCESS = '[HOME] Get Latest Account Movements Success',
   GETLATESTACCOUNTMOVEMENTS_FAILURE = '[HOME] Get Latest Account Movements Failure',
+  GET_CURRENT_MONTH_INCOMINGS_ACTION = '[HOME] Get Current Month Incoming',
+  GET_CURRENT_MONTH_INCOMINGS_ACTION_SUCCESS = '[HOME] Get Current Month Incoming Success',
+  GET_CURRENT_MONTH_INCOMINGS_ACTION_FAILURE = '[HOME] Get Current Month Incoming Failure',
+  GET_CURRENT_MONTH_EXPENSES_ACTION = '[HOME] Get Current Month Expenses',
+  GET_CURRENT_MONTH_EXPENSES_ACTION_SUCCESS = '[HOME] Get Current Month Expenses Success',
+  GET_CURRENT_MONTH_EXPENSES_ACTION_FAILURE = '[HOME] Get Current Month Expenses Failure',
 }

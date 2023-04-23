@@ -1,10 +1,17 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {AccountService} from 'src/app/pages/wallet/pages/home/services/account.service';
 import {UserAccountInterface} from "./types/userAccount.interface";
-import {Observable} from "rxjs";
+import {Observable, Subscription} from "rxjs";
 import {select, Store} from '@ngrx/store';
-import {getLatestAccountMovementsAction, getUserAccountsAction} from "./store/actions/accounts.action";
 import {
+  getCurrentMonthExpensesAction,
+  getCurrentMonthIncomingsAction,
+  getLatestAccountMovementsAction,
+  getUserAccountsAction
+} from "./store/actions/accounts.action";
+import {
+  currentMonthExpensesSelector,
+  currentMonthIncomingsSelector,
   isLoadingSelector,
   latestAccountMovementsSelector,
   userAccountsSelector
@@ -13,7 +20,6 @@ import {OperationInterface} from "../../../../shared/types/operation.interface";
 import {PersistanceService} from 'src/app/shared/services/persistance.service';
 import {ChartData} from "chart.js";
 import {BarCharDataInterface} from "../../../../shared/types/barCharData.interface";
-import * as moment from "moment";
 
 
 @Component({
@@ -21,19 +27,21 @@ import * as moment from "moment";
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
 
   userAccounts$!: Observable<UserAccountInterface[]>;
   activeAccount!: number;
   isLoading$!: Observable<boolean>;
   title: string = "Ultimos movimientos"
   latestAccountMovements$!: Observable<OperationInterface[]>;
-  currentMonth = moment().get("month") + 1
-  currentYear = moment().get("year")
   barCharLabels!: string[];
   barCharDataIncomings!: BarCharDataInterface;
   barCharDataExpenses!: BarCharDataInterface;
   barChar!: ChartData<'bar'>
+  currentMonthIncomings$!: Observable<any>;
+  currentMonthExpenses$!: Observable<any>;
+  incomingSubscription$!: Subscription;
+  expensesSubscription$!: Subscription;
 
 
   slideConfig = {
@@ -69,28 +77,10 @@ export class HomeComponent implements OnInit {
   constructor(private accountService: AccountService, private store: Store, private persistanceService: PersistanceService) {
     this.store.dispatch(getUserAccountsAction())
     this.initializeValues()
+    this.store.dispatch(getCurrentMonthIncomingsAction())
+    this.store.dispatch(getCurrentMonthExpensesAction())
   }
 
-  ngOnInit(): void {
-    this.accountService.getAccountIncomingsByMonthAndYear(this.activeAccount, this.currentMonth, this.currentYear).subscribe((data) => {
-      this.barCharLabels = [data[0]];
-      this.barCharDataIncomings = {data: [data[1]], label: 'Ingresos'}
-
-    })
-
-    this.accountService.getAccountExpensesByMonthAndYear(this.activeAccount, this.currentMonth, this.currentYear).subscribe((data) => {
-      this.barCharDataExpenses = {data: [data[1]], label: 'Egresos'}
-      this.barChar = {
-        labels: this.barCharLabels,
-        datasets: [
-          this.barCharDataIncomings,
-          this.barCharDataExpenses
-        ]
-      }
-    })
-
-
-  }
 
   initializeValues(): void {
     this.isLoading$ = this.store.pipe(select(isLoadingSelector))
@@ -98,7 +88,24 @@ export class HomeComponent implements OnInit {
     this.latestAccountMovements$ = this.store.pipe(select(latestAccountMovementsSelector))
     this.activeAccount = this.persistanceService.get('activeAccount')
     this.setActive(this.activeAccount)
+    this.currentMonthIncomings$ = this.store.pipe(select(currentMonthIncomingsSelector))
+    this.currentMonthExpenses$ = this.store.pipe(select(currentMonthExpensesSelector))
+    this.incomingSubscription$ = this.currentMonthIncomings$.subscribe((monthIncomings) => {
+      this.barCharLabels = [monthIncomings[0]];
+      this.barCharDataIncomings = {data: [monthIncomings[1]], label: 'Ingresos'}
 
+    })
+    this.expensesSubscription$ = this.currentMonthExpenses$.subscribe((monthExpenses) => {
+      this.barCharDataExpenses = {data: [monthExpenses[1]], label: 'Egresos'}
+      this.barChar = {
+        labels: this.barCharLabels,
+        datasets: [
+          this.barCharDataIncomings,
+          this.barCharDataExpenses,
+
+        ]
+      }
+    })
   }
 
   setActive(accountId: number) {
@@ -107,5 +114,11 @@ export class HomeComponent implements OnInit {
     this.store.dispatch(getLatestAccountMovementsAction({activeAccount: this.activeAccount}))
   }
 
+  ngOnInit(): void {
+  }
+
+  ngOnDestroy(): void {
+    this.incomingSubscription$.unsubscribe();
+  }
 
 }
