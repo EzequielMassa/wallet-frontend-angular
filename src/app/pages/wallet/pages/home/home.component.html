@@ -37,7 +37,9 @@
 </div>
 <wal-transactions-services></wal-transactions-services>
 
-<wal-generic-operation-list [title]="title" [operations]="latestAccountMovements$"></wal-generic-operation-list>
-
+<div class="operation__list--container">
+  <wal-generic-operation-list [title]="title" [operations]="latestAccountMovements$"
+  ></wal-generic-operation-list>
+</div>
 
 <wal-operations-graphics [barChar]="barChar"></wal-operations-graphics>

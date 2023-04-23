@@ -36,6 +36,10 @@
   font-weight: 700;
 }
 
+.operation__list--container {
+  margin-bottom: 50px;
+}
+
 /*@media (max-width: 480px) {
   .carousel--container {
     width: 80%;
