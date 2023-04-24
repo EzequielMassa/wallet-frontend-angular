@@ -42,6 +42,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   currentMonthExpenses$!: Observable<any>;
   incomingSubscription$!: Subscription;
   expensesSubscription$!: Subscription;
+  totalIncoming!: number;
+  totalExpenses!: number;
 
 
   slideConfig = {
@@ -93,10 +95,11 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.incomingSubscription$ = this.currentMonthIncomings$.subscribe((monthIncomings) => {
       this.barCharLabels = [monthIncomings[0]];
       this.barCharDataIncomings = {data: [monthIncomings[1]], label: 'Ingresos'}
-
+      this.totalIncoming = monthIncomings[1]
     })
     this.expensesSubscription$ = this.currentMonthExpenses$.subscribe((monthExpenses) => {
       this.barCharDataExpenses = {data: [monthExpenses[1]], label: 'Egresos'}
+      this.totalExpenses = monthExpenses[1]
       this.barChar = {
         labels: this.barCharLabels,
         datasets: [

@@ -140,3 +140,25 @@ input:-webkit-autofill:active {
 .error {
   color: red;
 }
+
+
+.deposit-icon {
+  color: green;
+  font-size: 1.3rem
+}
+
+.payment-icon {
+  color: red;
+  font-size: 1.3rem
+}
+
+.transfer-in-icon {
+  color: green;
+  font-size: 1.2rem
+}
+
+
+.transfer-out-icon {
+  color: red;
+  font-size: 1.2rem
+}

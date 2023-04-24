@@ -36,9 +36,25 @@
   font-weight: 700;
 }
 
-.operation__list--container {
+.new__account--container {
   margin-bottom: 50px;
 }
+
+.total__container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.operation__list--container {
+  margin: 25px auto;
+
+  width: 90%;
+}
+
+.operations__graphics__container {
+  width: 100%;
+}
+
 
 /*@media (max-width: 480px) {
   .carousel--container {

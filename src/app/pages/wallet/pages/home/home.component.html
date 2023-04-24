@@ -35,6 +35,14 @@
 <div class="new__account--container">
   <wal-new-account></wal-new-account>
 </div>
+
+<div class="total__container">
+  <wal-total [title]="'Ingresos del mes'" [total]="totalIncoming"
+             [icon]="'fa-solid fa-money-bill-trend-up deposit-icon'"></wal-total>
+  <wal-total [title]="'Gastos del mes'" [total]="totalExpenses"
+             [icon]="'fa-solid fa-money-bill-trend-up fa-rotate-180 payment-icon'"></wal-total>
+</div>
+
 <wal-transactions-services></wal-transactions-services>
 
 <div class="operation__list--container">
@@ -42,4 +50,6 @@
   ></wal-generic-operation-list>
 </div>
 
-<wal-operations-graphics [barChar]="barChar"></wal-operations-graphics>
+<div class="operations__graphics__container">
+  <wal-operations-graphics [barChar]="barChar"></wal-operations-graphics>
+</div>
