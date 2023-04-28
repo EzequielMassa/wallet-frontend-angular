@@ -22,4 +22,5 @@ export class TransactionsServicesComponent {
       data: {target: event.target},
     });
   }
+
 }
