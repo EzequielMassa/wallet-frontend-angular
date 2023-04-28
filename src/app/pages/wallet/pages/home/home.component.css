@@ -1,4 +1,10 @@
-.carousel--container {
+.carousel__container {
+  width: 100%;
+  position: relative;
+}
+
+
+.carousel {
   width: 330px;
   margin: 30px auto;
 
@@ -8,11 +14,13 @@
   width: 100%;
   display: flex;
   justify-content: space-evenly;
+  padding: 20px 0;
 }
 
 .carousel__actions i {
   cursor: pointer;
   color: #ff2c7d;
+  font-size: 1.2rem;
 }
 
 .slide {
@@ -50,9 +58,10 @@
 }
 
 
-/*@media (max-width: 480px) {
-  .carousel--container {
-    width: 80%;
+@media (min-width: 768px) {
+  .new__account--container {
+    position: absolute;
+    top: 50px;
+    left: 200px;
   }
-
-}*/
+}

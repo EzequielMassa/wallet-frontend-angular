@@ -1,12 +1,17 @@
-<ul>
-  <li>
-    <button type="button" (click)="openDialog($event)">Deposit</button>
+<ul class="transactions__btns__container">
+  <li class="transactions__btn__item">
+    <button type="button" (click)="openDialog($event)" class="transactions__btn"><i
+      class="fa-solid fa-right-to-bracket fa-rotate-90"></i>Deposit
+    </button>
   </li>
-  <li>
-    <button type="button" (click)="openDialog($event)">Payment</button>
+  <li class="transactions__btn__item">
+    <button type="button" (click)="openDialog($event)" class="transactions__btn"><i
+      class="fa-solid fa-right-from-bracket fa-rotate-270"></i>Payment
+    </button>
   </li>
-  <li>
-    <button type="button" (click)="openDialog($event)">Transfer</button>
+  <li class="transactions__btn__item">
+    <button type="button" (click)="openDialog($event)" class="transactions__btn"><i class="fa-solid fa-repeat"></i>Transfer
+    </button>
   </li>
 </ul>
 

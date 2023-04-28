@@ -1,0 +1,29 @@
+.transactions__btns__container {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.transactions__btn__item {
+  display: flex;
+  gap: 10px;
+}
+
+.transactions__btn {
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: 400;
+  background-color: #ff2c7d;
+  border-radius: 5px;
+}
+
+.transactions__btn i {
+  cursor: pointer;
+  color: black;
+  font-size: 1.2rem;
+  margin-right: 5px;
+}
