@@ -23,7 +23,7 @@
   position: absolute;
   bottom: 10px;
   right: 20px;
-  z-index: 999999999999999999999999999999999999999999 !important;
+  z-index: 999 !important;
 }
 
 .active {
@@ -47,12 +47,6 @@
 
 .operation__list--container {
   margin: 25px auto;
-
-  width: 90%;
-}
-
-.operations__graphics__container {
-  width: 100%;
 }
 
 

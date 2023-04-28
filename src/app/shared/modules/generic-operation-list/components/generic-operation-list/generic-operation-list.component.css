@@ -1,5 +1,18 @@
-.mat-filter {
-  width: 50%;
+
+.operation__list--container {
+  width: 90%;
+  margin: 50px auto;
+  overflow: auto;
 }
 
+.mat-filter {
+  width: 75%;
+}
 
+.green {
+  color: green;
+}
+
+.red {
+  color: red;
+}
