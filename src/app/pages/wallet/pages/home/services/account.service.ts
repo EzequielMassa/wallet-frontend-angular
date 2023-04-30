@@ -81,6 +81,13 @@ export class AccountService {
     const url: string = environment.apiUrl + `/api/v1/movements/expenses/id/${activeAccount}/month/${currentMonth}/year/${currentYear}`;
     return this.http.get<any>(url);
   }
-  
+
+  getAccountIncomingsByYear(): Observable<any> {
+    const activeAccount: number = this.persistanceService.get('activeAccount')
+    const currentYear: number = moment().get("year")
+    const url: string = environment.apiUrl + `/api/v1/movements/incomings/id/${activeAccount}/year/${currentYear}`;
+    return this.http.get<any>(url);
+  }
+
 }
 

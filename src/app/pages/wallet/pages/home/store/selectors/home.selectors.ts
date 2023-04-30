@@ -29,3 +29,8 @@ export const currentMonthExpensesSelector = createSelector(
   homeFeatureSelector,
   (homeState: HomeStateInterface) => homeState.currentMonthExpenses
 );
+
+export const currentYearIncomingsSelector = createSelector(
+  homeFeatureSelector,
+  (homeState: HomeStateInterface) => homeState.currentYearIncomingss
+);

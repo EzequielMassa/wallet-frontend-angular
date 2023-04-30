@@ -1,0 +1,13 @@
+<div class="total__container">
+  <wal-total [title]="'Ingresos del mes'" [total]="totalMonthIncoming"
+             [icon]="'fa-solid fa-arrow-up deposit-icon'"></wal-total>
+  <wal-total [title]="'Ingresos del año'" [total]="totalYearIncomings"
+             [icon]="'fa-solid fa-arrow-up deposit-icon'"></wal-total>
+</div>
+
+<div class="operation__list--container">
+  <wal-generic-operation-list [title]="title" [operations]="IncomingsAccountMovements$"
+  ></wal-generic-operation-list>
+</div>
+
+<wal-operations-graphics [barChar]="barChar"></wal-operations-graphics>

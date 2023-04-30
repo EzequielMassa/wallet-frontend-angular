@@ -162,3 +162,8 @@ input:-webkit-autofill:active {
   color: red;
   font-size: 1.2rem
 }
+
+.total__container {
+  display: flex;
+  justify-content: space-evenly;
+}

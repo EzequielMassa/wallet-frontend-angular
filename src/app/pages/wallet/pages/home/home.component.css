@@ -48,10 +48,6 @@
   margin-bottom: 50px;
 }
 
-.total__container {
-  display: flex;
-  justify-content: space-evenly;
-}
 
 .operation__list--container {
   margin: 25px auto;

@@ -11,6 +11,8 @@ import {
   getCurrentMonthExpensesSuccessAction,
   getCurrentMonthIncomingsAction,
   getCurrentMonthIncomingsSuccessAction,
+  getCurrentYearIncomingsAction,
+  getCurrentYearIncomingsSuccessAction,
   getLatestAccountMovementsAction,
   getLatestAccountMovementsSuccessAction,
   getUserAccountsAction,
@@ -22,7 +24,8 @@ const initialState: HomeStateInterface = {
   currentUserAccounts: [],
   latestAccountMovements: [],
   currentMonthIncomings: [],
-  currentMonthExpenses: []
+  currentMonthExpenses: [],
+  currentYearIncomingss: []
 }
 
 
@@ -116,6 +119,20 @@ const homeReducer = createReducer(
       ...state,
       isLoading: false,
       currentMonthExpenses: action.monthExpenses
+    })
+  ),
+  on(
+    getCurrentYearIncomingsAction, (state): HomeStateInterface => ({
+      ...state,
+      isLoading: true,
+    })
+  ),
+  on(
+    getCurrentYearIncomingsSuccessAction, (state, action
+    ): HomeStateInterface => ({
+      ...state,
+      isLoading: false,
+      currentYearIncomingss: action.monthIncomings
     })
   ),
 )
