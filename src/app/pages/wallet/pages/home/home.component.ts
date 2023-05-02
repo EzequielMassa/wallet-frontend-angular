@@ -105,8 +105,8 @@ export class HomeComponent implements OnInit, OnDestroy {
         datasets: [
           this.barCharDataIncomings,
           this.barCharDataExpenses,
+        ],
 
-        ]
       }
     })
   }
@@ -123,5 +123,4 @@ export class HomeComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.incomingSubscription$.unsubscribe();
   }
-
 }

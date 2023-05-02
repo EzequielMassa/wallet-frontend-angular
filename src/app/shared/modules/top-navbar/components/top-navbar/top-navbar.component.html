@@ -1,1 +1,18 @@
-<p>top-navbar works!</p>
+<mat-toolbar class="top__navbar__container" color="primary">
+  <!--LOGO-->
+  <div class="top__navbar__logo__container">
+    <img class="top__navbar__logo" ngSrc="./assets/images/wallet.png" width="128" height="128" alt="wallet logo">
+    <span>Wallet</span>
+  </div>
+  <!--LINKS-->
+  <nav mat-tab-nav-bar [backgroundColor]="background">
+    <a mat-tab-link *ngFor="let link of links"
+       (click)="activeLink = link"
+       [active]="activeLink == link"
+       routerLink="/{{link.toLowerCase()}}">
+      {{link}}
+    </a>
+  </nav>
+  <!--PROFILE-->
+  <wal-profile></wal-profile>
+</mat-toolbar>

@@ -19,7 +19,7 @@ export class TransactionsServicesComponent {
     this.dialog.open(GenericModalComponent, {
       width: '80%',
       height: 'auto',
-      data: {target: event.target},
+      data: {target: event.target.dataset.type},
     });
   }
 

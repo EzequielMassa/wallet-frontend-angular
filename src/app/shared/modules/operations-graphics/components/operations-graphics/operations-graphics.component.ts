@@ -20,7 +20,8 @@ export class OperationsGraphicsComponent implements OnInit, OnDestroy {
     scales: {
       x: {},
       y: {
-        min: 0
+        min: 0,
+
       }
     },
     plugins: {
@@ -42,6 +43,7 @@ export class OperationsGraphicsComponent implements OnInit, OnDestroy {
   public chartClicked({event, active}: { event?: ChartEvent, active?: {}[] }): void {
     console.log(event, active);
   }
+
 
   public chartHovered({event, active}: { event?: ChartEvent, active?: {}[] }): void {
 

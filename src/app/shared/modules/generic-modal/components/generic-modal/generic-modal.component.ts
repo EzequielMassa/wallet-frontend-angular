@@ -13,9 +13,9 @@ export class GenericModalComponent {
 
 
   constructor(public dialogRef: MatDialogRef<GenericModalComponent>, @Inject(MAT_DIALOG_DATA) public data: {
-    target: any
+    target: string
   }, private modalService: GenericModalService) {
-    this.dialogTitle = this.data.target.textContent;
+    this.dialogTitle = this.data.target;
   }
 
   cancel(): void {

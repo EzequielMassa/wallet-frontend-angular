@@ -45,7 +45,7 @@
 }
 
 .new__account--container {
-  margin-bottom: 50px;
+  margin-bottom: 25px;
 }
 
 
@@ -53,11 +53,20 @@
   margin: 25px auto;
 }
 
+.operations__graphics__container {
+  margin: 25px auto;
+  width: 90%;
+}
 
 @media (min-width: 768px) {
   .new__account--container {
     position: absolute;
+    width: 25px;
     top: 50px;
-    left: 200px;
+    right: 150px;
+  }
+
+  .operation__list--container {
+    max-width: 90%;
   }
 }

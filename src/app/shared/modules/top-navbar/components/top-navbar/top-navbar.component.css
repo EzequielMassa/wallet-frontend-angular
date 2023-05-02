@@ -1,0 +1,35 @@
+.top__navbar__container {
+  position: sticky;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  top: 0;
+  margin: 0 auto;
+  z-index: 999;
+}
+
+.top__navbar__logo__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.top__navbar__logo {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.top__navbar__items {
+  display: flex;
+  list-style: none;
+}
+
+.top__navbar__item {
+  margin: 0 5px;
+}
+
+.top__navbar__item a, .top__navbar__item a:visited {
+  text-decoration: none;
+  color: black;
+}
