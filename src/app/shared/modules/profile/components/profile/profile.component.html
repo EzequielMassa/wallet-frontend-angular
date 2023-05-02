@@ -1,0 +1,17 @@
+<div class="top__navbar__profile">
+  <button class="profile__pic__btn" mat-icon-button [matMenuTriggerFor]="menu"
+          aria-label="Example icon-button with a menu" matTooltip="Profile">
+    <img class="profile__pic" src="./assets/images/profile-test.jpg" alt="profile picture">
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item disabled>
+      <mat-icon>create</mat-icon>
+      <span>Edit Profile</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>forward</mat-icon>
+      <span>Logout</span>
+    </button>
+
+  </mat-menu>
+</div>

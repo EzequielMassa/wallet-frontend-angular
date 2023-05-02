@@ -1,0 +1,10 @@
+.profile__pic__btn {
+  width: 65px;
+  height: 65px;
+}
+
+.profile__pic {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
