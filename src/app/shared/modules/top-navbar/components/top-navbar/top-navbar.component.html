@@ -5,7 +5,7 @@
     <span>Wallet</span>
   </div>
   <!--LINKS-->
-  <nav mat-tab-nav-bar [backgroundColor]="background">
+  <nav mat-tab-nav-bar [backgroundColor]="background" [tabPanel]="tabPanel">
     <a mat-tab-link *ngFor="let link of links"
        (click)="activeLink = link"
        [active]="activeLink == link"
@@ -13,6 +13,7 @@
       {{link}}
     </a>
   </nav>
+  <mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
   <!--PROFILE-->
   <wal-profile></wal-profile>
 </mat-toolbar>

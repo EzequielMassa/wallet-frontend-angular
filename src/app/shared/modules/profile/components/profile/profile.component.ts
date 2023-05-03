@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {Store} from '@ngrx/store';
+import {logoutAction} from "../../../../../pages/wallet/pages/auth/store/actions/logout.actions";
 
 @Component({
   selector: 'wal-profile',
@@ -6,5 +8,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent {
+  constructor(private store: Store) {
+  }
 
+  onLogout(): void {
+    this.store.dispatch(logoutAction())
+  }
 }

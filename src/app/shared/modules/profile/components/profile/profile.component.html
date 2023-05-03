@@ -4,11 +4,11 @@
     <img class="profile__pic" src="./assets/images/profile-test.jpg" alt="profile picture">
   </button>
   <mat-menu #menu="matMenu">
-    <button mat-menu-item disabled>
+    <button mat-menu-item>
       <mat-icon>create</mat-icon>
       <span>Edit Profile</span>
     </button>
-    <button mat-menu-item>
+    <button mat-menu-item (click)="onLogout()">
       <mat-icon>forward</mat-icon>
       <span>Logout</span>
     </button>

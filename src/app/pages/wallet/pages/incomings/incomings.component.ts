@@ -66,11 +66,16 @@ export class IncomingsComponent implements OnInit, OnDestroy {
   }
 
   getTotalYearIncomings() {
+
     this.currentYearIncomings$ = this.store.pipe(select(currentYearIncomingsSelector))
     this.incomingYearSubscription$ = this.currentYearIncomings$.subscribe((monthIncomings) => {
+      this.YearIncomings = []
+      this.barCharLabels = []
       monthIncomings.forEach((incomings: any) => {
+
         this.barCharLabels.push(incomings[0])
         this.YearIncomings.push(incomings[1])
+        this.totalYearIncomings = this.YearIncomings.reduce((a, b) => a + b, 0)
         this.barChar = {
           labels: this.barCharLabels,
           datasets: [
@@ -79,7 +84,7 @@ export class IncomingsComponent implements OnInit, OnDestroy {
           ]
         }
       })
-      this.totalYearIncomings = this.YearIncomings.reduce((a, b) => a + b, 0)
+
     })
   }
 

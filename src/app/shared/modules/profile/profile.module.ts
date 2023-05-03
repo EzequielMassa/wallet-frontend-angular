@@ -5,6 +5,10 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
 import {MatMenuModule} from "@angular/material/menu";
 import {MatTooltipModule} from "@angular/material/tooltip";
+import {StoreModule} from "@ngrx/store";
+import {reducers} from "../../../pages/wallet/pages/auth/store/reducers/auth.reducers";
+import {EffectsModule} from "@ngrx/effects";
+import {LogoutEffect} from "../../../pages/wallet/pages/auth/store/effects/logout.effect";
 
 
 @NgModule({
@@ -19,7 +23,9 @@ import {MatTooltipModule} from "@angular/material/tooltip";
     MatIconModule,
     MatButtonModule,
     MatMenuModule,
-    MatTooltipModule
+    MatTooltipModule,
+    StoreModule.forFeature('auth', reducers),
+    EffectsModule.forFeature([LogoutEffect]),
   ]
 })
 export class ProfileModule {

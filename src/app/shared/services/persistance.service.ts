@@ -14,4 +14,8 @@ export class PersistanceService {
     let keyResult: any = localStorage.getItem(key);
     return JSON.parse(keyResult);
   }
+
+  clear(): void {
+    localStorage.clear()
+  }
 }

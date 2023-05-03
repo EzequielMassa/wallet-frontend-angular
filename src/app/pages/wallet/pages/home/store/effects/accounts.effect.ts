@@ -39,7 +39,7 @@ export class AccountsEffect {
               this.persistanceService.set('activeAccount', currentUserAccounts[0].accountId);
             }
             return getUserAccountsSuccesAction({currentUserAccounts});
-          })
+          }),
         );
       })
     )
@@ -103,7 +103,7 @@ export class AccountsEffect {
             this.store.dispatch(getCurrentMonthIncomingsAction())
             this.store.dispatch(getCurrentMonthExpensesAction())
             return getLatestAccountMovementsSuccessAction({latestMovements});
-          })
+          }),
         );
       })
     )
@@ -118,8 +118,9 @@ export class AccountsEffect {
             if (currentMonthIncomings == null) {
               currentMonthIncomings = [];
             }
+
             return getCurrentMonthIncomingsSuccessAction({monthIncomings: currentMonthIncomings});
-          })
+          }),
         );
       })
     )
@@ -151,7 +152,7 @@ export class AccountsEffect {
               currentMonthIncomings = [];
             }
             return getCurrentYearIncomingsSuccessAction({monthIncomings: currentMonthIncomings});
-          })
+          }),
         );
       })
     )

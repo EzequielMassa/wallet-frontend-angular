@@ -31,6 +31,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   userAccounts$!: Observable<UserAccountInterface[]>;
   activeAccount!: number;
+  activeAccountSubscription$!: Subscription;
   isLoading$!: Observable<boolean>;
   title: string = "Ultimos movimientos"
   latestAccountMovements$!: Observable<OperationInterface[]>;
@@ -79,17 +80,22 @@ export class HomeComponent implements OnInit, OnDestroy {
   constructor(private accountService: AccountService, private store: Store, private persistanceService: PersistanceService) {
     this.store.dispatch(getUserAccountsAction())
     this.initializeValues()
-    this.store.dispatch(getCurrentMonthIncomingsAction())
-    this.store.dispatch(getCurrentMonthExpensesAction())
   }
 
 
   initializeValues(): void {
     this.isLoading$ = this.store.pipe(select(isLoadingSelector))
     this.userAccounts$ = this.store.pipe(select(userAccountsSelector))
-    this.latestAccountMovements$ = this.store.pipe(select(latestAccountMovementsSelector))
-    this.activeAccount = this.persistanceService.get('activeAccount')
+    if (this.persistanceService.get('activeAccount') == null) {
+      this.activeAccountSubscription$ = this.userAccounts$.subscribe((result) => {
+        console.log(result[0].accountId)
+        this.activeAccount = result[0].accountId
+      })
+    } else {
+      this.activeAccount = this.persistanceService.get('activeAccount')
+    }
     this.setActive(this.activeAccount)
+    this.latestAccountMovements$ = this.store.pipe(select(latestAccountMovementsSelector))
     this.currentMonthIncomings$ = this.store.pipe(select(currentMonthIncomingsSelector))
     this.currentMonthExpenses$ = this.store.pipe(select(currentMonthExpensesSelector))
     this.incomingSubscription$ = this.currentMonthIncomings$.subscribe((monthIncomings) => {
@@ -118,9 +124,12 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.store.dispatch(getCurrentMonthIncomingsAction())
+    this.store.dispatch(getCurrentMonthExpensesAction())
   }
 
   ngOnDestroy(): void {
     this.incomingSubscription$.unsubscribe();
+    this.expensesSubscription$.unsubscribe()
   }
 }
