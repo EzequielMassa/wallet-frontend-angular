@@ -35,9 +35,6 @@ export class AccountsEffect {
       switchMap(() => {
         return this.accountService.getUserAccounts().pipe(
           map((currentUserAccounts: UserAccountInterface[]) => {
-            if (!this.persistanceService.get('activeAccount')) {
-              this.persistanceService.set('activeAccount', currentUserAccounts[0].accountId);
-            }
             return getUserAccountsSuccesAction({currentUserAccounts});
           }),
         );

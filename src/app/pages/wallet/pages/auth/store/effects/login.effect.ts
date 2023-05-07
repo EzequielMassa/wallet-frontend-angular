@@ -17,6 +17,7 @@ export class LoginEffect {
           map((currentUser: CurrentUserInterface) => {
             this.persistanceService.set('accessToken', currentUser.token);
             this.persistanceService.set('userId', currentUser.id);
+            this.persistanceService.set('activeAccount', 0)
             return loginSuccessAction({currentUser});
           })
         );
