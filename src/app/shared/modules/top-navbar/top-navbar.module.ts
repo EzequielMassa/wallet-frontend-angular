@@ -10,7 +10,8 @@ import {ProfileModule} from "../profile/profile.module";
 
 @NgModule({
   declarations: [TopNavbarComponent],
-  imports: [CommonModule, MatToolbarModule, RouterModule, NgOptimizedImage, MatButtonModule, MatTabsModule, MatIconModule, ProfileModule],
+  imports: [CommonModule, MatToolbarModule, RouterModule, NgOptimizedImage, MatButtonModule, MatTabsModule, MatIconModule, ProfileModule,
+  ],
   exports: [TopNavbarComponent],
 })
 export class TopNavbarModule {

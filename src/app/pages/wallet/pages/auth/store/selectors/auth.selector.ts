@@ -13,3 +13,8 @@ export const currentUserSelector = createSelector(
   authFeatureSelector,
   (authState: AuthStateInterface) => authState.currentUser
 );
+
+export const isLoggedInSelector = createSelector(
+  authFeatureSelector,
+  (authState: AuthStateInterface) => authState.isLoggedIn
+);
