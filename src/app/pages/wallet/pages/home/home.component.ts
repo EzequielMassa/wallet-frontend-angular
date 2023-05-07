@@ -6,6 +6,7 @@ import {select, Store} from '@ngrx/store';
 import {
   getCurrentMonthExpensesAction,
   getCurrentMonthIncomingsAction,
+  getCurrentYearIncomingsAction,
   getLatestAccountMovementsAction,
   getUserAccountsAction
 } from "./store/actions/accounts.action";
@@ -121,6 +122,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.activeAccount = (accountId);
     this.persistanceService.set('activeAccount', accountId)
     this.store.dispatch(getLatestAccountMovementsAction({activeAccount: this.activeAccount}))
+    this.store.dispatch(getCurrentMonthIncomingsAction())
+    this.store.dispatch(getCurrentYearIncomingsAction())
   }
 
   ngOnInit(): void {
