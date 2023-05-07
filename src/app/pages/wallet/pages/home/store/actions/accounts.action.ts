@@ -108,7 +108,7 @@ export const getCurrentMonthExpensesFailureAction = createAction(
   ActionTypesHome.GET_CURRENT_MONTH_EXPENSES_ACTION_FAILURE
 )
 
-//GET CURRENT  YEAR INCOMINGS / EXPENSES
+//GET CURRENT  YEAR INCOMINGS
 export const getCurrentYearIncomingsAction = createAction(
   ActionTypesHome.GET_CURRENT_YEAR_INCOMINGS_ACTION,
 )
@@ -120,4 +120,18 @@ export const getCurrentYearIncomingsSuccessAction = createAction(
 
 export const getCurrentYearIncomingsFailureAction = createAction(
   ActionTypesHome.GET_CURRENT_YEAR_INCOMINGS_ACTION_FAILURE
+)
+
+//GET CURRENT  YEAR EXPENSES
+export const getCurrentYearExpensesAction = createAction(
+  ActionTypesHome.GET_CURRENT_YEAR_EXPENSES_ACTION,
+)
+
+export const getCurrentYearExpensesSuccessAction = createAction(
+  ActionTypesHome.GET_CURRENT_YEAR_EXPENSES_ACTION_SUCCESS,
+  props<{ monthExpenses: ExpensesMonthResponseInterface[] }>()
+)
+
+export const getCurrentYearExpensesFailureAction = createAction(
+  ActionTypesHome.GET_CURRENT_YEAR_EXPENSES_ACTION_FAILURE
 )

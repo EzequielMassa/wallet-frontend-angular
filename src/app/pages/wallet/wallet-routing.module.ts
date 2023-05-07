@@ -14,6 +14,10 @@ const routes: Routes = [
     path: 'ingresos',
     loadChildren: () => import('./pages/incomings/incomings.module').then((i) => i.IncomingsModule),
   },
+  {
+    path: 'egresos',
+    loadChildren: () => import('./pages/expenses/expenses.module').then((e) => e.ExpensesModule),
+  },
 ];
 
 @NgModule({

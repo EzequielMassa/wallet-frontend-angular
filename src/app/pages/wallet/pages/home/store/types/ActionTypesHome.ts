@@ -23,4 +23,7 @@ export enum ActionTypesHome {
   GET_CURRENT_YEAR_INCOMINGS_ACTION = '[INCOMINGS] Get Current Year Incomings',
   GET_CURRENT_YEAR_INCOMINGS_ACTION_SUCCESS = '[INCOMINGS] Get Current Year Incomings Success',
   GET_CURRENT_YEAR_INCOMINGS_ACTION_FAILURE = '[INCOMINGS] Get Current Year Incomings Failure',
+  GET_CURRENT_YEAR_EXPENSES_ACTION = '[EXPENSES] Get Current Year Expenses',
+  GET_CURRENT_YEAR_EXPENSES_ACTION_SUCCESS = '[EXPENSES] Get Current Year Expenses Success',
+  GET_CURRENT_YEAR_EXPENSES_ACTION_FAILURE = '[EXPENSES] Get Current Year Expenses Failure',
 }

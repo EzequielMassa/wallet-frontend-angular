@@ -1,0 +1,16 @@
+<div class="expenses__container">
+  <div class="total__container">
+    <wal-total [title]="'Egresos del mes'" [total]="totalMonthExpenses"
+               [icon]="'fa-solid fa-arrow-down payment-icon'"></wal-total>
+    <wal-total [title]="'Egresos del año'" [total]="totalYearExpenses"
+               [icon]="'fa-solid fa-arrow-down payment-icon'"></wal-total>
+  </div>
+
+  <div class="operation__list--container">
+    <wal-generic-operation-list [title]="title" [operations]="expensesAccountMovements$"
+    ></wal-generic-operation-list>
+  </div>
+
+  <wal-operations-graphics [barChar]="barChar"></wal-operations-graphics>
+</div>
+
