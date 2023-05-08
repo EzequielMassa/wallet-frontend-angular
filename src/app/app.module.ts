@@ -13,6 +13,7 @@ import {AppComponent} from './app.component';
 import {AuthInterceptorProvider} from './pages/wallet/pages/auth/interceptors/auth.interceptor';
 import {PersistanceService} from './shared/services/persistance.service';
 import {reducers} from "./pages/wallet/pages/auth/store/reducers/auth.reducers";
+import {AuthGuard} from "./pages/wallet/pages/auth/guards/auth.guard";
 
 @NgModule({
   declarations: [AppComponent],
@@ -28,7 +29,7 @@ import {reducers} from "./pages/wallet/pages/auth/store/reducers/auth.reducers";
     StoreDevtoolsModule.instrument({maxAge: 25, logOnly: !isDevMode()}),
     EffectsModule.forRoot([]),
   ],
-  providers: [AuthInterceptorProvider, PersistanceService],
+  providers: [AuthInterceptorProvider, AuthGuard, PersistanceService],
   bootstrap: [AppComponent],
 })
 export class AppModule {
