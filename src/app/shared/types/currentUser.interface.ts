@@ -4,4 +4,5 @@ export interface CurrentUserInterface {
   lastname: string,
   email: string,
   token: any,
+  urlImg: string,
 }
