@@ -1,0 +1,16 @@
+.bottom__navbar__container {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  bottom: 0;
+  z-index: 999;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.active {
+  color: #ff2c7d;
+}
