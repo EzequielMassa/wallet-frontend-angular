@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {TotalComponent} from './components/total/total.component';
 import {MatTooltipModule} from "@angular/material/tooltip";
+import {MatCardModule} from "@angular/material/card";
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import {MatTooltipModule} from "@angular/material/tooltip";
   ],
   imports: [
     CommonModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatCardModule
   ]
 })
 export class TotalModule {

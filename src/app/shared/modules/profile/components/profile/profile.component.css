@@ -8,3 +8,10 @@
   height: 100%;
   border-radius: 50%;
 }
+
+@media (max-width: 768px) {
+  .profile__pic__btn {
+    width: 45px;
+    height: 45px;
+  }
+}

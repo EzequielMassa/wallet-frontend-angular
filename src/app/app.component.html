@@ -1,3 +1,13 @@
-<wal-top-navbar *ngIf="isLoggedIn$ | async"></wal-top-navbar>
+<ng-container *ngIf="isLoggedIn$ | async">
+  <ng-container *ngIf="getScreenWidth <= 768;else navbarDesktop">
+    <wal-bottom-navbar></wal-bottom-navbar>
+  </ng-container>
+  <ng-template #navbarDesktop>
+    <wal-top-navbar></wal-top-navbar>
+  </ng-template>
+</ng-container>
+
 <router-outlet></router-outlet>
+
 <wal-footer></wal-footer>
+

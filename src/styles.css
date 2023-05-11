@@ -6,6 +6,7 @@ body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+
 }
 
 .login {
@@ -163,7 +164,4 @@ input:-webkit-autofill:active {
   font-size: 1.2rem
 }
 
-.total__container {
-  display: flex;
-  justify-content: space-evenly;
-}
+

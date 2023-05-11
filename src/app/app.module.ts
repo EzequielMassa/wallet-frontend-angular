@@ -14,6 +14,7 @@ import {AuthInterceptorProvider} from './pages/wallet/pages/auth/interceptors/au
 import {PersistanceService} from './shared/services/persistance.service';
 import {reducers} from "./pages/wallet/pages/auth/store/reducers/auth.reducers";
 import {AuthGuard} from "./pages/wallet/pages/auth/guards/auth.guard";
+import {BottomNavbarModule} from "./shared/modules/bottom-navbar/bottom-navbar.module";
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,6 +25,7 @@ import {AuthGuard} from "./pages/wallet/pages/auth/guards/auth.guard";
     HttpClientModule,
     FooterModule,
     TopNavbarModule,
+    BottomNavbarModule,
     StoreModule.forRoot({}, {}),
     StoreModule.forFeature('auth', reducers),
     StoreDevtoolsModule.instrument({maxAge: 25, logOnly: !isDevMode()}),

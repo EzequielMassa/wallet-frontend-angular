@@ -5,6 +5,7 @@
   justify-content: space-between;
   align-items: center;
   margin: 0 auto;
+  padding-bottom: 80px;
 }
 
 .footer__logo__container {
@@ -14,6 +15,7 @@
 .footer__logo {
   width: 2.5rem;
 }
+
 .footer__social__container {
   width: 80%;
   display: flex;
@@ -25,6 +27,7 @@
 .fooer__social__item {
   font-size: 1.2rem;
 }
+
 .fooer__social__item:visited {
   color: transparent;
 }
@@ -59,6 +62,12 @@
 }
 
 /* RESPONSIVE DESKTOP */
+
+@media (min-width: 768px) {
+  .footer {
+    padding-bottom: 0;
+  }
+}
 
 @media (min-width: 992px) {
   .fooer__social__item {
