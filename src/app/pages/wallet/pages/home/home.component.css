@@ -14,7 +14,7 @@
   width: 100%;
   display: flex;
   justify-content: space-evenly;
-  padding: 20px 0;
+  padding: 15px 0;
 }
 
 .carousel__actions i {
@@ -56,6 +56,9 @@
   width: 100%;
 }
 
+.transactions__btns__container {
+  padding: 50px 0;
+}
 
 .operation__list--container {
   margin: 25px auto;

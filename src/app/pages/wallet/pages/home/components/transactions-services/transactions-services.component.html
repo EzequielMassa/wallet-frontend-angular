@@ -1,21 +1,20 @@
 <ul class="transactions__btns__container">
-  <li class="transactions__btn__item">
-    <button type="button" [attr.data-type]="'DEPOSIT'" (click)="openDialog($event)" class="transactions__btn">Deposit<i
-      [attr.data-type]="'DEPOSIT'"
-      class="fa-solid fa-right-to-bracket fa-rotate-90"></i>
+  <li>
+    <button type="button" [attr.data-type]="'DEPOSIT'" (click)="openDialog($event)" class="btn">
+      Deposit
+      <i class="fa-solid fa-circle-arrow-down fa-xs btn__icon"></i>
     </button>
   </li>
-  <li class="transactions__btn__item">
-    <button type="button" [attr.data-type]="'PAYMENT'" (click)="openDialog($event)" class="transactions__btn">
+  <li>
+    <button type="button" [attr.data-type]="'PAYMENT'" (click)="openDialog($event)" class="btn">
       Payment
-      <i [attr.data-type]="'PAYMENT'" class="fa-solid fa-right-from-bracket fa-rotate-270"></i>
+      <i class="fa-solid fa-arrow-up-right-from-square btn__icon"></i>
     </button>
   </li>
-  <li class="transactions__btn__item">
-    <button type="button" [attr.data-type]="'TRANSFER'" (click)="openDialog($event)" class="transactions__btn">
-      Transfer<i [attr.data-type]="'TRANSFER'"
-                 class="fa-solid fa-repeat"></i>
+  <li>
+    <button type="button" [attr.data-type]="'TRANSFER'" (click)="openDialog($event)" class="btn">
+      Transfer
+      <i class="fa-solid fa-arrow-right-arrow-left btn__icon"></i>
     </button>
   </li>
 </ul>
-
