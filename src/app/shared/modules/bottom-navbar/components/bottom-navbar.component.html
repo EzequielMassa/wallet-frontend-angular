@@ -5,7 +5,7 @@
        (click)="activeLink = link"
        [active]="activeLink == link"
        routerLink="/{{link.toLowerCase()}}">
-      <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <button mat-icon-button>
         <ng-container [ngSwitch]="link">
           <mat-icon [ngClass]="{'active': activeLink == link}" *ngSwitchCase="'Home'">home</mat-icon>
           <mat-icon [ngClass]="{'active': activeLink == link}" *ngSwitchCase="'Ingresos'">trending_up</mat-icon>

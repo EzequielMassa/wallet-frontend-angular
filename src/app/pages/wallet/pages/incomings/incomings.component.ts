@@ -79,7 +79,7 @@ export class IncomingsComponent implements OnInit, OnDestroy {
         this.barChar = {
           labels: this.barCharLabels,
           datasets: [
-            {data: this.YearIncomings, label: `${this.currentYear}`}
+            {data: this.YearIncomings, label: `${this.currentYear}`, backgroundColor: ["rgba(103, 58, 183, 0.7)"]}
 
           ]
         }

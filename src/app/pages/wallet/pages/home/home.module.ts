@@ -25,6 +25,8 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {OperationsGraphicsModule} from "../../../../shared/modules/operations-graphics/operations-graphics.module";
 import {TotalModule} from "../../../../shared/modules/total/total.module";
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatButtonModule} from "@angular/material/button";
+import {MatIconModule} from "@angular/material/icon";
 
 @NgModule({
   declarations: [HomeComponent, BalanceComponent, NewAccountComponent, TransactionsServicesComponent],
@@ -35,6 +37,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     ReactiveFormsModule,
     MatDialogModule,
     MatTooltipModule,
+    MatButtonModule,
+    MatIconModule,
     SlickCarouselModule,
     GenericModalModule,
     GenericOperationListModule,

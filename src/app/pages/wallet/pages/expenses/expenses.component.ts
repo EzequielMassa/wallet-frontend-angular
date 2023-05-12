@@ -79,7 +79,7 @@ export class ExpensesComponent implements OnInit, OnDestroy {
         this.barChar = {
           labels: this.barCharLabels,
           datasets: [
-            {data: this.yearExpensses, label: `${this.currentYear}`}
+            {data: this.yearExpensses, label: `${this.currentYear}`, backgroundColor: ["rgba(255, 44, 125, 0.7)"]}
 
           ]
         }

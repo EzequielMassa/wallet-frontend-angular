@@ -1,20 +1,20 @@
 <ul class="transactions__btns__container">
   <li>
-    <button type="button" [attr.data-type]="'DEPOSIT'" (click)="openDialog($event)" class="btn">
+    <button mat-raised-button color="primary" type="button" data-type='DEPOSIT' (click)="openDialog($event)">
       Deposit
-      <i class="fa-solid fa-circle-arrow-down fa-xs btn__icon"></i>
+      <mat-icon>save_alt</mat-icon>
     </button>
   </li>
   <li>
-    <button type="button" [attr.data-type]="'PAYMENT'" (click)="openDialog($event)" class="btn">
+    <button mat-raised-button color="primary" type="button" data-type='PAYMENT' (click)="openDialog($event)">
       Payment
-      <i class="fa-solid fa-arrow-up-right-from-square btn__icon"></i>
+      <mat-icon>send</mat-icon>
     </button>
   </li>
   <li>
-    <button type="button" [attr.data-type]="'TRANSFER'" (click)="openDialog($event)" class="btn">
+    <button mat-raised-button color="primary" type="button" data-type='TRANSFER' (click)="openDialog($event)">
       Transfer
-      <i class="fa-solid fa-arrow-right-arrow-left btn__icon"></i>
+      <mat-icon>cached</mat-icon>
     </button>
   </li>
 </ul>

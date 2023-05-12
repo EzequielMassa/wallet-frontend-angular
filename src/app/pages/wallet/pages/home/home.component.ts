@@ -102,11 +102,21 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.currentMonthExpenses$ = this.store.pipe(select(currentMonthExpensesSelector))
     this.incomingSubscription$ = this.currentMonthIncomings$.subscribe((monthIncomings) => {
       this.barCharLabels = [monthIncomings[0]];
-      this.barCharDataIncomings = {data: [monthIncomings[1]], label: 'Ingresos'}
+      this.barCharDataIncomings = {
+        data: [monthIncomings[1]],
+        label: 'Ingresos',
+        backgroundColor: ["rgba(103, 58, 183, 0.7)"],
+
+      }
       this.totalIncoming = monthIncomings[1]
     })
     this.expensesSubscription$ = this.currentMonthExpenses$.subscribe((monthExpenses) => {
-      this.barCharDataExpenses = {data: [monthExpenses[1]], label: 'Egresos'}
+      this.barCharDataExpenses = {
+        data: [monthExpenses[1]],
+        label: 'Egresos',
+        backgroundColor: ["rgba(255, 44, 125, 0.7)"],
+
+      }
       this.totalExpenses = monthExpenses[1]
       this.barChar = {
         labels: this.barCharLabels,
@@ -114,7 +124,6 @@ export class HomeComponent implements OnInit, OnDestroy {
           this.barCharDataIncomings,
           this.barCharDataExpenses,
         ],
-
       }
     })
   }
@@ -132,7 +141,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.store.dispatch(getUserAccountsAction())
     this.initializeValues()
-    
+
 
   }
 

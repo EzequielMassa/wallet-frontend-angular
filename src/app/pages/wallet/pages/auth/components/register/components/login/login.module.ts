@@ -12,6 +12,7 @@ import {LoginEffect} from "../../../../store/effects/login.effect";
 import {EffectsModule} from '@ngrx/effects';
 import {AuthService} from "../../../../services/auth.service";
 import {PersistanceService} from "../../../../../../../../shared/services/persistance.service";
+import {MatButtonModule} from "@angular/material/button";
 
 @NgModule({
   declarations: [LoginComponent],
@@ -20,6 +21,7 @@ import {PersistanceService} from "../../../../../../../../shared/services/persis
     LoginRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    MatButtonModule,
     StoreModule.forFeature('auth', reducers),
     EffectsModule.forFeature([LoginEffect]),
   ],

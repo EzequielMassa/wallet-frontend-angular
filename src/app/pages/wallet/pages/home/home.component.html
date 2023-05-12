@@ -28,7 +28,8 @@
 
     </ngx-slick-carousel>
 
-    <div class="carousel__actions"><i class="fa-solid fa-chevron-left prev-arrow"></i>
+    <div class="carousel__actions">
+      <i class="fa-solid fa-chevron-left prev-arrow"></i>
       <i class="fa-solid fa-chevron-right next-arrow"></i>
     </div>
     <div class="new__account--container">
@@ -38,26 +39,27 @@
 </div>
 
 
-<div class="total__container">
-  <wal-total [title]="'Ingresos del mes'" [total]="totalIncoming"
-             [icon]="'fa-solid fa-arrow-up deposit-icon'"></wal-total>
-  <wal-total [title]="'Gastos del mes'" [total]="totalExpenses"
-             [icon]="'fa-solid fa-arrow-up  fa-rotate-180 payment-icon'"></wal-total>
-
-</div>
-
-
 <div class="transactions__btns__container">
   <wal-transactions-services></wal-transactions-services>
 </div>
 
-<div class="operation__list--container">
-  <wal-generic-operation-list [title]="title" [operations]="latestAccountMovements$"
-  ></wal-generic-operation-list>
+<div class="home__background">
+  <div class="total__container">
+    <wal-total [title]="'Ingresos del mes'" [total]="totalIncoming"
+               [icon]="'fa-solid fa-arrow-up deposit-icon'"></wal-total>
+    <wal-total [title]="'Gastos del mes'" [total]="totalExpenses"
+               [icon]="'fa-solid fa-arrow-up  fa-rotate-180 payment-icon'"></wal-total>
+
+  </div>
+
+
+  <div class="operation__list--container">
+    <wal-generic-operation-list [title]="title" [operations]="latestAccountMovements$"
+    ></wal-generic-operation-list>
+  </div>
+
+
+  <div class="operations__graphics__container">
+    <wal-operations-graphics [barChar]="barChar"></wal-operations-graphics>
+  </div>
 </div>
-
-
-<div class="operations__graphics__container">
-  <wal-operations-graphics [barChar]="barChar"></wal-operations-graphics>
-</div>
-

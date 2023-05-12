@@ -5,9 +5,8 @@
 
 
 .carousel {
-  width: 330px;
-  margin: 30px auto;
-
+  width: 345px;
+  margin: 15px auto;
 }
 
 .carousel__actions, .new__account--container {
@@ -45,19 +44,17 @@
 }
 
 .new__account--container {
-  margin-bottom: 25px;
+  margin-bottom: 10px;
 }
 
-.total__container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 50px;
-  width: 100%;
+.home__background {
+  padding-top: 30px;
+  /* background-color: #f1f4f8;*/
+  border-radius: 25px;
 }
 
 .transactions__btns__container {
-  padding: 50px 0;
+  padding: 15px 0;
 }
 
 .operation__list--container {
@@ -74,7 +71,7 @@
     position: absolute;
     width: 25px;
     top: 50px;
-    right: 150px;
+    right: 300px;
   }
 
   .operation__list--container {

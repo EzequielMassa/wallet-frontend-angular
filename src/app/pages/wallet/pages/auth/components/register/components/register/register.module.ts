@@ -9,6 +9,7 @@ import {StoreModule} from "@ngrx/store";
 import {EffectsModule} from '@ngrx/effects';
 import {RegisterEffect} from "../../../../store/effects/register.effect";
 import {AuthService} from "../../../../services/auth.service";
+import {MatButtonModule} from "@angular/material/button";
 
 @NgModule({
   declarations: [RegisterComponent],
@@ -16,6 +17,7 @@ import {AuthService} from "../../../../services/auth.service";
     CommonModule,
     RegisterRoutingModule,
     ReactiveFormsModule,
+    MatButtonModule,
     StoreModule.forFeature('auth', reducers),
     EffectsModule.forFeature([RegisterEffect]),
   ],

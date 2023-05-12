@@ -5,6 +5,7 @@
   justify-content: space-between;
   align-items: center;
   margin: 0 auto;
+  padding-top: 30px;
   padding-bottom: 80px;
 }
 
@@ -51,7 +52,7 @@
   .footer__login__btn {
     display: inline-block;
     padding: 0.6em 2em;
-    background-color: rgb(115, 0, 208);
+    background-color: rgba(103, 58, 183, 1);
     border-radius: 1.5rem;
     cursor: pointer;
     text-decoration: none;

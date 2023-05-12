@@ -16,7 +16,7 @@ export class OperationsGraphicsComponent implements OnInit, OnDestroy {
 
   public barChartOptions: ChartConfiguration<any>['options'] = {
     responsive: true,
-    // We use these empty structures as placeholders for dynamic theming.
+    maintainAspectRatio: false,
     scales: {
       x: {},
       y: {
@@ -29,10 +29,18 @@ export class OperationsGraphicsComponent implements OnInit, OnDestroy {
         display: true,
       },
       datalabels: {
-        anchor: 'end',
-        align: 'end'
+        color: 'white',
+        labels: {
+          title: {
+            font: {
+              size: '14',
+              weight: 'normal'
+            }
+          },
+          
+        }
       }
-    }
+    },
   };
   public barChartType: ChartType = 'bar';
   public barChartPlugins = [
