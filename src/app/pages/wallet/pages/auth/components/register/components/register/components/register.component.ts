@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
-import { select, Store } from '@ngrx/store';
-import { registerAction } from '../../../../../store/actions/register.action';
-import { RegisterRequestInterface } from '../../../../../types/registerRequest.interface';
-import { Observable } from 'rxjs';
-import { isSubmittingSelector } from '../../../../../store/selectors/auth.selector';
+import {select, Store} from '@ngrx/store';
+import {registerAction} from '../../../../../store/actions/register.action';
+import {RegisterRequestInterface} from '../../../../../types/registerRequest.interface';
+import {Observable} from 'rxjs';
+import {isSubmittingSelector} from '../../../../../store/selectors/auth.selector';
 
 @Component({
   selector: 'wal-register',
@@ -16,7 +16,8 @@ export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
   isSubmitting$!: Observable<boolean>;
 
-  constructor(private fb: FormBuilder, private store: Store) {}
+  constructor(private fb: FormBuilder, private store: Store) {
+  }
 
   ngOnInit(): void {
     this.initializeLoginForm();
@@ -43,6 +44,7 @@ export class RegisterComponent implements OnInit {
       ],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(4)]],
+      urlImg: ['https://cdn-icons-png.flaticon.com/128/149/149071.png']
     });
   }
 
@@ -53,8 +55,7 @@ export class RegisterComponent implements OnInit {
   onSubmit(): void {
     if (this.registerForm.valid) {
       const request: RegisterRequestInterface = this.registerForm.value;
-
-      this.store.dispatch(registerAction({ request }));
+      this.store.dispatch(registerAction({request}));
     }
   }
 }
