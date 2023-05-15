@@ -1,0 +1,19 @@
+.edit__profile__container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+}
+
+.example-card {
+  width: 90%;
+}
+
+mat-card-content {
+  width: 90%;
+}
+
+mat-form-field {
+  width: 100%;
+  padding: 10px;
+}

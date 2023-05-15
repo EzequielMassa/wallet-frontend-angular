@@ -1,1 +1,108 @@
-<p>edit-profile works!</p>
+<section class="edit__profile__container">
+  <mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar
+           [ngStyle]="{'background-image': 'url(' + currentUser?.urlImg + ')'}"
+           [style.background-size]="'cover'"></div>
+      <mat-card-title>{{currentUser?.firstname}}</mat-card-title>
+      <mat-card-subtitle>{{currentUser?.lastname}}</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form class="login__form" [formGroup]="updateUserForm" (ngSubmit)="onSubmit()">
+
+        <mat-form-field appearance="outline">
+          <mat-label>Editar Nombre</mat-label>
+          <input matInput type="text" placeholder="JUAN" id="firstNameInput" formControlName="firstname"
+                 [class.invalid]="
+            updateUserForm.get('firstname')?.invalid &&
+            (updateUserForm.get('firstname')?.touched ||
+             updateUserForm.get('firstname')?.dirty)
+   "
+          />
+          <mat-error *ngIf="(
+           updateUserForm.get('firstname')?.hasError('required') &&
+           (updateUserForm.get('firstname')?.dirty ||
+           updateUserForm.get('firstname')?.touched)
+           )">Este campo es requerido.
+          </mat-error>
+          <mat-error *ngIf="(
+           updateUserForm.get('firstname')?.hasError('minlength') &&
+           (updateUserForm.get('firstname')?.dirty ||
+           updateUserForm.get('firstname')?.touched)
+           )"> El nombre debe tener al menos 3 caracteres.
+          </mat-error>
+          <mat-error *ngIf="(
+           updateUserForm.get('firstname')?.hasError('maxlength') &&
+           (updateUserForm.get('firstname')?.dirty ||
+           updateUserForm.get('firstname')?.touched)
+           )"> El nombre debe tener un maximo de 15 caracteres.
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Editar Apellido</mat-label>
+          <input matInput type="text" placeholder="Lopez" id="lastNameInput" formControlName="lastname"
+                 [class.invalid]="
+            updateUserForm.get('lastname')?.invalid &&
+            (updateUserForm.get('lastname')?.touched ||
+             updateUserForm.get('lastname')?.dirty)
+   "
+          />
+          <mat-error *ngIf="(
+           updateUserForm.get('lastname')?.hasError('required') &&
+           (updateUserForm.get('lastname')?.dirty ||
+           updateUserForm.get('lastname')?.touched)
+           )">Este campo es requerido.
+          </mat-error>
+          <mat-error *ngIf="(
+           updateUserForm.get('lastname')?.hasError('minlength') &&
+           (updateUserForm.get('lastname')?.dirty ||
+           updateUserForm.get('lastname')?.touched)
+           )"> El apellido debe tener al menos 3 caracteres.
+          </mat-error>
+          <mat-error *ngIf="(
+           updateUserForm.get('lastname')?.hasError('maxlength') &&
+           (updateUserForm.get('lastname')?.dirty ||
+           updateUserForm.get('lastname')?.touched)
+           )"> El apellido debe tener un maximo de 15 caracteres.
+          </mat-error>
+        </mat-form-field>
+
+
+        <mat-form-field appearance="outline">
+          <mat-label>Cambiar Password</mat-label>
+          <input matInput type="text" placeholder="*****" id="passwordInput" formControlName="password"
+                 [class.invalid]="
+            updateUserForm.get('password')?.invalid &&
+            (updateUserForm.get('password')?.touched ||
+             updateUserForm.get('password')?.dirty)
+   "
+          />
+          <mat-error *ngIf="(
+           updateUserForm.get('password')?.hasError('required') &&
+           (updateUserForm.get('password')?.dirty ||
+           updateUserForm.get('password')?.touched)
+           )">Este campo es requerido.
+          </mat-error>
+          <mat-error *ngIf="(
+           updateUserForm.get('password')?.hasError('minlength') &&
+           (updateUserForm.get('password')?.dirty ||
+           updateUserForm.get('password')?.touched)
+           )"> El password debe tener al menos 3 caracteres.
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>URL imagen de perfil</mat-label>
+          <input matInput type="text" placeholder="https://cdn-icons-png.flaticon.com/128/149/149071.png"
+                 id="imgUrlInput"
+                 formControlName="urlImg"
+          />
+        </mat-form-field>
+        <button mat-button color="primary" type="submit">Save</button>
+        <button mat-button color="warn" (click)="navigate()">Cancel</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</section>

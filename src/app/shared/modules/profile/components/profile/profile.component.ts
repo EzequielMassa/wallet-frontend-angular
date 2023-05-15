@@ -4,6 +4,7 @@ import {logoutAction} from "../../../../../pages/wallet/pages/auth/store/actions
 import {Observable} from "rxjs";
 import {CurrentUserInterface} from "../../../../types/currentUser.interface";
 import {currentUserSelector} from "../../../../../pages/wallet/pages/auth/store/selectors/auth.selector";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'wal-profile',
@@ -13,8 +14,12 @@ import {currentUserSelector} from "../../../../../pages/wallet/pages/auth/store/
 export class ProfileComponent {
   currentUser$!: Observable<CurrentUserInterface | null>;
 
-  constructor(private store: Store) {
+  constructor(private store: Store, private router: Router) {
     this.currentUser$ = this.store.pipe(select(currentUserSelector))
+  }
+
+  navigate(): void {
+    this.router.navigate(['/profile/edit'])
   }
 
   onLogout(): void {

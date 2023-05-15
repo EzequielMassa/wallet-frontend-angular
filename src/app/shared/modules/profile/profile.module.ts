@@ -9,6 +9,7 @@ import {StoreModule} from "@ngrx/store";
 import {reducers} from "../../../pages/wallet/pages/auth/store/reducers/auth.reducers";
 import {EffectsModule} from "@ngrx/effects";
 import {LogoutEffect} from "../../../pages/wallet/pages/auth/store/effects/logout.effect";
+import {RouterModule} from "@angular/router";
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import {LogoutEffect} from "../../../pages/wallet/pages/auth/store/effects/logou
   ],
   imports: [
     CommonModule,
+    RouterModule,
     MatIconModule,
     MatButtonModule,
     MatMenuModule,
