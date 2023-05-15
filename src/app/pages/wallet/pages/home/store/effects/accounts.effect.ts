@@ -28,6 +28,8 @@ import {OperationInterface} from "../../../../../../shared/types/operation.inter
 import {PersistanceService} from "../../../../../../shared/services/persistance.service";
 import {IncomingsMonthResponseInterface} from "../../../../../../shared/types/incomingsMonthResponse.interface";
 import {ExpensesMonthResponseInterface} from "../../../../../../shared/types/ExpensesMonthResponse.interface";
+import {updateProfileAction, updateProfileSuccessAction} from "../../../auth/store/actions/update-profile.action";
+import {CurrentUserInterface} from "../../../../../../shared/types/currentUser.interface";
 
 @Injectable()
 export class AccountsEffect {
@@ -172,6 +174,20 @@ export class AccountsEffect {
       })
     )
   )
+
+
+  updateProfile$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(updateProfileAction),
+      switchMap(({request}) => {
+        return this.accountService.updateProfile(request).pipe(
+          map((currentUser: CurrentUserInterface) => {
+            return updateProfileSuccessAction({currentUser});
+          })
+        );
+      })
+    )
+  );
 
 
   constructor(private actions$: Actions, private accountService: AccountService, private store: Store, private persistanceService: PersistanceService) {

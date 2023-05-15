@@ -5,6 +5,8 @@ import {select, Store} from "@ngrx/store";
 import {CurrentUserInterface} from "../../../../../../shared/types/currentUser.interface";
 import {currentUserSelector} from "../../../auth/store/selectors/auth.selector";
 import {Router} from "@angular/router";
+import {RegisterRequestInterface} from "../../../auth/types/registerRequest.interface";
+import {updateProfileAction} from "../../../auth/store/actions/update-profile.action";
 
 @Component({
   selector: 'wal-edit-profile',
@@ -44,7 +46,7 @@ export class EditProfileComponent {
           Validators.maxLength(15),
         ],
       ],
-      password: ['', [Validators.required, Validators.minLength(4)]],
+      password: ['', [Validators.minLength(4)]],
       urlImg: [this.currentUser?.urlImg]
     });
   }
@@ -61,11 +63,10 @@ export class EditProfileComponent {
 
   onSubmit(): void {
     this.updateUserForm.addControl('email', new FormControl(this.currentUser?.email));
-    console.log(this.updateUserForm.value)
-    if (this.updateUserForm.valid) {
 
-      /*   const request: RegisterRequestInterface = this.registerForm.value;
-         this.store.dispatch(registerAction({request}));*/
+    if (this.updateUserForm.valid) {
+      const request: RegisterRequestInterface = this.updateUserForm.value;
+      this.store.dispatch(updateProfileAction({request}));
     }
   }
 }

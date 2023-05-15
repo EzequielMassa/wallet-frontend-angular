@@ -3,6 +3,7 @@ import {Action, createReducer, on} from "@ngrx/store";
 import {registerAction, registerSuccessAction} from "../actions/register.action";
 import {loginAction, loginSuccessAction} from "../actions/login.actions";
 import {logoutAction, logoutSuccessAction} from "../actions/logout.actions";
+import {updateProfileAction, updateProfileSuccessAction} from "../actions/update-profile.action";
 
 const initialState: AuthStateInterface = {
   isSubmitting: false,
@@ -52,6 +53,20 @@ const authReducer = createReducer(
       isSubmitting: false,
       isLoggedIn: false,
       currentUser: null,
+    })
+  ),
+  on(
+    updateProfileAction, (state): AuthStateInterface => ({
+      ...state,
+      isSubmitting: true,
+    })
+  ),
+  on(
+    updateProfileSuccessAction, (state, action): AuthStateInterface => ({
+      ...state,
+      isSubmitting: false,
+      currentUser: action.currentUser,
+
     })
   ),
 )

@@ -1,6 +1,6 @@
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs';
+import {map, Observable} from 'rxjs';
 import {environment} from "../../../../../../environments/environment.development";
 import {UserAccountInterface} from "../types/userAccount.interface";
 import {PersistanceService} from "../../../../../shared/services/persistance.service";
@@ -8,6 +8,8 @@ import {DepositPaymentInterface} from "../types/DepositPayment.interface";
 import {TransferInterface} from "../types/Transfer.interface";
 import {OperationInterface} from "../../../../../shared/types/operation.interface";
 import * as moment from "moment/moment";
+import {RegisterRequestInterface} from "../../auth/types/registerRequest.interface";
+import {CurrentUserInterface} from "../../../../../shared/types/currentUser.interface";
 
 @Injectable({
   providedIn: 'root',
@@ -94,6 +96,12 @@ export class AccountService {
     const currentYear: number = moment().get("year")
     const url: string = environment.apiUrl + `/api/v1/movements/expenses/id/${activeAccount}/year/${currentYear}`;
     return this.http.get<any>(url);
+  }
+
+  updateProfile(data: RegisterRequestInterface): Observable<CurrentUserInterface> {
+    const url = environment.apiUrl + '/api/v1/user/update';
+    return this.http
+      .put<CurrentUserInterface>(url, data).pipe(map((response: CurrentUserInterface) => response));
   }
 }
 

@@ -80,16 +80,10 @@
    "
           />
           <mat-error *ngIf="(
-           updateUserForm.get('password')?.hasError('required') &&
-           (updateUserForm.get('password')?.dirty ||
-           updateUserForm.get('password')?.touched)
-           )">Este campo es requerido.
-          </mat-error>
-          <mat-error *ngIf="(
            updateUserForm.get('password')?.hasError('minlength') &&
            (updateUserForm.get('password')?.dirty ||
            updateUserForm.get('password')?.touched)
-           )"> El password debe tener al menos 3 caracteres.
+           )"> El password debe tener al menos 4 caracteres.
           </mat-error>
         </mat-form-field>
 
