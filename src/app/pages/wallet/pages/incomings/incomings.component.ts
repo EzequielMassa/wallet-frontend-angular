@@ -47,6 +47,8 @@ export class IncomingsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    this.incomingMonthSubscription$.unsubscribe();
+    this.incomingYearSubscription$.unsubscribe()
   }
 
 

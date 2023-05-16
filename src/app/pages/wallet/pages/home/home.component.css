@@ -1,6 +1,7 @@
 .carousel__container {
   width: 100%;
   position: relative;
+  padding-top: 50px;
 }
 
 
@@ -67,11 +68,17 @@
 }
 
 @media (min-width: 768px) {
+
+  .carousel {
+    width: 80%;
+    margin: 15px auto;
+  }
+
   .new__account--container {
     position: absolute;
     width: 25px;
-    top: 50px;
-    right: 300px;
+    top: 100px;
+    right: 90px;
   }
 
   .operation__list--container {

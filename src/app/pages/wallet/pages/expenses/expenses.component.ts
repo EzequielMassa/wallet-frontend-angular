@@ -49,6 +49,8 @@ export class ExpensesComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    this.expensesMonthSubscription$.unsubscribe()
+    this.expensesYearSubscription$.unsubscribe()
   }
 
   initializeValues() {

@@ -11,6 +11,11 @@
   overflow-y: hidden;
 }
 
+.mdc-tab {
+  padding: 0;
+}
+
+
 .active {
   color: #ff2c7d;
 }

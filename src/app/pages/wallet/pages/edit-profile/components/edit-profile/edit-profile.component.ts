@@ -1,6 +1,6 @@
-import {Component} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {Observable} from "rxjs";
+import {Observable, Subscription} from "rxjs";
 import {select, Store} from "@ngrx/store";
 import {CurrentUserInterface} from "../../../../../../shared/types/currentUser.interface";
 import {currentUserSelector} from "../../../auth/store/selectors/auth.selector";
@@ -13,19 +13,24 @@ import {updateProfileAction} from "../../../auth/store/actions/update-profile.ac
   templateUrl: './edit-profile.component.html',
   styleUrls: ['./edit-profile.component.css']
 })
-export class EditProfileComponent {
+export class EditProfileComponent implements OnInit, OnDestroy {
   updateUserForm!: FormGroup;
   isSubmitting$!: Observable<boolean>;
   currentUser$!: Observable<CurrentUserInterface | null>;
   currentUser!: CurrentUserInterface | null;
+  subscription!: Subscription;
 
   constructor(private fb: FormBuilder, private store: Store, private router: Router) {
   }
 
+
   ngOnInit(): void {
     this.inializeValues();
     this.initializeLoginForm();
+  }
 
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
   initializeLoginForm(): void {
@@ -54,7 +59,7 @@ export class EditProfileComponent {
   private inializeValues(): void {
     /*   this.isSubmitting$ = this.store.pipe(select(isSubmittingSelector));*/
     this.currentUser$ = this.store.pipe(select(currentUserSelector));
-    this.currentUser$.pipe().subscribe((currentUser) => this.currentUser = currentUser);
+    this.subscription = this.currentUser$.pipe().subscribe((currentUser) => this.currentUser = currentUser);
   }
 
   navigate(): void {

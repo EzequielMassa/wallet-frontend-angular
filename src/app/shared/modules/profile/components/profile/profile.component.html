@@ -1,7 +1,7 @@
 <div class="top__navbar__profile">
 
   <button class="profile__pic__btn" mat-icon-button [matMenuTriggerFor]="menu"
-          aria-label="Example icon-button with a menu" matTooltip="Profile">
+          matTooltip="Profile">
     <img class="profile__pic" src="{{(currentUser$ | async)?.urlImg}}" alt="profile picture">
   </button>
 
