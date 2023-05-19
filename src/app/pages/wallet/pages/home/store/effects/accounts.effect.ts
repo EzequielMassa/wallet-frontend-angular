@@ -8,12 +8,6 @@ import {
   createNewTransferSuccessAction,
   createNewUserAccountAction,
   createNewUserAccountSuccessAction,
-  getCurrentMonthExpensesAction,
-  getCurrentMonthExpensesSuccessAction,
-  getCurrentMonthIncomingsAction,
-  getCurrentMonthIncomingsSuccessAction,
-  getCurrentYearExpensesAction,
-  getCurrentYearExpensesSuccessAction,
   getLatestAccountMovementsAction,
   getLatestAccountMovementsSuccessAction,
   getUserAccountsAction,
@@ -24,10 +18,8 @@ import {UserAccountInterface} from "../../types/userAccount.interface";
 import {Store} from "@ngrx/store";
 import {OperationInterface} from "../../../../../../shared/types/operation.interface";
 import {PersistanceService} from "../../../../../../shared/services/persistance.service";
-import {IncomingsMonthResponseInterface} from "../../../../../../shared/types/incomingsMonthResponse.interface";
-import {ExpensesMonthResponseInterface} from "../../../../../../shared/types/ExpensesMonthResponse.interface";
-import {updateProfileAction, updateProfileSuccessAction} from "../../../auth/store/actions/update-profile.action";
-import {CurrentUserInterface} from "../../../../../../shared/types/currentUser.interface";
+import {getCurrentMonthIncomingsAction} from "../../../incomings/store/actions/incomings.action";
+import {getCurrentMonthExpensesAction} from "../../../expenses/store/actions/expenses.action";
 
 @Injectable()
 export class AccountsEffect {
@@ -107,70 +99,6 @@ export class AccountsEffect {
       })
     )
   )
-
-  currentMonthIncomings$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(getCurrentMonthIncomingsAction),
-      switchMap(() => {
-        return this.accountService.getAccountIncomingsByMonthAndYear().pipe(
-          map((currentMonthIncomings: IncomingsMonthResponseInterface[]) => {
-            if (currentMonthIncomings == null) {
-              currentMonthIncomings = [];
-            }
-
-            return getCurrentMonthIncomingsSuccessAction({monthIncomings: currentMonthIncomings});
-          }),
-        );
-      })
-    )
-  )
-
-  currentMonthExpenses$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(getCurrentMonthExpensesAction),
-      switchMap(() => {
-        return this.accountService.getAccountExpensesByMonthAndYear().pipe(
-          map((currentMonthExpenses: ExpensesMonthResponseInterface[]) => {
-            if (currentMonthExpenses == null) {
-              currentMonthExpenses = [];
-            }
-            return getCurrentMonthExpensesSuccessAction({monthExpenses: currentMonthExpenses});
-          })
-        );
-      })
-    )
-  )
-
-  currentYearExpenses$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(getCurrentYearExpensesAction),
-      switchMap(() => {
-        return this.accountService.getAccountExpensesByYear().pipe(
-          map((currentMonthExpenses: ExpensesMonthResponseInterface[]) => {
-            if (currentMonthExpenses == null) {
-              currentMonthExpenses = [];
-            }
-            return getCurrentYearExpensesSuccessAction({monthExpenses: currentMonthExpenses});
-          }),
-        );
-      })
-    )
-  )
-
-
-  updateProfile$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(updateProfileAction),
-      switchMap(({request}) => {
-        return this.accountService.updateProfile(request).pipe(
-          map((currentUser: CurrentUserInterface) => {
-            return updateProfileSuccessAction({currentUser});
-          })
-        );
-      })
-    )
-  );
-
 
   constructor(private actions$: Actions, private accountService: AccountService, private store: Store, private persistanceService: PersistanceService) {
   }

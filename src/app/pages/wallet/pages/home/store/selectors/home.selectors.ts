@@ -9,7 +9,6 @@ export const isLoadingSelector = createSelector(
   (homeState: HomeStateInterface) => homeState.isLoading
 )
 
-
 export const userAccountsSelector = createSelector(
   homeFeatureSelector,
   (homeState: HomeStateInterface) => homeState.currentUserAccounts
@@ -18,20 +17,4 @@ export const userAccountsSelector = createSelector(
 export const latestAccountMovementsSelector = createSelector(
   homeFeatureSelector,
   (homeState: HomeStateInterface) => homeState.latestAccountMovements
-);
-
-export const currentMonthIncomingsSelector = createSelector(
-  homeFeatureSelector,
-  (homeState: HomeStateInterface) => homeState.currentMonthIncomings
-);
-
-export const currentMonthExpensesSelector = createSelector(
-  homeFeatureSelector,
-  (homeState: HomeStateInterface) => homeState.currentMonthExpenses
-);
-
-
-export const currentYearExpensesSelector = createSelector(
-  homeFeatureSelector,
-  (homeState: HomeStateInterface) => homeState.currentYearExpenses
 );

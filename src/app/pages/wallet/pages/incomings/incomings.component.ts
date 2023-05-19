@@ -5,10 +5,10 @@ import {ChartData} from "chart.js";
 import * as moment from "moment";
 import {select, Store} from "@ngrx/store";
 import {PersistanceService} from "../../../../shared/services/persistance.service";
-import {getCurrentMonthIncomingsAction, getLatestAccountMovementsAction} from "../home/store/actions/accounts.action";
-import {getCurrentYearIncomingsAction} from "./store/actions/incomings.action";
-import {currentMonthIncomingsSelector, latestAccountMovementsSelector} from "../home/store/selectors/home.selectors";
-import {currentYearIncomingsSelector} from "./store/selectors/incomings.selectors";
+import {currentMonthIncomingsSelector, currentYearIncomingsSelector} from "./store/selectors/incomings.selectors";
+import {getCurrentMonthIncomingsAction, getCurrentYearIncomingsAction} from "./store/actions/incomings.action";
+import {getLatestAccountMovementsAction} from "../home/store/actions/accounts.action";
+import {latestAccountMovementsSelector} from "../home/store/selectors/home.selectors";
 
 
 @Component({

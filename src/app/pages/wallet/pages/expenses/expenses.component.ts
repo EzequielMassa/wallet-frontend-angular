@@ -7,15 +7,13 @@ import {AccountService} from "../home/services/account.service";
 import {select, Store} from "@ngrx/store";
 import {PersistanceService} from "../../../../shared/services/persistance.service";
 import {
-  getCurrentMonthExpensesAction,
-  getCurrentYearExpensesAction,
   getLatestAccountMovementsAction
 } from "../home/store/actions/accounts.action";
 import {
-  currentMonthExpensesSelector,
-  currentYearExpensesSelector,
   latestAccountMovementsSelector
 } from "../home/store/selectors/home.selectors";
+import {getCurrentMonthExpensesAction, getCurrentYearExpensesAction} from "./store/actions/expenses.action";
+import {currentMonthExpensesSelector, currentYearExpensesSelector} from "./store/selectors/expenses.selectors";
 
 @Component({
   selector: 'wal-expenses',

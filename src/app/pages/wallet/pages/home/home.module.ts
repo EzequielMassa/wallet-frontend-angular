@@ -27,6 +27,10 @@ import {TotalModule} from "../../../../shared/modules/total/total.module";
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
+import {incomingsReducers} from "../incomings/store/reducers/incomings.reducer";
+import {IncomingsEffect} from "../incomings/store/effects/incomings.effect";
+import {expensesReducers} from "../expenses/store/reducers/expenses.reducers";
+import {ExpensesEffect} from "../expenses/store/effects/expenses.effect";
 
 @NgModule({
   declarations: [HomeComponent, BalanceComponent, NewAccountComponent, TransactionsServicesComponent],
@@ -47,7 +51,9 @@ import {MatIconModule} from "@angular/material/icon";
     OperationsGraphicsModule,
     TotalModule,
     StoreModule.forFeature('home', homeReducers),
-    EffectsModule.forFeature([AccountsEffect]),
+    StoreModule.forFeature('incomings', incomingsReducers),
+    StoreModule.forFeature('expenses', expensesReducers),
+    EffectsModule.forFeature([AccountsEffect,IncomingsEffect,ExpensesEffect]),
   ],
   exports: [
     HomeComponent,

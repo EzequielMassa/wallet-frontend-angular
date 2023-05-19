@@ -8,21 +8,25 @@ import {environment} from "../../../../../../environments/environment.developmen
 @Injectable({
   providedIn: 'root',
 })
-export class IncomingsService {
+export class ExpensesService {
   constructor(private http: HttpClient, private persistanceService: PersistanceService) {
   }
 
-  getAccountIncomingsByMonthAndYear(): Observable<any> {
+  getAccountExpensesByMonthAndYear(): Observable<any> {
     const activeAccount: number = this.persistanceService.get('activeAccount')
     const currentMonth: number = moment().get("month") + 1
     const currentYear: number = moment().get("year")
-    const url: string = environment.apiUrl + `/api/v1/movements/incomings/id/${activeAccount}/month/${currentMonth}/year/${currentYear}`;
+    const url: string = environment.apiUrl + `/api/v1/movements/expenses/id/${activeAccount}/month/${currentMonth}/year/${currentYear}`;
     return this.http.get<any>(url);
   }
-  getAccountIncomingsByYear(): Observable<any> {
+
+
+
+  getAccountExpensesByYear(): Observable<any> {
     const activeAccount: number = this.persistanceService.get('activeAccount')
     const currentYear: number = moment().get("year")
-    const url: string = environment.apiUrl + `/api/v1/movements/incomings/id/${activeAccount}/year/${currentYear}`;
+    const url: string = environment.apiUrl + `/api/v1/movements/expenses/id/${activeAccount}/year/${currentYear}`;
     return this.http.get<any>(url);
   }
+
 }

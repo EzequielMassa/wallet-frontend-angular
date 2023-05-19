@@ -23,4 +23,9 @@ export class AuthService {
       .post<CurrentUserInterface>(url, data)
       .pipe(map((response: CurrentUserInterface) => response));
   }
+  updateProfile(data: RegisterRequestInterface): Observable<CurrentUserInterface> {
+    const url = environment.apiUrl + '/api/v1/user/update';
+    return this.http
+      .put<CurrentUserInterface>(url, data).pipe(map((response: CurrentUserInterface) => response));
+  }
 }

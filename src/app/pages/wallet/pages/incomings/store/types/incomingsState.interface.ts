@@ -2,5 +2,6 @@ import {IncomingsMonthResponseInterface} from "../../../../../../shared/types/in
 
 export interface IncomingsStateInterface {
   isLoading: boolean;
+  currentMonthIncomings: IncomingsMonthResponseInterface[];
   currentYearIncomings: IncomingsMonthResponseInterface[];
 }

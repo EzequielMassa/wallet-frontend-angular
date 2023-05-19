@@ -1,13 +1,34 @@
 import {Injectable} from "@angular/core";
 import {Actions, createEffect, ofType} from "@ngrx/effects";
-import {getCurrentYearIncomingsAction, getCurrentYearIncomingsSuccessAction} from "../actions/incomings.action";
+import {
+  getCurrentMonthIncomingsAction, getCurrentMonthIncomingsSuccessAction,
+  getCurrentYearIncomingsAction,
+  getCurrentYearIncomingsSuccessAction
+} from "../actions/incomings.action";
 import {map, switchMap} from "rxjs";
 import {IncomingsMonthResponseInterface} from "../../../../../../shared/types/incomingsMonthResponse.interface";
 import {IncomingsService} from "../../services/incomings.service";
 
 
+
 @Injectable()
 export class IncomingsEffect {
+
+  currentMonthIncomings$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(getCurrentMonthIncomingsAction),
+      switchMap(() => {
+        return this.incomingsService.getAccountIncomingsByMonthAndYear().pipe(
+          map((currentMonthIncomings: IncomingsMonthResponseInterface[]) => {
+            if (currentMonthIncomings == null) {
+              currentMonthIncomings = [];
+            }
+            return getCurrentMonthIncomingsSuccessAction({monthIncomings: currentMonthIncomings});
+          }),
+        );
+      })
+    )
+  )
 
   currentYearIncomings$ = createEffect(() =>
     this.actions$.pipe(

@@ -10,6 +10,11 @@ export const isLoadingSelector = createSelector(
   (incomingsState: IncomingsStateInterface) => incomingsState.isLoading
 )
 
+export const currentMonthIncomingsSelector = createSelector(
+  incomingsFeatureSelector,
+  (incomingsState: IncomingsStateInterface) => incomingsState.currentMonthIncomings
+);
+
 export const currentYearIncomingsSelector = createSelector(
   incomingsFeatureSelector,
   (incomingsState: IncomingsStateInterface) => incomingsState.currentYearIncomings

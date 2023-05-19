@@ -15,6 +15,11 @@ import {PersistanceService} from './shared/services/persistance.service';
 import {reducers} from "./pages/wallet/pages/auth/store/reducers/auth.reducers";
 import {AuthGuard} from "./pages/wallet/pages/auth/guards/auth.guard";
 import {BottomNavbarModule} from "./shared/modules/bottom-navbar/bottom-navbar.module";
+import {LoginEffect} from "./pages/wallet/pages/auth/store/effects/login.effect";
+import {LogoutEffect} from "./pages/wallet/pages/auth/store/effects/logout.effect";
+import {RegisterEffect} from "./pages/wallet/pages/auth/store/effects/register.effect";
+import {UpdateProfileEffect} from "./pages/wallet/pages/auth/store/effects/update-profile.effect";
+import {AuthService} from "./pages/wallet/pages/auth/services/auth.service";
 
 @NgModule({
   declarations: [AppComponent],
@@ -29,9 +34,9 @@ import {BottomNavbarModule} from "./shared/modules/bottom-navbar/bottom-navbar.m
     StoreModule.forRoot({}, {}),
     StoreModule.forFeature('auth', reducers),
     StoreDevtoolsModule.instrument({maxAge: 25, logOnly: !isDevMode()}),
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([LoginEffect,LogoutEffect,RegisterEffect,UpdateProfileEffect]),
   ],
-  providers: [AuthInterceptorProvider, AuthGuard, PersistanceService],
+  providers: [AuthService,AuthInterceptorProvider, AuthGuard, PersistanceService],
   bootstrap: [AppComponent],
 })
 export class AppModule {

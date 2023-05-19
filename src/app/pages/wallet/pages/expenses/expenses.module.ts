@@ -8,10 +8,11 @@ import {
 } from "../../../../shared/modules/generic-operation-list/generic-operation-list.module";
 import {OperationsGraphicsModule} from "../../../../shared/modules/operations-graphics/operations-graphics.module";
 import {StoreModule} from "@ngrx/store";
-import {homeReducers} from "../home/store/reducers/home.reducers";
 import {EffectsModule} from "@ngrx/effects";
-import {AccountsEffect} from "../home/store/effects/accounts.effect";
-import {AccountService} from "../home/services/account.service";
+import {expensesReducers} from "./store/reducers/expenses.reducers";
+import {ExpensesEffect} from "./store/effects/expenses.effect";
+import {HttpClientModule} from "@angular/common/http";
+import {ExpensesService} from "./services/expenses.service";
 
 
 @NgModule({
@@ -20,18 +21,19 @@ import {AccountService} from "../home/services/account.service";
   ],
   imports: [
     CommonModule,
+    HttpClientModule,
     ExpensesRoutingModule,
     TotalModule,
     GenericOperationListModule,
     OperationsGraphicsModule,
-    StoreModule.forFeature('home', homeReducers),
-    EffectsModule.forFeature([AccountsEffect]),
+    StoreModule.forFeature('expenses', expensesReducers),
+    EffectsModule.forFeature([ExpensesEffect]),
   ],
   exports: [
     ExpensesComponent
   ],
   providers: [
-    AccountService
+    ExpensesService
   ]
 })
 export class ExpensesModule {

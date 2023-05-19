@@ -3,16 +3,8 @@ import {AccountService} from 'src/app/pages/wallet/pages/home/services/account.s
 import {UserAccountInterface} from "./types/userAccount.interface";
 import {Observable, Subscription} from "rxjs";
 import {select, Store} from '@ngrx/store';
+import {getLatestAccountMovementsAction, getUserAccountsAction} from "./store/actions/accounts.action";
 import {
-  getCurrentMonthExpensesAction,
-  getCurrentMonthIncomingsAction,
-  getCurrentYearExpensesAction,
-  getLatestAccountMovementsAction,
-  getUserAccountsAction
-} from "./store/actions/accounts.action";
-import {
-  currentMonthExpensesSelector,
-  currentMonthIncomingsSelector,
   isLoadingSelector,
   latestAccountMovementsSelector,
   userAccountsSelector
@@ -21,7 +13,13 @@ import {OperationInterface} from "../../../../shared/types/operation.interface";
 import {PersistanceService} from 'src/app/shared/services/persistance.service';
 import {ChartData} from "chart.js";
 import {BarCharDataInterface} from "../../../../shared/types/barCharData.interface";
-import {getCurrentYearIncomingsAction} from "../incomings/store/actions/incomings.action";
+import {
+  getCurrentMonthIncomingsAction,
+  getCurrentYearIncomingsAction
+} from "../incomings/store/actions/incomings.action";
+import {currentMonthIncomingsSelector} from "../incomings/store/selectors/incomings.selectors";
+import {getCurrentMonthExpensesAction, getCurrentYearExpensesAction} from "../expenses/store/actions/expenses.action";
+import {currentMonthExpensesSelector} from "../expenses/store/selectors/expenses.selectors";
 
 
 @Component({
