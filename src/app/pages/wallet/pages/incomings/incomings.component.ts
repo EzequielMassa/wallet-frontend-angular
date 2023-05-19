@@ -1,21 +1,15 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {AccountService} from "../home/services/account.service";
-import {select, Store} from "@ngrx/store";
-import {
-  getCurrentMonthIncomingsAction,
-  getCurrentYearIncomingsAction,
-  getLatestAccountMovementsAction
-} from "../home/store/actions/accounts.action";
-import {PersistanceService} from "../../../../shared/services/persistance.service";
+import {Component, OnDestroy, OnInit} from "@angular/core";
 import {map, Observable, Subscription} from "rxjs";
-import {
-  currentMonthIncomingsSelector,
-  currentYearIncomingsSelector,
-  latestAccountMovementsSelector
-} from "../home/store/selectors/home.selectors";
 import {OperationInterface} from "../../../../shared/types/operation.interface";
 import {ChartData} from "chart.js";
 import * as moment from "moment";
+import {select, Store} from "@ngrx/store";
+import {PersistanceService} from "../../../../shared/services/persistance.service";
+import {getCurrentMonthIncomingsAction, getLatestAccountMovementsAction} from "../home/store/actions/accounts.action";
+import {getCurrentYearIncomingsAction} from "./store/actions/incomings.action";
+import {currentMonthIncomingsSelector, latestAccountMovementsSelector} from "../home/store/selectors/home.selectors";
+import {currentYearIncomingsSelector} from "./store/selectors/incomings.selectors";
+
 
 @Component({
   selector: 'wal-incomings',
@@ -37,7 +31,7 @@ export class IncomingsComponent implements OnInit, OnDestroy {
   barCharLabels: string[] = [];
   currentYear: number = moment().get('year')
 
-  constructor(private accountService: AccountService, private store: Store, private persistanceService: PersistanceService) {
+  constructor( private store: Store, private persistanceService: PersistanceService) {
     this.store.dispatch(getCurrentMonthIncomingsAction())
     this.store.dispatch(getCurrentYearIncomingsAction())
   }
@@ -99,5 +93,4 @@ export class IncomingsComponent implements OnInit, OnDestroy {
       })
     }))
   }
-
 }

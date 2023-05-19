@@ -9,6 +9,5 @@ export interface HomeStateInterface {
   latestAccountMovements: OperationInterface[];
   currentMonthIncomings: IncomingsMonthResponseInterface[];
   currentMonthExpenses: ExpensesMonthResponseInterface[];
-  currentYearIncomings: IncomingsMonthResponseInterface[];
   currentYearExpenses: ExpensesMonthResponseInterface[];
 }

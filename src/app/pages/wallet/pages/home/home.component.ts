@@ -7,7 +7,6 @@ import {
   getCurrentMonthExpensesAction,
   getCurrentMonthIncomingsAction,
   getCurrentYearExpensesAction,
-  getCurrentYearIncomingsAction,
   getLatestAccountMovementsAction,
   getUserAccountsAction
 } from "./store/actions/accounts.action";
@@ -22,6 +21,7 @@ import {OperationInterface} from "../../../../shared/types/operation.interface";
 import {PersistanceService} from 'src/app/shared/services/persistance.service';
 import {ChartData} from "chart.js";
 import {BarCharDataInterface} from "../../../../shared/types/barCharData.interface";
+import {getCurrentYearIncomingsAction} from "../incomings/store/actions/incomings.action";
 
 
 @Component({

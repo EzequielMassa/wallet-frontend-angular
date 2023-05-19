@@ -55,6 +55,4 @@ import {MatIconModule} from "@angular/material/icon";
   providers: [AccountService, AuthInterceptorProvider, GenericModalService],
 })
 export class HomeModule {
-  constructor() {
-  }
 }

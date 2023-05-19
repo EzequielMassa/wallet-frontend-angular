@@ -14,8 +14,6 @@ import {
   getCurrentMonthIncomingsSuccessAction,
   getCurrentYearExpensesAction,
   getCurrentYearExpensesSuccessAction,
-  getCurrentYearIncomingsAction,
-  getCurrentYearIncomingsSuccessAction,
   getLatestAccountMovementsAction,
   getLatestAccountMovementsSuccessAction,
   getUserAccountsAction,
@@ -138,22 +136,6 @@ export class AccountsEffect {
             }
             return getCurrentMonthExpensesSuccessAction({monthExpenses: currentMonthExpenses});
           })
-        );
-      })
-    )
-  )
-
-  currentYearIncomings$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(getCurrentYearIncomingsAction),
-      switchMap(() => {
-        return this.accountService.getAccountIncomingsByYear().pipe(
-          map((currentMonthIncomings: IncomingsMonthResponseInterface[]) => {
-            if (currentMonthIncomings == null) {
-              currentMonthIncomings = [];
-            }
-            return getCurrentYearIncomingsSuccessAction({monthIncomings: currentMonthIncomings});
-          }),
         );
       })
     )
