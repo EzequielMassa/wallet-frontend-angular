@@ -87,8 +87,6 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.store.dispatch(getCurrentMonthIncomingsAction())
       this.store.dispatch(getCurrentMonthExpensesAction())
     })
-
-
   }
 
 
@@ -139,12 +137,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.store.dispatch(getUserAccountsAction())
     this.initializeValues()
-
-
   }
 
   ngOnDestroy(): void {
-
     this.incomingSubscription$.unsubscribe();
     this.expensesSubscription$.unsubscribe()
   }
