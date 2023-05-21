@@ -1,7 +1,11 @@
 
 .mat-mdc-list-base {
   border: 2px solid red;
+}
+.error-messages__item {
   display: flex;
+  flex-direction: column;
+  overflow-x: auto;
 }
 .error-messages__item__text, .error-messages__item__icon {
   display: inline-block;

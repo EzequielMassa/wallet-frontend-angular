@@ -19,10 +19,11 @@ import {MatProgressBarModule} from "@angular/material/progress-bar";
 import {
   BackendErrorMessagesModule
 } from "../../../../../../../../shared/modules/backend-error-messages/backend-error-messages.module";
+import { PasswordForgotSuccessComponent } from './components/password-forgot-success/password-forgot-success.component';
 
 
 @NgModule({
-  declarations: [PasswordForgotComponent],
+  declarations: [PasswordForgotComponent, PasswordForgotSuccessComponent],
   imports: [
     CommonModule,
     HttpClientModule,

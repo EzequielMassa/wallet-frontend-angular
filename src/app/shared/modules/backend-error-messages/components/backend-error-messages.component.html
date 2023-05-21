@@ -1,5 +1,8 @@
 <mat-list role="list" class="error-messages">
-  <mat-list-item role="listitem" *ngFor="let errorMessage of errorMessages"  class="error-messages__item">
-    <mat-icon class="error-messages__item__icon">warning</mat-icon>
-    <span class="error-messages__item__text">{{errorMessage}}</span></mat-list-item>
+  <mat-list-item role="listitem" *ngFor="let errorMessage of errorMessages"  >
+    <div class="error-messages__item">
+      <mat-icon class="error-messages__item__icon">warning</mat-icon>
+      <span class="error-messages__item__text">{{errorMessage}}</span>
+    </div>
+  </mat-list-item>
 </mat-list>

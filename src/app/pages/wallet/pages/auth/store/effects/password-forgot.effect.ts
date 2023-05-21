@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {Actions, createEffect, ofType} from "@ngrx/effects";
-import {catchError, map, of, switchMap} from "rxjs";
+import {catchError, map, of, switchMap, tap} from "rxjs";
 import {AuthService} from "../../services/auth.service";
 import {Router} from "@angular/router";
 import {
@@ -9,6 +9,7 @@ import {
   passwordForgotSuccessAction
 } from "../actions/password-forgot.actions";
 import {HttpErrorResponse} from "@angular/common/http";
+import {loginSuccessAction} from "../actions/login.actions";
 
 @Injectable()
 export class PasswordForgotEffects {
@@ -27,6 +28,17 @@ export class PasswordForgotEffects {
         );
       })
     )
+  );
+
+  redirectAfterSubmit$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(passwordForgotSuccessAction),
+        tap(() => {
+          this.router.navigateByUrl('/auth/login/password-forgot/success');
+        })
+      ),
+    {dispatch: false}
   );
   constructor(
     private actions$: Actions,
