@@ -99,7 +99,6 @@ export class AccountsEffect {
       })
     )
   )
-
   constructor(private actions$: Actions, private accountService: AccountService, private store: Store, private persistanceService: PersistanceService) {
   }
 }

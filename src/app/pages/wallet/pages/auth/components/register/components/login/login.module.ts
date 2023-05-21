@@ -13,12 +13,14 @@ import {EffectsModule} from '@ngrx/effects';
 import {AuthService} from "../../../../services/auth.service";
 import {PersistanceService} from "../../../../../../../../shared/services/persistance.service";
 import {MatButtonModule} from "@angular/material/button";
+import {PasswordForgotModule} from "../password-forgot/password-forgot.module";
 
 @NgModule({
   declarations: [LoginComponent],
   imports: [
     CommonModule,
     LoginRoutingModule,
+    PasswordForgotModule,
     ReactiveFormsModule,
     HttpClientModule,
     MatButtonModule,

@@ -5,6 +5,7 @@ import { map, Observable } from 'rxjs';
 import { CurrentUserInterface } from '../../../../../shared/types/currentUser.interface';
 import { environment } from '../../../../../../environments/environment';
 import { LoginRequestInterface } from '../types/loginRequest.interface';
+import {PasswordForgotRequestInterface} from "../types/passwordForgotRequest.interface";
 
 @Injectable()
 export class AuthService {
@@ -22,6 +23,12 @@ export class AuthService {
     return this.http
       .post<CurrentUserInterface>(url, data)
       .pipe(map((response: CurrentUserInterface) => response));
+  }
+
+  passwordForgot(data: PasswordForgotRequestInterface): Observable<any> {
+    const url = environment.apiUrl + '/api/v1/auth/password-forgot';
+    return this.http
+      .post<any>(url, data).pipe(map((response: any) => response));
   }
   updateProfile(data: RegisterRequestInterface): Observable<CurrentUserInterface> {
     const url = environment.apiUrl + '/api/v1/user/update';

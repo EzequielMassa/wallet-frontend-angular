@@ -4,6 +4,7 @@ import {registerAction, registerSuccessAction} from "../actions/register.action"
 import {loginAction, loginSuccessAction} from "../actions/login.actions";
 import {logoutAction, logoutSuccessAction} from "../actions/logout.actions";
 import {updateProfileAction, updateProfileSuccessAction} from "../actions/update-profile.action";
+import {passwordForgotAction, passwordForgotSuccessAction} from "../actions/password-forgot.actions";
 
 const initialState: AuthStateInterface = {
   isSubmitting: false,
@@ -53,6 +54,18 @@ const authReducer = createReducer(
       isSubmitting: false,
       isLoggedIn: false,
       currentUser: null,
+    })
+  ),
+  on(
+    passwordForgotAction, (state): AuthStateInterface => ({
+      ...state,
+      isSubmitting: true,
+    })
+  ),
+  on(
+    passwordForgotSuccessAction, (state): AuthStateInterface => ({
+      ...state,
+      isSubmitting: false,
     })
   ),
   on(

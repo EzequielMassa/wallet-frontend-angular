@@ -6,6 +6,15 @@ const routes: Routes = [
   {
     path: '',
     component: LoginComponent,
+    children: [
+      {
+        path: 'password-forgot',
+        loadChildren: () =>
+          import('../password-forgot/password-forgot.module').then(
+            (p) => p.PasswordForgotModule
+          ),
+      }
+    ],
   },
 ];
 
