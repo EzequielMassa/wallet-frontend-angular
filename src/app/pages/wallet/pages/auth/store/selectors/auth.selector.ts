@@ -18,3 +18,8 @@ export const isLoggedInSelector = createSelector(
   authFeatureSelector,
   (authState: AuthStateInterface) => authState.isLoggedIn
 );
+
+export const backendErrorsSelector = createSelector(
+  authFeatureSelector,
+  (authState: AuthStateInterface) => authState.backendErrors
+);

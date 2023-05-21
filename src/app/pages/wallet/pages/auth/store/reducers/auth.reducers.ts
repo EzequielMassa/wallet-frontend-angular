@@ -4,12 +4,17 @@ import {registerAction, registerSuccessAction} from "../actions/register.action"
 import {loginAction, loginSuccessAction} from "../actions/login.actions";
 import {logoutAction, logoutSuccessAction} from "../actions/logout.actions";
 import {updateProfileAction, updateProfileSuccessAction} from "../actions/update-profile.action";
-import {passwordForgotAction, passwordForgotSuccessAction} from "../actions/password-forgot.actions";
+import {
+  passwordForgotAction,
+  passwordForgotFailureAction,
+  passwordForgotSuccessAction
+} from "../actions/password-forgot.actions";
 
 const initialState: AuthStateInterface = {
   isSubmitting: false,
   currentUser: null,
   isLoggedIn: null,
+  backendErrors: null
 }
 
 const authReducer = createReducer(
@@ -18,6 +23,7 @@ const authReducer = createReducer(
     registerAction, (state): AuthStateInterface => ({
       ...state,
       isSubmitting: true,
+      backendErrors: null
     })
   ),
   on(
@@ -32,6 +38,7 @@ const authReducer = createReducer(
     loginAction, (state): AuthStateInterface => ({
       ...state,
       isSubmitting: true,
+      backendErrors: null
     })
   ),
   on(
@@ -46,6 +53,7 @@ const authReducer = createReducer(
     logoutAction, (state): AuthStateInterface => ({
       ...state,
       isSubmitting: true,
+      backendErrors: null
     })
   ),
   on(
@@ -60,14 +68,24 @@ const authReducer = createReducer(
     passwordForgotAction, (state): AuthStateInterface => ({
       ...state,
       isSubmitting: true,
+      backendErrors: null
     })
   ),
   on(
     passwordForgotSuccessAction, (state): AuthStateInterface => ({
       ...state,
       isSubmitting: false,
+      backendErrors: null
     })
   ),
+  on(
+    passwordForgotFailureAction, (state,action): AuthStateInterface => ({
+      ...state,
+      isSubmitting: false,
+      backendErrors: action.errors
+    })
+  ),
+
   on(
     updateProfileAction, (state): AuthStateInterface => ({
       ...state,

@@ -8,6 +8,7 @@ import {
   passwordForgotFailureAction,
   passwordForgotSuccessAction
 } from "../actions/password-forgot.actions";
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Injectable()
 export class PasswordForgotEffects {
@@ -20,8 +21,8 @@ export class PasswordForgotEffects {
             console.log(data)
             return passwordForgotSuccessAction();
           }),
-          catchError(() => {
-              return of(passwordForgotFailureAction());
+          catchError((errorResponse:HttpErrorResponse) => {
+              return of(passwordForgotFailureAction({errors: errorResponse.error}));
           })
         );
       })

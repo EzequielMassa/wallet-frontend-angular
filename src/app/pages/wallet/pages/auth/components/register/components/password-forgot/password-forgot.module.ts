@@ -16,6 +16,9 @@ import {LoginEffect} from "../../../../store/effects/login.effect";
 import {PasswordForgotEffects} from "../../../../store/effects/password-forgot.effect";
 import {HttpClientModule} from "@angular/common/http";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
+import {
+  BackendErrorMessagesModule
+} from "../../../../../../../../shared/modules/backend-error-messages/backend-error-messages.module";
 
 
 @NgModule({
@@ -33,6 +36,7 @@ import {MatProgressBarModule} from "@angular/material/progress-bar";
     MatFormFieldModule,
     MatInputModule,
     MatProgressBarModule,
+    BackendErrorMessagesModule,
     StoreModule.forFeature('auth', reducers),
     EffectsModule.forFeature([PasswordForgotEffects]),
   ],
