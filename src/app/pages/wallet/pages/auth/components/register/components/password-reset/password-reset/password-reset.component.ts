@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {PasswordResetRequestInterface} from "../../../../../types/passwordResetRequest.interface";
+import {Store} from "@ngrx/store";
+import {passwordResetAction} from "../../../../../store/actions/password-reset.actions";
 
 @Component({
   selector: 'wal-password-reset',
@@ -12,12 +15,12 @@ export class PasswordResetComponent implements OnInit {
   tokenPassword!: string;
 constructor(private router: Router,
             private route: ActivatedRoute,
-            private fb:FormBuilder) {
+            private fb:FormBuilder,
+            private store:Store) {
 }
 
   ngOnInit(): void {
     this.tokenPassword = this.route.snapshot.params['token'];
-    console.log(this.tokenPassword)
     this.initializeResetPasswordForm();
   }
 
@@ -35,7 +38,9 @@ constructor(private router: Router,
   }
   onSubmit() {
   if(this.passwordResetForm.valid){
-    console.log(this.passwordResetForm.value)
+    this.passwordResetForm.addControl('tokenPassword', new FormControl(this.tokenPassword));
+    const request:PasswordResetRequestInterface = this.passwordResetForm.value
+    this.store.dispatch(passwordResetAction({request}))
   }
   }
 

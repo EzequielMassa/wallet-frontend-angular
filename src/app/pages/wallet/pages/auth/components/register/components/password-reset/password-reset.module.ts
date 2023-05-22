@@ -14,6 +14,10 @@ import {
 import { PasswordResetComponent } from './password-reset/password-reset.component';
 import {PasswordResetRoutingModule} from "./password-reset-routing.module";
 import {MatIconModule} from "@angular/material/icon";
+import {PasswordResetEffects} from "../../../../store/effects/password-reset.effect";
+import {reducers} from "../../../../store/reducers/auth.reducers";
+import {StoreModule} from "@ngrx/store";
+import {EffectsModule} from "@ngrx/effects";
 
 
 @NgModule({
@@ -32,8 +36,8 @@ import {MatIconModule} from "@angular/material/icon";
     MatIconModule,
     MatProgressBarModule,
     BackendErrorMessagesModule,
-    /*   StoreModule.forFeature('auth', reducers),
-       EffectsModule.forFeature([PasswordForgotEffects]),*/
+       StoreModule.forFeature('auth', reducers),
+       EffectsModule.forFeature([PasswordResetEffects]),
   ],
   providers: [AuthService],
 })

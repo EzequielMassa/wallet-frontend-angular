@@ -9,6 +9,11 @@ import {
   passwordForgotFailureAction,
   passwordForgotSuccessAction
 } from "../actions/password-forgot.actions";
+import {
+  passwordResetAction,
+  passwordResetFailureAction,
+  passwordResetSuccessAction
+} from "../actions/password-reset.actions";
 
 const initialState: AuthStateInterface = {
   isSubmitting: false,
@@ -85,7 +90,27 @@ const authReducer = createReducer(
       backendErrors: action.errors
     })
   ),
-
+  on(
+    passwordResetAction, (state): AuthStateInterface => ({
+      ...state,
+      isSubmitting: true,
+      backendErrors: null
+    })
+  ),
+  on(
+    passwordResetSuccessAction, (state,): AuthStateInterface => ({
+      ...state,
+      isSubmitting: false,
+      backendErrors: null
+    })
+  ),
+  on(
+    passwordResetFailureAction, (state,action): AuthStateInterface => ({
+      ...state,
+      isSubmitting: false,
+      backendErrors: action.errors
+    })
+  ),
   on(
     updateProfileAction, (state): AuthStateInterface => ({
       ...state,

@@ -6,6 +6,7 @@ import { CurrentUserInterface } from '../../../../../shared/types/currentUser.in
 import { environment } from '../../../../../../environments/environment';
 import { LoginRequestInterface } from '../types/loginRequest.interface';
 import {PasswordForgotRequestInterface} from "../types/passwordForgotRequest.interface";
+import {PasswordResetRequestInterface} from "../types/passwordResetRequest.interface";
 
 @Injectable()
 export class AuthService {
@@ -27,6 +28,12 @@ export class AuthService {
 
   passwordForgot(data: PasswordForgotRequestInterface): Observable<any> {
     const url = environment.apiUrl + '/api/v1/auth/password-forgot';
+    return this.http
+      .post<any>(url, data).pipe(map((response: any) => response));
+  }
+
+  resetPassword(data: PasswordResetRequestInterface): Observable<any> {
+    const url = environment.apiUrl + '/api/v1/auth/change-password';
     return this.http
       .post<any>(url, data).pipe(map((response: any) => response));
   }

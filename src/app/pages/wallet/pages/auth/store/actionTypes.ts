@@ -11,8 +11,10 @@ export enum ActionTypes {
   PASSWORD_FORGOT = '[AUTH] Password Forgot',
   PASSWORD_FORGOT_SUCCESS = '[AUTH] Password Forgot Success',
   PASSWORD_FORGOT_FAILURE = '[AUTH] Password Forgot Failure',
+  PASSWORD_RESET = '[AUTH] Password Reset',
+  PASSWORD_RESET_SUCCESS = '[AUTH] Password Reset Success',
+  PASSWORD_RESET_FAILURE = '[AUTH] Password Reset Failure',
   UPDATE_PROFILE = '[PROFILE-EDIT] Update Profile',
   UPDATE_PROFILE_SUCCESS = '[PROFILE-EDIT] Update Profile Success',
   UPDATE_PROFILE_FAILURE = '[PROFILE-EDIT] Update Profile Failure',
-
 }
