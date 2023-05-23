@@ -21,7 +21,7 @@ const initialState: AuthStateInterface = {
   isLoggedIn: null,
   backendErrors: null,
   backenMessages:null,
-  submitedSuccessfully:false
+  passwordForgotSubmitedSuccessfully:false
 }
 
 const authReducer = createReducer(
@@ -31,7 +31,6 @@ const authReducer = createReducer(
       ...state,
       isSubmitting: true,
       backendErrors: null,
-      submitedSuccessfully:false
     })
   ),
   on(
@@ -40,7 +39,6 @@ const authReducer = createReducer(
       isSubmitting: false,
       isLoggedIn: false,
       currentUser: action.currentUser,
-      submitedSuccessfully:true
     })
   ),
   on(
@@ -48,7 +46,6 @@ const authReducer = createReducer(
       ...state,
       isSubmitting: true,
       backendErrors: null,
-      submitedSuccessfully:false
     })
   ),
   on(
@@ -57,7 +54,6 @@ const authReducer = createReducer(
       isSubmitting: false,
       isLoggedIn: true,
       currentUser: action.currentUser,
-      submitedSuccessfully:true
     })
   ),
   on(
@@ -80,15 +76,16 @@ const authReducer = createReducer(
       ...state,
       isSubmitting: true,
       backendErrors: null,
-      submitedSuccessfully:false
+      passwordForgotSubmitedSuccessfully:false
     })
   ),
   on(
-    passwordForgotSuccessAction, (state): AuthStateInterface => ({
+    passwordForgotSuccessAction, (state,action): AuthStateInterface => ({
       ...state,
       isSubmitting: false,
       backendErrors: null,
-      submitedSuccessfully:true
+      passwordForgotSubmitedSuccessfully:true,
+      backenMessages:action.backendMessages
     })
   ),
   on(
@@ -96,7 +93,7 @@ const authReducer = createReducer(
       ...state,
       isSubmitting: false,
       backendErrors: action.errors,
-      submitedSuccessfully:false
+      passwordForgotSubmitedSuccessfully:false
     })
   ),
   on(
@@ -104,7 +101,6 @@ const authReducer = createReducer(
       ...state,
       isSubmitting: true,
       backendErrors: null,
-      submitedSuccessfully:false
     })
   ),
   on(
@@ -113,7 +109,6 @@ const authReducer = createReducer(
       isSubmitting: false,
       backendErrors: null,
       backenMessages:action.backendMessage,
-      submitedSuccessfully:true
     })
   ),
   on(
@@ -121,7 +116,6 @@ const authReducer = createReducer(
       ...state,
       isSubmitting: false,
       backendErrors: action.errors,
-      submitedSuccessfully:false
     })
   ),
   on(

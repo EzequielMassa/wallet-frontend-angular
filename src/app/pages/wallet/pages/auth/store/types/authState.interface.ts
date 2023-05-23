@@ -8,5 +8,5 @@ export interface AuthStateInterface {
   isLoggedIn: boolean | null,
   backendErrors:BackendErrorsInterface|null,
   backenMessages:BackendMessagesInterface|null
-  submitedSuccessfully:boolean;
+  passwordForgotSubmitedSuccessfully:boolean;
 }

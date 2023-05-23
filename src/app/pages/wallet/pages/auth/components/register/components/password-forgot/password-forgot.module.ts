@@ -20,6 +20,7 @@ import {
   BackendErrorMessagesModule
 } from "../../../../../../../../shared/modules/backend-error-messages/backend-error-messages.module";
 import { PasswordForgotSuccessComponent } from './components/password-forgot-success/password-forgot-success.component';
+import {BackendMessagesModule} from "../../../../../../../../shared/modules/backend-messages/backend-messages.module";
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { PasswordForgotSuccessComponent } from './components/password-forgot-suc
     MatCardModule,
     MatProgressBarModule,
     BackendErrorMessagesModule,
+    BackendMessagesModule,
     StoreModule.forFeature('auth', reducers),
     EffectsModule.forFeature([PasswordForgotEffects]),
   ],

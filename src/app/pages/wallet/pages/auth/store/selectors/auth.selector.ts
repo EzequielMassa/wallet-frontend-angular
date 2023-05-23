@@ -31,5 +31,5 @@ export const backendMessagesSelector = createSelector(
 
 export const submitedSuccessfullySelector = createSelector(
   authFeatureSelector,
-  (authState: AuthStateInterface) => authState.submitedSuccessfully
+  (authState: AuthStateInterface) => authState.passwordForgotSubmitedSuccessfully
 );

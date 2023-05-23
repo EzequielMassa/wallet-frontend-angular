@@ -6,13 +6,14 @@ import {select, Store} from "@ngrx/store";
 import {passwordForgotAction} from "../../../../../../store/actions/password-forgot.actions";
 import {Observable} from "rxjs";
 import {
-  backendErrorsSelector,
+  backendErrorsSelector, backendMessagesSelector,
   isSubmittingSelector,
   submitedSuccessfullySelector
 } from "../../../../../../store/selectors/auth.selector";
 import {ThemePalette} from "@angular/material/core";
 import {ProgressBarMode} from "@angular/material/progress-bar";
 import {BackendErrorsInterface} from "../../../../../../../../../../shared/types/backendErrors.interface";
+import {BackendMessagesInterface} from "../../../../../../../../../../shared/types/backendMessages.interface";
 
 @Component({
   selector: 'wal-password-forgot',
@@ -23,6 +24,7 @@ export class PasswordForgotComponent implements OnInit{
   passwordForgotForm!: FormGroup;
   isSubmitting$!:Observable<boolean>;
   backendErrors$!:Observable<BackendErrorsInterface | null>;
+
   color: ThemePalette = 'primary';
   mode: ProgressBarMode = 'indeterminate';
   isSubmitedSuccessfully$!:Observable<boolean>;
@@ -54,4 +56,5 @@ export class PasswordForgotComponent implements OnInit{
       this.store.dispatch(passwordForgotAction({request}))
     }
   }
+
 }

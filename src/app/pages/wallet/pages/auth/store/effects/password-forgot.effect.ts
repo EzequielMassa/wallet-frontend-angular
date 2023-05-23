@@ -17,8 +17,7 @@ export class PasswordForgotEffects {
       switchMap(({request}) => {
         return this.authService.passwordForgot(request).pipe(
           map((data) => {
-            console.log(data)
-            return passwordForgotSuccessAction();
+            return passwordForgotSuccessAction({backendMessages:data});
           }),
           catchError((errorResponse:HttpErrorResponse) => {
               return of(passwordForgotFailureAction({errors: errorResponse.error}));

@@ -2,6 +2,7 @@ import {createAction, props} from "@ngrx/store";
 import {ActionTypes} from "../actionTypes";
 import {PasswordForgotRequestInterface} from "../../types/passwordForgotRequest.interface";
 import {BackendErrorsInterface} from "../../../../../../shared/types/backendErrors.interface";
+import {BackendMessagesInterface} from "../../../../../../shared/types/backendMessages.interface";
 
 
 export const passwordForgotAction = createAction(
@@ -11,6 +12,7 @@ export const passwordForgotAction = createAction(
 
 export const passwordForgotSuccessAction = createAction(
   ActionTypes.PASSWORD_FORGOT_SUCCESS,
+  props<{ backendMessages: BackendMessagesInterface }>()
 )
 
 export const passwordForgotFailureAction = createAction(
