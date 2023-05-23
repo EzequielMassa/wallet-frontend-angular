@@ -5,7 +5,11 @@ import {PasswordForgotRequestInterface} from "../../../../../../types/passwordFo
 import {select, Store} from "@ngrx/store";
 import {passwordForgotAction} from "../../../../../../store/actions/password-forgot.actions";
 import {Observable} from "rxjs";
-import {backendErrorsSelector, isSubmittingSelector} from "../../../../../../store/selectors/auth.selector";
+import {
+  backendErrorsSelector,
+  isSubmittingSelector,
+  submitedSuccessfullySelector
+} from "../../../../../../store/selectors/auth.selector";
 import {ThemePalette} from "@angular/material/core";
 import {ProgressBarMode} from "@angular/material/progress-bar";
 import {BackendErrorsInterface} from "../../../../../../../../../../shared/types/backendErrors.interface";
@@ -21,6 +25,7 @@ export class PasswordForgotComponent implements OnInit{
   backendErrors$!:Observable<BackendErrorsInterface | null>;
   color: ThemePalette = 'primary';
   mode: ProgressBarMode = 'indeterminate';
+  isSubmitedSuccessfully$!:Observable<boolean>;
   constructor(private fb: FormBuilder,private router: Router,private store:Store) {
 
   }
@@ -38,13 +43,13 @@ export class PasswordForgotComponent implements OnInit{
   initializeValues(): void {
     this.isSubmitting$ = this.store.pipe(select(isSubmittingSelector));
     this.backendErrors$ = this.store.pipe(select(backendErrorsSelector))
+    this.isSubmitedSuccessfully$ = this.store.pipe(select(submitedSuccessfullySelector))
   }
   cancel(): void {
     this.router.navigate(['/auth/login']);
   }
   onSubmit(): void {
     if (this.passwordForgotForm.valid) {
-
       const request: PasswordForgotRequestInterface = this.passwordForgotForm.value
       this.store.dispatch(passwordForgotAction({request}))
     }

@@ -19,7 +19,7 @@ export class PasswordResetEffects {
         return this.authService.resetPassword(request).pipe(
           map((data) => {
             console.log(data)
-            return passwordResetSuccessAction();
+            return passwordResetSuccessAction({backendMessage:data});
           }),
           catchError((errorResponse: HttpErrorResponse) => {
             return of(passwordResetFailureAction({errors: errorResponse.error}));

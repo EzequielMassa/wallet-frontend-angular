@@ -19,7 +19,9 @@ const initialState: AuthStateInterface = {
   isSubmitting: false,
   currentUser: null,
   isLoggedIn: null,
-  backendErrors: null
+  backendErrors: null,
+  backenMessages:null,
+  submitedSuccessfully:false
 }
 
 const authReducer = createReducer(
@@ -28,7 +30,8 @@ const authReducer = createReducer(
     registerAction, (state): AuthStateInterface => ({
       ...state,
       isSubmitting: true,
-      backendErrors: null
+      backendErrors: null,
+      submitedSuccessfully:false
     })
   ),
   on(
@@ -37,13 +40,15 @@ const authReducer = createReducer(
       isSubmitting: false,
       isLoggedIn: false,
       currentUser: action.currentUser,
+      submitedSuccessfully:true
     })
   ),
   on(
     loginAction, (state): AuthStateInterface => ({
       ...state,
       isSubmitting: true,
-      backendErrors: null
+      backendErrors: null,
+      submitedSuccessfully:false
     })
   ),
   on(
@@ -52,6 +57,7 @@ const authReducer = createReducer(
       isSubmitting: false,
       isLoggedIn: true,
       currentUser: action.currentUser,
+      submitedSuccessfully:true
     })
   ),
   on(
@@ -73,42 +79,49 @@ const authReducer = createReducer(
     passwordForgotAction, (state): AuthStateInterface => ({
       ...state,
       isSubmitting: true,
-      backendErrors: null
+      backendErrors: null,
+      submitedSuccessfully:false
     })
   ),
   on(
     passwordForgotSuccessAction, (state): AuthStateInterface => ({
       ...state,
       isSubmitting: false,
-      backendErrors: null
+      backendErrors: null,
+      submitedSuccessfully:true
     })
   ),
   on(
     passwordForgotFailureAction, (state,action): AuthStateInterface => ({
       ...state,
       isSubmitting: false,
-      backendErrors: action.errors
+      backendErrors: action.errors,
+      submitedSuccessfully:false
     })
   ),
   on(
     passwordResetAction, (state): AuthStateInterface => ({
       ...state,
       isSubmitting: true,
-      backendErrors: null
+      backendErrors: null,
+      submitedSuccessfully:false
     })
   ),
   on(
-    passwordResetSuccessAction, (state,): AuthStateInterface => ({
+    passwordResetSuccessAction, (state,action): AuthStateInterface => ({
       ...state,
       isSubmitting: false,
-      backendErrors: null
+      backendErrors: null,
+      backenMessages:action.backendMessage,
+      submitedSuccessfully:true
     })
   ),
   on(
     passwordResetFailureAction, (state,action): AuthStateInterface => ({
       ...state,
       isSubmitting: false,
-      backendErrors: action.errors
+      backendErrors: action.errors,
+      submitedSuccessfully:false
     })
   ),
   on(

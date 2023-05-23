@@ -2,8 +2,11 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {PasswordResetRequestInterface} from "../../../../../types/passwordResetRequest.interface";
-import {Store} from "@ngrx/store";
+import {select, Store} from "@ngrx/store";
 import {passwordResetAction} from "../../../../../store/actions/password-reset.actions";
+import {BackendMessagesInterface} from "../../../../../../../../../shared/types/backendMessages.interface";
+import {Observable} from "rxjs";
+import {backendMessagesSelector} from "../../../../../store/selectors/auth.selector";
 
 @Component({
   selector: 'wal-password-reset',
@@ -13,6 +16,7 @@ import {passwordResetAction} from "../../../../../store/actions/password-reset.a
 export class PasswordResetComponent implements OnInit {
   passwordResetForm!: FormGroup;
   tokenPassword!: string;
+  backendMessages!:Observable<BackendMessagesInterface|null>
 constructor(private router: Router,
             private route: ActivatedRoute,
             private fb:FormBuilder,
@@ -21,7 +25,13 @@ constructor(private router: Router,
 
   ngOnInit(): void {
     this.tokenPassword = this.route.snapshot.params['token'];
+    this.initializeValues();
     this.initializeResetPasswordForm();
+
+  }
+
+  initializeValues(): void{
+this.backendMessages = this.store.pipe(select(backendMessagesSelector))
   }
 
   initializeResetPasswordForm() {

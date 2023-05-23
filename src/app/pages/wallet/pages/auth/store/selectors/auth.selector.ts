@@ -23,3 +23,13 @@ export const backendErrorsSelector = createSelector(
   authFeatureSelector,
   (authState: AuthStateInterface) => authState.backendErrors
 );
+
+export const backendMessagesSelector = createSelector(
+  authFeatureSelector,
+  (authState: AuthStateInterface) => authState.backenMessages
+);
+
+export const submitedSuccessfullySelector = createSelector(
+  authFeatureSelector,
+  (authState: AuthStateInterface) => authState.submitedSuccessfully
+);
