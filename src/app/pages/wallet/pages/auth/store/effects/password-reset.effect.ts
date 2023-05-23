@@ -18,7 +18,6 @@ export class PasswordResetEffects {
       switchMap(({request}) => {
         return this.authService.resetPassword(request).pipe(
           map((data) => {
-            console.log(data)
             return passwordResetSuccessAction({backendMessage:data});
           }),
           catchError((errorResponse: HttpErrorResponse) => {

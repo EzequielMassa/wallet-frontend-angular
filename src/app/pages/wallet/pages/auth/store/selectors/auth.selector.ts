@@ -33,3 +33,8 @@ export const submitedSuccessfullySelector = createSelector(
   authFeatureSelector,
   (authState: AuthStateInterface) => authState.passwordForgotSubmitedSuccessfully
 );
+
+export const passwordResetSubmitedSuccessfullySelector = createSelector(
+  authFeatureSelector,
+  (authState: AuthStateInterface) => authState.passwordResetSubmitedSuccessfully
+);

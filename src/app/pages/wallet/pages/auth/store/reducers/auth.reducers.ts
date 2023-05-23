@@ -21,7 +21,8 @@ const initialState: AuthStateInterface = {
   isLoggedIn: null,
   backendErrors: null,
   backenMessages:null,
-  passwordForgotSubmitedSuccessfully:false
+  passwordForgotSubmitedSuccessfully:false,
+  passwordResetSubmitedSuccessfully:false
 }
 
 const authReducer = createReducer(
@@ -101,6 +102,7 @@ const authReducer = createReducer(
       ...state,
       isSubmitting: true,
       backendErrors: null,
+      passwordResetSubmitedSuccessfully:false
     })
   ),
   on(
@@ -108,6 +110,7 @@ const authReducer = createReducer(
       ...state,
       isSubmitting: false,
       backendErrors: null,
+      passwordResetSubmitedSuccessfully:true,
       backenMessages:action.backendMessage,
     })
   ),
@@ -115,6 +118,7 @@ const authReducer = createReducer(
     passwordResetFailureAction, (state,action): AuthStateInterface => ({
       ...state,
       isSubmitting: false,
+      passwordResetSubmitedSuccessfully:false,
       backendErrors: action.errors,
     })
   ),

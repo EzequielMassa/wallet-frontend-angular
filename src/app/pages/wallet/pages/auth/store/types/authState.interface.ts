@@ -9,4 +9,5 @@ export interface AuthStateInterface {
   backendErrors:BackendErrorsInterface|null,
   backenMessages:BackendMessagesInterface|null
   passwordForgotSubmitedSuccessfully:boolean;
+  passwordResetSubmitedSuccessfully:boolean;
 }
