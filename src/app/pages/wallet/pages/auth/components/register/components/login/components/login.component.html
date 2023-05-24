@@ -1,4 +1,4 @@
-<section class="login">
+<section class="login" [@fadeInOnEnter] [@fadeOutOnLeave]>
   <div class="login__container__top">
     <div class="login__top__banner">
       <img
@@ -11,7 +11,7 @@
         <h5>The best Wallet</h5>
       </div>
     </div>
-    <div class="login__bottom__banner">
+    <div class="login__bottom__banner" [@flipOnEnter]>
       <div class="lottie-animation">
         <ng-lottie
           [options]="options"

@@ -6,11 +6,17 @@ import {isSubmittingSelector} from "../../../../../store/selectors/auth.selector
 import {LoginRequestInterface} from "../../../../../types/loginRequest.interface";
 import {loginAction} from "../../../../../store/actions/login.actions";
 import {AnimationOptions} from "ngx-lottie";
+import {fadeInOnEnterAnimation, fadeOutOnLeaveAnimation, flipOnEnterAnimation} from "angular-animations";
 
 @Component({
   selector: 'wal-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
+  animations: [
+    fadeInOnEnterAnimation(),
+    fadeOutOnLeaveAnimation(),
+    flipOnEnterAnimation()
+  ]
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
