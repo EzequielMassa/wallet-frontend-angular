@@ -6,19 +6,23 @@ import {select, Store} from "@ngrx/store";
 import {passwordForgotAction} from "../../../../../../store/actions/password-forgot.actions";
 import {Observable} from "rxjs";
 import {
-  backendErrorsSelector, backendMessagesSelector,
+  backendErrorsSelector,
   isSubmittingSelector,
   submitedSuccessfullySelector
 } from "../../../../../../store/selectors/auth.selector";
 import {ThemePalette} from "@angular/material/core";
 import {ProgressBarMode} from "@angular/material/progress-bar";
 import {BackendErrorsInterface} from "../../../../../../../../../../shared/types/backendErrors.interface";
-import {BackendMessagesInterface} from "../../../../../../../../../../shared/types/backendMessages.interface";
+import {collapseOnLeaveAnimation, expandOnEnterAnimation} from "angular-animations";
 
 @Component({
   selector: 'wal-password-forgot',
   templateUrl: './password-forgot.component.html',
-  styleUrls: ['./password-forgot.component.css']
+  styleUrls: ['./password-forgot.component.css'],
+  animations: [
+    expandOnEnterAnimation(),
+    collapseOnLeaveAnimation(),
+  ]
 })
 export class PasswordForgotComponent implements OnInit{
   passwordForgotForm!: FormGroup;

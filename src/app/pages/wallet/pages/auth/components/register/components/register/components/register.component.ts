@@ -6,11 +6,16 @@ import {registerAction} from '../../../../../store/actions/register.action';
 import {RegisterRequestInterface} from '../../../../../types/registerRequest.interface';
 import {Observable} from 'rxjs';
 import {isSubmittingSelector} from '../../../../../store/selectors/auth.selector';
+import {slideInUpOnEnterAnimation, slideOutDownOnLeaveAnimation} from "angular-animations";
 
 @Component({
   selector: 'wal-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
+  animations: [
+    slideInUpOnEnterAnimation(),
+    slideOutDownOnLeaveAnimation(),
+  ]
 })
 export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
