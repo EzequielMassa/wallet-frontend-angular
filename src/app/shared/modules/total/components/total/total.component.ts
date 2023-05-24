@@ -10,5 +10,6 @@ export class TotalComponent {
   @Input('title') titleProps!: string;
   @Input('total') totalProps!: number;
   @Input('icon') iconProps!: string;
+  @Input('iconColor') iconColorProps!: string;
 
 }

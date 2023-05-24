@@ -21,7 +21,6 @@ import {fadeInOnEnterAnimation, fadeOutOnLeaveAnimation, flipOnEnterAnimation} f
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   isSubmitting$!: Observable<boolean>;
-
   options: AnimationOptions = {
     path: '/assets/lottie/lottie-credit-cards.json',
   };

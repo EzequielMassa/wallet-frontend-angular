@@ -10,6 +10,7 @@ import {createNewUserAccountAction} from "../../store/actions/accounts.action";
 export class NewAccountComponent {
 
   constructor(private store: Store) {
+
   }
 
   createAccount() {

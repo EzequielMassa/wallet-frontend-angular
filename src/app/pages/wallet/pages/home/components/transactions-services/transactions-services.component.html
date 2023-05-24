@@ -1,20 +1,32 @@
 <ul class="transactions__btns__container">
-  <li>
-    <button mat-raised-button color="primary" type="button" data-type='DEPOSIT' (click)="openDialog($event)">
-      Deposit
-      <mat-icon>save_alt</mat-icon>
+  <li  class="transactions__btns__item">
+    <button class="btnIcon" mat-flat-button color="primary" type="button" data-type='DEPOSIT' (click)="openDialog($event)">Deposit
     </button>
+    <lord-icon
+      src="/assets/deposit-icon.json"
+      trigger="hover"
+      target=".transactions__btns__item"
+      colors="primary:#6d42ba">
+    </lord-icon>
   </li>
-  <li>
-    <button mat-raised-button color="primary" type="button" data-type='PAYMENT' (click)="openDialog($event)">
-      Payment
-      <mat-icon>send</mat-icon>
+  <li  class="transactions__btns__item">
+    <button class="btnIcon" mat-flat-button color="primary" type="button" data-type='PAYMENT' (click)="openDialog($event)">Payment
     </button>
+    <lord-icon
+      src="/assets/payment-icon.json"
+      trigger="hover"
+      target=".transactions__btns__item"
+      colors="primary:#6d42ba">
+    </lord-icon>
   </li>
-  <li>
-    <button mat-raised-button color="primary" type="button" data-type='TRANSFER' (click)="openDialog($event)">
-      Transfer
-      <mat-icon>cached</mat-icon>
+  <li  class="transactions__btns__item">
+    <button class="btnIcon" mat-flat-button color="primary" type="button" data-type='TRANSFER' (click)="openDialog($event)">Transfer
     </button>
+    <lord-icon
+      src="/assets/transfer-icon.json"
+      trigger="hover"
+      target=".transactions__btns__item"
+      colors="primary:#6d42ba">
+    </lord-icon>
   </li>
 </ul>

@@ -1,6 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {HttpClientModule} from '@angular/common/http';
-import {NgModule} from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import {AuthInterceptorProvider} from 'src/app/pages/wallet/pages/auth/interceptors/auth.interceptor';
 import {AccountService} from 'src/app/pages/wallet/pages/home/services/account.service';
 import {BalanceComponent} from './components/balance/balance.component';
@@ -31,7 +31,8 @@ import {incomingsReducers} from "../incomings/store/reducers/incomings.reducer";
 import {IncomingsEffect} from "../incomings/store/effects/incomings.effect";
 import {expensesReducers} from "../expenses/store/reducers/expenses.reducers";
 import {ExpensesEffect} from "../expenses/store/effects/expenses.effect";
-
+import lottie from 'lottie-web';
+import { defineElement } from 'lord-icon-element';
 @NgModule({
   declarations: [HomeComponent, BalanceComponent, NewAccountComponent, TransactionsServicesComponent],
   imports: [
@@ -59,6 +60,9 @@ import {ExpensesEffect} from "../expenses/store/effects/expenses.effect";
     HomeComponent,
   ],
   providers: [AccountService, AuthInterceptorProvider, GenericModalService],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class HomeModule {
+  constructor() {
+    defineElement(lottie.loadAnimation);}
 }
