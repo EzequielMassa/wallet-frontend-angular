@@ -52,11 +52,6 @@ body {
   margin: 0;
 }
 
-.login__bottom__banner--img {
-  width: 150px;
-  display: inline-block;
-}
-
 .login__container__bottom {
   width: 100%;
   display: flex;

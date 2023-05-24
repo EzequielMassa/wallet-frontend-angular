@@ -5,6 +5,7 @@ import {Observable} from "rxjs";
 import {isSubmittingSelector} from "../../../../../store/selectors/auth.selector";
 import {LoginRequestInterface} from "../../../../../types/loginRequest.interface";
 import {loginAction} from "../../../../../store/actions/login.actions";
+import {AnimationOptions} from "ngx-lottie";
 
 @Component({
   selector: 'wal-login',
@@ -14,6 +15,10 @@ import {loginAction} from "../../../../../store/actions/login.actions";
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   isSubmitting$!: Observable<boolean>;
+
+  options: AnimationOptions = {
+    path: '/assets/lottie/lottie-credit-cards.json',
+  };
 
   constructor(private fb: FormBuilder, private store: Store) {
   }

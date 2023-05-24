@@ -21,6 +21,14 @@ import {RegisterEffect} from "./pages/wallet/pages/auth/store/effects/register.e
 import {UpdateProfileEffect} from "./pages/wallet/pages/auth/store/effects/update-profile.effect";
 import {AuthService} from "./pages/wallet/pages/auth/services/auth.service";
 
+
+import { LottieModule } from 'ngx-lottie';
+import player from 'lottie-web';
+
+export function playerFactory(): any {
+  return import('lottie-web');
+}
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -35,6 +43,7 @@ import {AuthService} from "./pages/wallet/pages/auth/services/auth.service";
     StoreModule.forFeature('auth', reducers),
     StoreDevtoolsModule.instrument({maxAge: 25, logOnly: !isDevMode()}),
     EffectsModule.forRoot([LoginEffect,LogoutEffect,RegisterEffect,UpdateProfileEffect]),
+    LottieModule.forRoot({ player: playerFactory }),
   ],
   providers: [AuthService,AuthInterceptorProvider, AuthGuard, PersistanceService],
   bootstrap: [AppComponent],

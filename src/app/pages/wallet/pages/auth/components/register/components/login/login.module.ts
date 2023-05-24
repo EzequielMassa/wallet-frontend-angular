@@ -14,19 +14,21 @@ import {AuthService} from "../../../../services/auth.service";
 import {PersistanceService} from "../../../../../../../../shared/services/persistance.service";
 import {MatButtonModule} from "@angular/material/button";
 import {PasswordForgotModule} from "../password-forgot/password-forgot.module";
+import {LottieComponent} from "ngx-lottie";
 
 @NgModule({
   declarations: [LoginComponent],
-  imports: [
-    CommonModule,
-    LoginRoutingModule,
-    PasswordForgotModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    MatButtonModule,
-    StoreModule.forFeature('auth', reducers),
-    EffectsModule.forFeature([LoginEffect]),
-  ],
+    imports: [
+        CommonModule,
+        LoginRoutingModule,
+        PasswordForgotModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        MatButtonModule,
+        StoreModule.forFeature('auth', reducers),
+        EffectsModule.forFeature([LoginEffect]),
+        LottieComponent,
+    ],
   providers: [AuthService, PersistanceService]
 
 })
