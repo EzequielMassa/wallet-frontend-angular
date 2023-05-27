@@ -1,9 +1,14 @@
-<div class="expenses__container">
+<section class="expenses__container" [@fadeInOnEnter]>
+  <div class="expenses__title">
+    <h2>Egresos </h2>
+  </div>
   <div class="total__container">
     <wal-total [title]="'Egresos del mes'" [total]="totalMonthExpenses"
-               [icon]="'fa-solid fa-arrow-down payment-icon'"></wal-total>
+               [icon]="'/assets/arrow-up.json'"
+               [iconColor]="'primary:#6d42ba'"></wal-total>
     <wal-total [title]="'Egresos del año'" [total]="totalYearExpenses"
-               [icon]="'fa-solid fa-arrow-down payment-icon'"></wal-total>
+               [icon]="'/assets/arrow-down.json'"
+               [iconColor]="'primary:#ff6ba4'"></wal-total>
   </div>
 
   <div class="operation__list--container">
@@ -12,5 +17,5 @@
   </div>
 
   <wal-operations-graphics [barChar]="barChar"></wal-operations-graphics>
-</div>
+</section>
 

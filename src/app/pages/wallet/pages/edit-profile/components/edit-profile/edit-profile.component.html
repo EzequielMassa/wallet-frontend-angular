@@ -1,5 +1,9 @@
-<section class="edit__profile__container">
+<div [@fadeInDownOnEnter]>
+  <wal-generic-title [title]="'Editar perfil'" class="title"></wal-generic-title>
+</div>
+<section class="edit__profile__container" [@fadeInDownOnEnter]>
   <mat-card class="example-card">
+
     <mat-card-header>
       <div mat-card-avatar
            [ngStyle]="{'background-image': 'url(' + currentUser?.urlImg + ')'}"

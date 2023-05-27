@@ -12,6 +12,7 @@ import {homeReducers} from "../home/store/reducers/home.reducers";
 import {EffectsModule} from "@ngrx/effects";
 import {AccountsEffect} from "../home/store/effects/accounts.effect";
 import {RouterModule} from "@angular/router";
+import {GenericTitleModule} from "../../../../shared/modules/generic-title/generic-title.module";
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import {RouterModule} from "@angular/router";
     RouterModule,
     EditProfileRoutingModule,
     ReactiveFormsModule,
+    GenericTitleModule,
     MatFormFieldModule,
     MatInputModule,
     MatCardModule,

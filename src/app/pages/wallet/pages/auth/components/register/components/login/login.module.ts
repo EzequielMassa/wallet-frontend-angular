@@ -15,6 +15,7 @@ import {PersistanceService} from "../../../../../../../../shared/services/persis
 import {MatButtonModule} from "@angular/material/button";
 import {PasswordForgotModule} from "../password-forgot/password-forgot.module";
 import {LottieComponent} from "ngx-lottie";
+import {GenericTitleModule} from "../../../../../../../../shared/modules/generic-title/generic-title.module";
 
 @NgModule({
   declarations: [LoginComponent],
@@ -24,6 +25,7 @@ import {LottieComponent} from "ngx-lottie";
         PasswordForgotModule,
         ReactiveFormsModule,
         HttpClientModule,
+      GenericTitleModule,
         MatButtonModule,
         StoreModule.forFeature('auth', reducers),
         EffectsModule.forFeature([LoginEffect]),

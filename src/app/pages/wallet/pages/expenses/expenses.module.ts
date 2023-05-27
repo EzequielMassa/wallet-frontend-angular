@@ -13,22 +13,24 @@ import {expensesReducers} from "./store/reducers/expenses.reducers";
 import {ExpensesEffect} from "./store/effects/expenses.effect";
 import {HttpClientModule} from "@angular/common/http";
 import {ExpensesService} from "./services/expenses.service";
+import {GenericTitleModule} from "../../../../shared/modules/generic-title/generic-title.module";
 
 
 @NgModule({
   declarations: [
     ExpensesComponent
   ],
-  imports: [
-    CommonModule,
-    HttpClientModule,
-    ExpensesRoutingModule,
-    TotalModule,
-    GenericOperationListModule,
-    OperationsGraphicsModule,
-    StoreModule.forFeature('expenses', expensesReducers),
-    EffectsModule.forFeature([ExpensesEffect]),
-  ],
+    imports: [
+        CommonModule,
+        HttpClientModule,
+        ExpensesRoutingModule,
+        TotalModule,
+        GenericOperationListModule,
+        OperationsGraphicsModule,
+        StoreModule.forFeature('expenses', expensesReducers),
+        EffectsModule.forFeature([ExpensesEffect]),
+        GenericTitleModule,
+    ],
   exports: [
     ExpensesComponent
   ],

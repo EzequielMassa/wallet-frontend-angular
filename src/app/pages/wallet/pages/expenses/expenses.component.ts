@@ -14,11 +14,13 @@ import {
 } from "../home/store/selectors/home.selectors";
 import {getCurrentMonthExpensesAction, getCurrentYearExpensesAction} from "./store/actions/expenses.action";
 import {currentMonthExpensesSelector, currentYearExpensesSelector} from "./store/selectors/expenses.selectors";
+import {fadeInOnEnterAnimation} from "angular-animations";
 
 @Component({
   selector: 'wal-expenses',
   templateUrl: './expenses.component.html',
-  styleUrls: ['./expenses.component.css']
+  styleUrls: ['./expenses.component.css'],
+  animations: [fadeInOnEnterAnimation()]
 })
 export class ExpensesComponent implements OnInit, OnDestroy {
 

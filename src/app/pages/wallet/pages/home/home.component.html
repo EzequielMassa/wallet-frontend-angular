@@ -1,65 +1,87 @@
-<div class="carousel__container">
-  <div class="carousel">
-
-    <ngx-slick-carousel class="carousel"
-
-                        [config]="slideConfig"
+<main [@fadeInOnEnter]>
+  <div class="home__title__container">
+    <wal-generic-title [title]="saludo"></wal-generic-title>
+    <ng-lottie
+      [options]="options"
     >
-      <div ngxSlickItem *ngFor="let account of userAccounts$ | async" class="slide slide-balance">
+    </ng-lottie>
+  </div>
+  <div class="carousel__container">
+    <div class="carousel__title">
+      <h2>Cuentas </h2>
+    </div>
+    <div class="carousel">
 
-        <wal-balance [accountNumber]="account.accountId" [accountBalance]="account.balance"
-                     class="slide--item"
-        >
-        </wal-balance>
+      <ngx-slick-carousel class="carousel"
+
+                          [config]="slideConfig"
+      >
+        <div ngxSlickItem *ngFor="let account of userAccounts$ | async" class="slide slide-balance">
+
+          <wal-balance [accountNumber]="account.accountId" [accountBalance]="account.balance"
+                       class="slide--item"
+          >
+          </wal-balance>
 
 
-        <ng-container *ngIf="account.accountId == activeAccount;else btnInactive">
-          <mat-slide-toggle class="slide-btn" checked disabled><span class="active">Active</span>
-          </mat-slide-toggle>
-        </ng-container>
+          <ng-container *ngIf="account.accountId == activeAccount;else btnInactive">
+            <mat-slide-toggle class="slide-btn" checked disabled><span class="active">Active</span>
+            </mat-slide-toggle>
+          </ng-container>
 
-        <ng-template #btnInactive>
-          <mat-slide-toggle (click)="
+          <ng-template #btnInactive>
+            <mat-slide-toggle (click)="
       setActive(account.accountId)"
-                            class="slide-btn inactive"><span class="inactive">Set Active</span>
-          </mat-slide-toggle>
-        </ng-template>
+                              class="slide-btn inactive"><span class="inactive">Set Active</span>
+            </mat-slide-toggle>
+          </ng-template>
+        </div>
+
+      </ngx-slick-carousel>
+
+      <div class="carousel__actions">
+        <lord-icon
+          src="/assets/arrow.json"
+          trigger="loop"
+          colors="primary:#ff2c7d"
+          class="arrow prev-arrow">
+        </lord-icon>
+        <lord-icon
+          src="/assets/arrow.json"
+          trigger="loop"
+          colors="primary:#ff2c7d"
+          class="arrow next-arrow">
+        </lord-icon>
       </div>
-
-    </ngx-slick-carousel>
-
-    <div class="carousel__actions">
-      <i class="fa-solid fa-chevron-left prev-arrow"></i>
-      <i class="fa-solid fa-chevron-right next-arrow"></i>
-    </div>
-    <div class="new__account--container">
-      <wal-new-account></wal-new-account>
+      <div class="new__account--container">
+        <wal-new-account></wal-new-account>
+      </div>
     </div>
   </div>
-</div>
 
 
-<div class="transactions__btns__container">
-  <wal-transactions-services></wal-transactions-services>
-</div>
-
-<div class="home__background">
-  <div class="total__container">
-    <wal-total [title]="'Ingresos del mes'" [total]="totalIncoming"
-               [icon]="'/assets/arrow-up.json'"
-               [iconColor]="'primary:#6d42ba'"></wal-total>
-    <wal-total [title]="'Gastos del mes'" [total]="totalExpenses"
-               [icon]="'/assets/arrow-down.json'"
-               [iconColor]="'primary:#ff6ba4'"></wal-total>
-
-  </div>
-  <div class="operation__list--container">
-    <wal-generic-operation-list [title]="title" [operations]="latestAccountMovements$"
-    ></wal-generic-operation-list>
+  <div class="transactions__btns__container">
+    <wal-transactions-services></wal-transactions-services>
   </div>
 
+  <div class="home__background">
+    <div class="total__container">
+      <wal-total [title]="'Ingresos del mes'" [total]="totalIncoming"
+                 [icon]="'/assets/arrow-up.json'"
+                 [iconColor]="'primary:#6d42ba'"></wal-total>
+      <wal-total [title]="'Gastos del mes'" [total]="totalExpenses"
+                 [icon]="'/assets/arrow-down.json'"
+                 [iconColor]="'primary:#ff6ba4'"></wal-total>
 
-  <div class="operations__graphics__container">
-    <wal-operations-graphics [barChar]="barChar"></wal-operations-graphics>
+    </div>
+    <div class="operation__list--container">
+      <wal-generic-operation-list [title]="title" [operations]="latestAccountMovements$"
+      ></wal-generic-operation-list>
+    </div>
+
+
+    <div class="operations__graphics__container">
+      <wal-operations-graphics [barChar]="barChar"></wal-operations-graphics>
+    </div>
   </div>
-</div>
+</main>

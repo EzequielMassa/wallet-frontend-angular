@@ -13,22 +13,24 @@ import {IncomingsService} from "./services/incomings.service";
 import {incomingsReducers} from "./store/reducers/incomings.reducer";
 import {IncomingsEffect} from "./store/effects/incomings.effect";
 import {HttpClientModule} from "@angular/common/http";
+import {GenericTitleModule} from "../../../../shared/modules/generic-title/generic-title.module";
 
 
 @NgModule({
   declarations: [
     IncomingsComponent
   ],
-  imports: [
-    CommonModule,
-    HttpClientModule,
-    IncomingsRoutingModule,
-    TotalModule,
-    GenericOperationListModule,
-    OperationsGraphicsModule,
-    StoreModule.forFeature('incomings', incomingsReducers),
-    EffectsModule.forFeature([IncomingsEffect]),
-  ],
+    imports: [
+        CommonModule,
+        HttpClientModule,
+        IncomingsRoutingModule,
+        TotalModule,
+        GenericOperationListModule,
+        OperationsGraphicsModule,
+        StoreModule.forFeature('incomings', incomingsReducers),
+        EffectsModule.forFeature([IncomingsEffect]),
+        GenericTitleModule,
+    ],
   exports: [
     IncomingsComponent
   ],

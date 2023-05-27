@@ -20,15 +20,24 @@ import {
 import {currentMonthIncomingsSelector} from "../incomings/store/selectors/incomings.selectors";
 import {getCurrentMonthExpensesAction, getCurrentYearExpensesAction} from "../expenses/store/actions/expenses.action";
 import {currentMonthExpensesSelector} from "../expenses/store/selectors/expenses.selectors";
+import {fadeInOnEnterAnimation} from "angular-animations";
+import {CurrentUserInterface} from "../../../../shared/types/currentUser.interface";
+import {currentUserSelector} from "../auth/store/selectors/auth.selector";
+import * as moment from "moment";
+import {AnimationOptions} from "ngx-lottie";
 
 
 @Component({
   selector: 'wal-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
+  animations: [fadeInOnEnterAnimation()]
 })
 export class HomeComponent implements OnInit, OnDestroy {
 
+  currentUser$!: Observable<CurrentUserInterface | null>;
+  saludo!: string;
+  options!: AnimationOptions;
   userAccounts$!: Observable<UserAccountInterface[]>;
   activeAccount!: number;
   activeAccountSubscription$!: Subscription;
@@ -41,6 +50,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   barChar!: ChartData<'bar'>
   currentMonthIncomings$!: Observable<any>;
   currentMonthExpenses$!: Observable<any>;
+  currentUserSubscription$!: Subscription;
   incomingSubscription$!: Subscription;
   expensesSubscription$!: Subscription;
   totalIncoming!: number;
@@ -89,8 +99,9 @@ export class HomeComponent implements OnInit, OnDestroy {
     })
   }
 
-
   initializeValues(): void {
+    this.currentUser$ = this.store.pipe(select(currentUserSelector))
+    this.saludar()
     this.isLoading$ = this.store.pipe(select(isLoadingSelector))
     this.userAccounts$ = this.store.pipe(select(userAccountsSelector))
     this.latestAccountMovements$ = this.store.pipe(select(latestAccountMovementsSelector))
@@ -124,6 +135,31 @@ export class HomeComponent implements OnInit, OnDestroy {
     })
   }
 
+  saludar():void {
+    const [day, hour, am_pm] = moment().format("dddd,h,A").split(",");
+
+  this.currentUserSubscription$ =  this.currentUser$.pipe().subscribe((user:CurrentUserInterface|null) => {
+      if (am_pm === 'AM' && parseInt(hour) > 6 && parseInt(hour) < 12) {
+        this.saludo = `Buenos dias ${user?.firstname}`;
+        this.options = {
+          path: '/assets/lottie/lottie-dia-icono.json',
+        }
+      } else {
+        if (am_pm === 'PM' && (parseInt(hour) >= 12 || parseInt(hour) < 6)) {
+          this.saludo = `Buenas tardes ${user?.firstname}`;
+          this.options = {
+            path: '/assets/lottie/lottie-tarde-icono.json',
+          }
+        } else {
+          this.saludo = `Buenas noches ${user?.firstname}`
+          this.options = {
+            path: '/assets/lottie/lottie-noche-icono.json',
+          }
+        }
+      }
+    })
+  }
+
   setActive(accountId: number) {
     this.activeAccount = (accountId);
     this.persistanceService.set('activeAccount', accountId)
@@ -141,6 +177,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.incomingSubscription$.unsubscribe();
-    this.expensesSubscription$.unsubscribe()
+    this.expensesSubscription$.unsubscribe();
+    this.currentUserSubscription$.unsubscribe()
   }
 }

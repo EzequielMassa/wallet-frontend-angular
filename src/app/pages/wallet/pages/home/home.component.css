@@ -1,3 +1,22 @@
+.home__title__container {
+  width: 95%;
+ display: flex;
+  align-items: stretch;
+  justify-content: space-around;
+  height: 5rem;
+  padding-top: 30px;
+  gap: 20px;
+}
+
+.carousel__title {
+  width: 90%;
+  padding-left: 10%;
+}
+
+.carousel__title h2 {
+font-size: 1.2rem;
+}
+
 .carousel__container {
   width: 100%;
   position: relative;
@@ -17,10 +36,13 @@
   padding: 15px 0;
 }
 
-.carousel__actions i {
+.arrow {
   cursor: pointer;
   color: #ff2c7d;
-  font-size: 1.2rem;
+}
+
+.prev-arrow {
+  transform: rotate(180deg);
 }
 
 .slide {
@@ -50,7 +72,6 @@
 
 .home__background {
   padding-top: 30px;
-  /* background-color: #f1f4f8;*/
   border-radius: 25px;
 }
 
@@ -83,5 +104,12 @@
 
   .operation__list--container {
     max-width: 90%;
+  }
+
+  .total__container {
+    padding: 30px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
   }
 }

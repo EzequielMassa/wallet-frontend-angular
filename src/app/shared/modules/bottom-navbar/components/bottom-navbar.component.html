@@ -1,4 +1,4 @@
-<mat-toolbar class="bottom__navbar__container" color="primary">
+<mat-toolbar class="bottom__navbar__container" color="primary" [@slideInUpOnEnter]>
   <!--LINKS-->
   <nav mat-tab-nav-bar [backgroundColor]="background" [tabPanel]="tabPanel">
     <a class="bottom__navbar__item" mat-tab-link *ngFor="let link of links"

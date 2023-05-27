@@ -7,11 +7,13 @@ import {currentUserSelector} from "../../../auth/store/selectors/auth.selector";
 import {Router} from "@angular/router";
 import {RegisterRequestInterface} from "../../../auth/types/registerRequest.interface";
 import {updateProfileAction} from "../../../auth/store/actions/update-profile.action";
+import {fadeInDownOnEnterAnimation} from "angular-animations";
 
 @Component({
   selector: 'wal-edit-profile',
   templateUrl: './edit-profile.component.html',
-  styleUrls: ['./edit-profile.component.css']
+  styleUrls: ['./edit-profile.component.css'],
+  animations: [	fadeInDownOnEnterAnimation()]
 })
 export class EditProfileComponent implements OnInit, OnDestroy {
   updateUserForm!: FormGroup;

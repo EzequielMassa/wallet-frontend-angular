@@ -10,6 +10,7 @@ import {EffectsModule} from '@ngrx/effects';
 import {RegisterEffect} from "../../../../store/effects/register.effect";
 import {AuthService} from "../../../../services/auth.service";
 import {MatButtonModule} from "@angular/material/button";
+import {GenericTitleModule} from "../../../../../../../../shared/modules/generic-title/generic-title.module";
 
 @NgModule({
   declarations: [RegisterComponent],
@@ -17,6 +18,7 @@ import {MatButtonModule} from "@angular/material/button";
     CommonModule,
     RegisterRoutingModule,
     ReactiveFormsModule,
+    GenericTitleModule,
     MatButtonModule,
     StoreModule.forFeature('auth', reducers),
     EffectsModule.forFeature([RegisterEffect]),

@@ -8,7 +8,7 @@
       />
       <div class="login__top__banner--text">
         <h1>Wallet</h1>
-        <h5>The best Wallet</h5>
+        <h5>Developed by Ezequiel Massa</h5>
       </div>
     </div>
     <div class="login__bottom__banner" [@flipOnEnter]>
@@ -20,7 +20,9 @@
       </div>
     </div>
   </div>
+  <wal-generic-title [title]="'Iniciar sesion'" class="title"></wal-generic-title>
   <div class="login__container__bottom">
+
     <h2>Welcom Back</h2>
     <form class="login__form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
 

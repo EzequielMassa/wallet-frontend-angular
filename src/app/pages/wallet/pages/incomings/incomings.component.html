@@ -1,9 +1,15 @@
-<div class="incomings__container">
+
+<section class="incomings__container" [@fadeInOnEnter]>
+  <div class="incomings__title">
+    <h2>Ingresos </h2>
+  </div>
   <div class="total__container">
     <wal-total [title]="'Ingresos del mes'" [total]="totalMonthIncoming"
-               [icon]="'fa-solid fa-arrow-up deposit-icon'"></wal-total>
+               [icon]="'/assets/arrow-up.json'"
+               [iconColor]="'primary:#6d42ba'"></wal-total>
     <wal-total [title]="'Ingresos del año'" [total]="totalYearIncomings"
-               [icon]="'fa-solid fa-arrow-up deposit-icon'"></wal-total>
+               [icon]="'/assets/arrow-down.json'"
+               [iconColor]="'primary:#ff6ba4'"></wal-total>
   </div>
 
   <div class="operation__list--container">
@@ -12,4 +18,4 @@
   </div>
 
   <wal-operations-graphics [barChar]="barChar"></wal-operations-graphics>
-</div>
+</section>

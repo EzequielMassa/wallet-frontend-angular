@@ -9,12 +9,14 @@ import {currentMonthIncomingsSelector, currentYearIncomingsSelector} from "./sto
 import {getCurrentMonthIncomingsAction, getCurrentYearIncomingsAction} from "./store/actions/incomings.action";
 import {getLatestAccountMovementsAction} from "../home/store/actions/accounts.action";
 import {latestAccountMovementsSelector} from "../home/store/selectors/home.selectors";
+import {fadeInOnEnterAnimation} from "angular-animations";
 
 
 @Component({
   selector: 'wal-incomings',
   templateUrl: './incomings.component.html',
-  styleUrls: ['./incomings.component.css']
+  styleUrls: ['./incomings.component.css'],
+  animations: [fadeInOnEnterAnimation()]
 })
 export class IncomingsComponent implements OnInit, OnDestroy {
   totalMonthIncoming!: number;

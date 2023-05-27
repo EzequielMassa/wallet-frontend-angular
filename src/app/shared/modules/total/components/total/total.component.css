@@ -1,5 +1,6 @@
 .total__item {
-  width: 200px;
+  width: 250px;
+  min-height: 150px;
   display: flex;
   align-items: center;
   border: 2px solid;
