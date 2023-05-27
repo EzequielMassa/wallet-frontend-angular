@@ -65,20 +65,11 @@
   </div>
 
   <div class="home__background">
-    <div class="total__container">
-      <wal-total [title]="'Ingresos del mes'" [total]="totalIncoming"
-                 [icon]="'/assets/arrow-up.json'"
-                 [iconColor]="'primary:#6d42ba'"></wal-total>
-      <wal-total [title]="'Gastos del mes'" [total]="totalExpenses"
-                 [icon]="'/assets/arrow-down.json'"
-                 [iconColor]="'primary:#ff6ba4'"></wal-total>
 
-    </div>
     <div class="operation__list--container">
       <wal-generic-operation-list [title]="title" [operations]="latestAccountMovements$"
       ></wal-generic-operation-list>
     </div>
-
 
     <div class="operations__graphics__container">
       <wal-operations-graphics [barChar]="barChar"></wal-operations-graphics>

@@ -1,5 +1,5 @@
 .home__title__container {
-  width: 95%;
+  width: 100%;
  display: flex;
   align-items: stretch;
   justify-content: space-around;
@@ -9,8 +9,9 @@
 }
 
 .carousel__title {
-  width: 90%;
-  padding-left: 10%;
+  width: 80%;
+margin: 0 auto;
+  padding-top: 30px;
 }
 
 .carousel__title h2 {
@@ -81,6 +82,7 @@ font-size: 1.2rem;
 
 .operation__list--container {
   margin: 25px auto;
+  padding: 20px 0;
 }
 
 .operations__graphics__container {
@@ -95,21 +97,7 @@ font-size: 1.2rem;
     margin: 15px auto;
   }
 
-  .new__account--container {
-    position: absolute;
-    width: 25px;
-    top: 100px;
-    right: 90px;
-  }
-
   .operation__list--container {
     max-width: 90%;
-  }
-
-  .total__container {
-    padding: 30px 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
   }
 }

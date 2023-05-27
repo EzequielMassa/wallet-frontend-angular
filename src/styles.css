@@ -10,19 +10,20 @@ body {
 }
 
 .title {
-  padding: 25px 0 0 25px;
+  padding: 25px 0 0 1%;
   color: #673ab7;
   font-weight: 100;
-  width: 100%;
+  width: 90%;
 }
 
 .login {
-  width: 100%;
+  width: 90%;
   /* height: 80vh; */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 0 auto;
 }
 
 .login__container__top {

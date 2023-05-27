@@ -53,8 +53,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   currentUserSubscription$!: Subscription;
   incomingSubscription$!: Subscription;
   expensesSubscription$!: Subscription;
-  totalIncoming!: number;
-  totalExpenses!: number;
 
 
   slideConfig = {
@@ -115,7 +113,6 @@ export class HomeComponent implements OnInit, OnDestroy {
         backgroundColor: ["rgba(103, 58, 183, 0.7)"],
 
       }
-      this.totalIncoming = monthIncomings[1]
     })
     this.expensesSubscription$ = this.currentMonthExpenses$.subscribe((monthExpenses) => {
       this.barCharDataExpenses = {
@@ -124,7 +121,6 @@ export class HomeComponent implements OnInit, OnDestroy {
         backgroundColor: ["rgba(255, 44, 125, 0.7)"],
 
       }
-      this.totalExpenses = monthExpenses[1]
       this.barChar = {
         labels: this.barCharLabels,
         datasets: [
