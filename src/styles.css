@@ -16,6 +16,12 @@ body {
   width: 90%;
 }
 
+.spinner circle {
+
+  stroke: rgba(255, 44, 125, 1) !important;
+}
+
+
 .login {
   width: 90%;
   /* height: 80vh; */
