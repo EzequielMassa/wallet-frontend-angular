@@ -2,7 +2,7 @@
   width: 90%;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   margin: 0 auto;
   padding-top: 30px;
@@ -49,17 +49,6 @@
     width: 3rem;
   }
 
-  .footer__login__btn {
-    display: inline-block;
-    padding: 0.6em 2em;
-    background-color: rgba(103, 58, 183, 1);
-    border-radius: 1.5rem;
-    cursor: pointer;
-    text-decoration: none;
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: white;
-  }
 }
 
 /* RESPONSIVE DESKTOP */

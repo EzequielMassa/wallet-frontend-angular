@@ -23,6 +23,9 @@ import {AuthService} from "./pages/wallet/pages/auth/services/auth.service";
 
 
 import {LottieModule} from 'ngx-lottie';
+import {SpinnerModule} from "./shared/modules/spinner/spinner.module";
+import {SpinnerInterceptorProvider} from "./shared/interceptors/spinner.interceptor";
+import {SpinnerService} from "./shared/modules/spinner/services/spinner.service";
 
 export function playerFactory(): any {
   return import('lottie-web');
@@ -38,13 +41,14 @@ export function playerFactory(): any {
     FooterModule,
     TopNavbarModule,
     BottomNavbarModule,
+    SpinnerModule,
     StoreModule.forRoot({}, {}),
     StoreModule.forFeature('auth', reducers),
     StoreDevtoolsModule.instrument({maxAge: 25, logOnly: !isDevMode()}),
     EffectsModule.forRoot([LoginEffect,LogoutEffect,RegisterEffect,UpdateProfileEffect]),
     LottieModule.forRoot({ player: playerFactory }),
   ],
-  providers: [AuthService,AuthInterceptorProvider, AuthGuard, PersistanceService],
+  providers: [AuthService,AuthInterceptorProvider,SpinnerInterceptorProvider,SpinnerService, AuthGuard, PersistanceService],
   bootstrap: [AppComponent],
 
 })

@@ -5,6 +5,10 @@
   overflow: auto;
 }
 
+.operation__list--container h2 {
+  font-size: 1.5rem;
+}
+
 .mat-filter {
   width: 75%;
 }

@@ -22,10 +22,7 @@
   <wal-generic-title [title]="'Registro'" class="title"></wal-generic-title>
   <div class="login__container__bottom">
     <h2>Welcome</h2>
- <!--    <ng-container *ngIf="isSubmitting$ | async;else regForm">
-       <mat-spinner class="spinner"></mat-spinner>
-     </ng-container>-->
-<!--    <ng-template #regForm>-->
+
       <form class="login__form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
         <fieldset class="login__form__fieldset">
           <label for="firstNameInput">First Name </label>
@@ -139,6 +136,6 @@
           <button mat-flat-button color="primary" type="submit">Register</button>
         </div>
       </form>
-<!--    </ng-template>-->
+
   </div>
 </section>
