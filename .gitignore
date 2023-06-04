@@ -41,3 +41,5 @@ testem.log
 .DS_Store
 Thumbs.db
 /quokka/test.ts
+src/app/pages/wallet/pages/home/home.component.ts
+.gitignore
