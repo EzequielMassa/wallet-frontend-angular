@@ -1,8 +1,11 @@
-
 .operation__list--container {
   width: 90%;
   margin: 50px auto;
-  overflow: auto;
+  overflow-x: scroll;
+}
+
+table {
+  overflow-x: scroll;
 }
 
 .operation__list--container h2 {
