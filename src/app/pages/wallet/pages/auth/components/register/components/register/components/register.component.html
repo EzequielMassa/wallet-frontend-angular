@@ -137,10 +137,12 @@
           [backendErrors]="backendErrors$ | async"
         >
         </wal-backend-error-messages>
-        <div class="login__form__btn__container">
+        <div class="login__form__btn__container register--link">
           <button mat-flat-button color="primary" type="submit">Register</button>
         </div>
       </form>
-
+    <div class="login__form__btn__container">
+      <a routerLink="/auth/login"><span><i class="fa-solid fa-arrow-left register--link--icon"></i></span>Volver a iniciar sesión</a>
+    </div>
   </div>
 </section>
