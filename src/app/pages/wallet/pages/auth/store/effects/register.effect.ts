@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { map, switchMap, tap } from 'rxjs';
+import {catchError, map, of, switchMap, tap} from 'rxjs';
 import { PersistanceService } from '../../../../../../shared/services/persistance.service';
 import { CurrentUserInterface } from '../../../../../../shared/types/currentUser.interface';
 import { AuthService } from '../../services/auth.service';
 import {
-  registerAction,
+  registerAction, registerFailureAction,
   registerSuccessAction,
 } from '../actions/register.action';
+import {HttpErrorResponse} from "@angular/common/http";
+import {loginFailureAction} from "../actions/login.actions";
 
 @Injectable()
 export class RegisterEffect {
@@ -19,6 +21,9 @@ export class RegisterEffect {
         return this.authService.register(request).pipe(
           map((currentUser: CurrentUserInterface) => {
             return registerSuccessAction({ currentUser });
+          }),
+          catchError((errorResponse: HttpErrorResponse) => {
+            return of(registerFailureAction({ errors: errorResponse.error }));
           })
         );
       })

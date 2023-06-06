@@ -11,18 +11,22 @@ import {RegisterEffect} from "../../../../store/effects/register.effect";
 import {AuthService} from "../../../../services/auth.service";
 import {MatButtonModule} from "@angular/material/button";
 import {GenericTitleModule} from "../../../../../../../../shared/modules/generic-title/generic-title.module";
+import {
+    BackendErrorMessagesModule
+} from "../../../../../../../../shared/modules/backend-error-messages/backend-error-messages.module";
 
 @NgModule({
   declarations: [RegisterComponent],
-  imports: [
-    CommonModule,
-    RegisterRoutingModule,
-    ReactiveFormsModule,
-    GenericTitleModule,
-    MatButtonModule,
-    StoreModule.forFeature('auth', reducers),
-    EffectsModule.forFeature([RegisterEffect]),
-  ],
+    imports: [
+        CommonModule,
+        RegisterRoutingModule,
+        ReactiveFormsModule,
+        GenericTitleModule,
+        MatButtonModule,
+        StoreModule.forFeature('auth', reducers),
+        EffectsModule.forFeature([RegisterEffect]),
+        BackendErrorMessagesModule,
+    ],
   providers: [AuthService]
 
 })

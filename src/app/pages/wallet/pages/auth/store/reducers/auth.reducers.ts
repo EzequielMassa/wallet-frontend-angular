@@ -16,7 +16,7 @@ import {
   passwordResetSuccessAction,
 } from '../actions/password-reset.actions';
 import {
-  registerAction,
+  registerAction, registerFailureAction,
   registerSuccessAction,
 } from '../actions/register.action';
 import {
@@ -53,7 +53,19 @@ const authReducer = createReducer(
       ...state,
       isSubmitting: false,
       isLoggedIn: false,
+      backendErrors: null,
+      backendErrorsPasswordForgot: null,
       currentUser: action.currentUser,
+    })
+  ),
+  on(
+    registerFailureAction,
+    (state, action): AuthStateInterface => ({
+      ...state,
+      isSubmitting: false,
+      isLoggedIn: false,
+      backendErrors: action.errors,
+      backendErrorsPasswordForgot: null,
     })
   ),
   on(
