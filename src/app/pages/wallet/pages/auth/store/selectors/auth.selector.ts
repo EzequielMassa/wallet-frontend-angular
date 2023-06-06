@@ -24,6 +24,11 @@ export const backendErrorsSelector = createSelector(
   (authState: AuthStateInterface) => authState.backendErrors
 );
 
+export const backendErrorsPasswordForgotSelector = createSelector(
+  authFeatureSelector,
+  (authState: AuthStateInterface) => authState.backendErrorsPasswordForgot
+);
+
 export const backendMessagesSelector = createSelector(
   authFeatureSelector,
   (authState: AuthStateInterface) => authState.backenMessages

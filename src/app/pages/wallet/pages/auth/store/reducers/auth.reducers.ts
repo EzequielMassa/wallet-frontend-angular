@@ -31,6 +31,7 @@ const initialState: AuthStateInterface = {
   isLoggedIn: null,
   backendErrors: null,
   backenMessages: null,
+  backendErrorsPasswordForgot: null,
   passwordForgotSubmitedSuccessfully: false,
   passwordResetSubmitedSuccessfully: false,
 };
@@ -43,6 +44,7 @@ const authReducer = createReducer(
       ...state,
       isSubmitting: true,
       backendErrors: null,
+      backendErrorsPasswordForgot: null,
     })
   ),
   on(
@@ -60,6 +62,7 @@ const authReducer = createReducer(
       ...state,
       isSubmitting: true,
       backendErrors: null,
+      backendErrorsPasswordForgot: null,
     })
   ),
   on(
@@ -69,6 +72,7 @@ const authReducer = createReducer(
       isSubmitting: false,
       isLoggedIn: true,
       backendErrors: null,
+      backendErrorsPasswordForgot: null,
       currentUser: action.currentUser,
     })
   ),
@@ -79,6 +83,7 @@ const authReducer = createReducer(
       isSubmitting: false,
       isLoggedIn: false,
       backendErrors: action.errors,
+      backendErrorsPasswordForgot: null,
     })
   ),
   on(
@@ -87,6 +92,7 @@ const authReducer = createReducer(
       ...state,
       isSubmitting: true,
       backendErrors: null,
+      backendErrorsPasswordForgot: null,
     })
   ),
   on(
@@ -104,6 +110,7 @@ const authReducer = createReducer(
       ...state,
       isSubmitting: true,
       backendErrors: null,
+      backendErrorsPasswordForgot: null,
       passwordForgotSubmitedSuccessfully: false,
     })
   ),
@@ -113,6 +120,7 @@ const authReducer = createReducer(
       ...state,
       isSubmitting: false,
       backendErrors: null,
+      backendErrorsPasswordForgot: null,
       passwordForgotSubmitedSuccessfully: true,
       backenMessages: action.backendMessages,
     })
@@ -122,7 +130,8 @@ const authReducer = createReducer(
     (state, action): AuthStateInterface => ({
       ...state,
       isSubmitting: false,
-      backendErrors: action.errors,
+      backendErrors: null,
+      backendErrorsPasswordForgot: action.errors,
       passwordForgotSubmitedSuccessfully: false,
     })
   ),
@@ -132,6 +141,7 @@ const authReducer = createReducer(
       ...state,
       isSubmitting: true,
       backendErrors: null,
+      backendErrorsPasswordForgot: null,
       passwordResetSubmitedSuccessfully: false,
     })
   ),
@@ -141,6 +151,7 @@ const authReducer = createReducer(
       ...state,
       isSubmitting: false,
       backendErrors: null,
+      backendErrorsPasswordForgot: null,
       passwordResetSubmitedSuccessfully: true,
       backenMessages: action.backendMessage,
     })

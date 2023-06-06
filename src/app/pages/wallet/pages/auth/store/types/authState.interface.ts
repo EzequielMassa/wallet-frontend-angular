@@ -7,6 +7,7 @@ export interface AuthStateInterface {
   currentUser: CurrentUserInterface | null,
   isLoggedIn: boolean | null,
   backendErrors:BackendErrorsInterface|null,
+  backendErrorsPasswordForgot:BackendErrorsInterface|null,
   backenMessages:BackendMessagesInterface|null
   passwordForgotSubmitedSuccessfully:boolean;
   passwordResetSubmitedSuccessfully:boolean;

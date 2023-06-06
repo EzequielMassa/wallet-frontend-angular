@@ -6,6 +6,7 @@ import {select, Store} from "@ngrx/store";
 import {passwordForgotAction} from "../../../../../../store/actions/password-forgot.actions";
 import {Observable} from "rxjs";
 import {
+  backendErrorsPasswordForgotSelector,
   backendErrorsSelector,
   isSubmittingSelector,
   submitedSuccessfullySelector
@@ -48,7 +49,7 @@ export class PasswordForgotComponent implements OnInit{
   }
   initializeValues(): void {
     this.isSubmitting$ = this.store.pipe(select(isSubmittingSelector));
-    this.backendErrors$ = this.store.pipe(select(backendErrorsSelector))
+    this.backendErrors$ = this.store.pipe(select(backendErrorsPasswordForgotSelector))
     this.isSubmitedSuccessfully$ = this.store.pipe(select(submitedSuccessfullySelector))
   }
   cancel(): void {
