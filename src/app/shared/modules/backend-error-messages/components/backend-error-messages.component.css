@@ -1,7 +1,4 @@
 
-.mat-mdc-list-base {
-  /*border: 2px solid red;*/
-}
 .error-messages {
   padding: 15px 0;
 }
@@ -11,7 +8,7 @@
   overflow-x: auto;
 }
 .error-messages__item__text, .error-messages__item__icon {
-  display: inline-block;
+  display: flex;
   padding: 0 5px;
   vertical-align: middle;
   color: red;
