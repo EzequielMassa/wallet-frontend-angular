@@ -1,6 +1,11 @@
 .incomings__container {
   padding-top: 50px;
 }
+.divider {
+  max-width: 90%;
+  margin: 0 auto;
+  background: #ff2c7d;
+}
 .incomings__title {
   width: 90%;
   padding-left: 5%;

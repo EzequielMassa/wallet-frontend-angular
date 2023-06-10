@@ -11,11 +11,11 @@
                [icon]="'/assets/arrow-down.json'"
                [iconColor]="'primary:#ff6ba4'"></wal-total>
   </div>
-
+  <mat-divider class="divider"></mat-divider>
   <div class="operation__list--container">
     <wal-generic-operation-list [title]="title" [operations]="IncomingsAccountMovements$"
     ></wal-generic-operation-list>
   </div>
-
+  <mat-divider class="divider"></mat-divider>
   <wal-operations-graphics [barChar]="barChar"></wal-operations-graphics>
 </section>

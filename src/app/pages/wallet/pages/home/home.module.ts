@@ -35,6 +35,7 @@ import lottie from 'lottie-web';
 import { defineElement } from 'lord-icon-element';
 import {GenericTitleModule} from "../../../../shared/modules/generic-title/generic-title.module";
 import {LottieComponent} from "ngx-lottie";
+import {MatDividerModule} from "@angular/material/divider";
 @NgModule({
   declarations: [HomeComponent, BalanceComponent, NewAccountComponent, TransactionsServicesComponent],
     imports: [
@@ -44,6 +45,7 @@ import {LottieComponent} from "ngx-lottie";
         ReactiveFormsModule,
         GenericTitleModule,
         MatDialogModule,
+        MatDividerModule,
         MatTooltipModule,
         MatButtonModule,
         MatIconModule,

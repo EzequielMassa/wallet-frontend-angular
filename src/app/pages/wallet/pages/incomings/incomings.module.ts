@@ -14,6 +14,7 @@ import {incomingsReducers} from "./store/reducers/incomings.reducer";
 import {IncomingsEffect} from "./store/effects/incomings.effect";
 import {HttpClientModule} from "@angular/common/http";
 import {GenericTitleModule} from "../../../../shared/modules/generic-title/generic-title.module";
+import {MatDividerModule} from "@angular/material/divider";
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import {GenericTitleModule} from "../../../../shared/modules/generic-title/gener
         StoreModule.forFeature('incomings', incomingsReducers),
         EffectsModule.forFeature([IncomingsEffect]),
         GenericTitleModule,
+        MatDividerModule,
     ],
   exports: [
     IncomingsComponent

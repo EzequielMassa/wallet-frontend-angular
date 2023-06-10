@@ -14,6 +14,7 @@ import {ExpensesEffect} from "./store/effects/expenses.effect";
 import {HttpClientModule} from "@angular/common/http";
 import {ExpensesService} from "./services/expenses.service";
 import {GenericTitleModule} from "../../../../shared/modules/generic-title/generic-title.module";
+import {MatDividerModule} from "@angular/material/divider";
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import {GenericTitleModule} from "../../../../shared/modules/generic-title/gener
         StoreModule.forFeature('expenses', expensesReducers),
         EffectsModule.forFeature([ExpensesEffect]),
         GenericTitleModule,
+        MatDividerModule,
     ],
   exports: [
     ExpensesComponent

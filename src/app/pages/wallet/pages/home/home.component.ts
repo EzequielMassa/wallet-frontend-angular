@@ -31,6 +31,9 @@ import {
   userAccountsSelector,
 } from './store/selectors/home.selectors';
 import { UserAccountInterface } from './types/userAccount.interface';
+import {ToastrService} from "ngx-toastr";
+import {ChangedFiles} from "@angular-devkit/build-angular/src/builders/browser-esbuild/watcher";
+import {ActiveDescendantKeyManager} from "@angular/cdk/a11y";
 
 @Component({
   selector: 'wal-home',
@@ -90,7 +93,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   constructor(
     private accountService: AccountService,
     private store: Store,
-    private persistanceService: PersistanceService
+    private persistanceService: PersistanceService,
+    private toastr: ToastrService
   ) {
     this.accountService
       .getUserAccounts()
@@ -177,7 +181,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   setActive(accountId: number) {
     this.activeAccount = accountId;
     this.persistanceService.set('activeAccount', accountId);
-
+   this.showSuccessActive()
     this.store.dispatch(
       getLatestAccountMovementsAction({ activeAccount: this.activeAccount })
     );
@@ -186,7 +190,9 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.store.dispatch(getCurrentMonthExpensesAction());
     this.store.dispatch(getCurrentYearExpensesAction());
   }
-
+  showSuccessActive() {
+    this.toastr.info('', `Active account:  Nº${this.activeAccount}`,{positionClass: 'toast-bottom-right'});
+  }
   ngOnInit(): void {
     this.store.dispatch(getUserAccountsAction());
     this.initializeValues();

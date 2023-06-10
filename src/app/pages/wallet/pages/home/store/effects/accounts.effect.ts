@@ -137,6 +137,6 @@ export class AccountsEffect {
   showSuccess(title:string) {
     this.toastr.success('', title,{positionClass: 'toast-bottom-right'});
   }
-  constructor(private actions$: Actions, private accountService: AccountService, private store: Store, private persistanceService: PersistanceService,    private toastr: ToastrService) {
+  constructor(private actions$: Actions, private accountService: AccountService, private store: Store, private persistanceService: PersistanceService, private toastr: ToastrService) {
   }
 }
