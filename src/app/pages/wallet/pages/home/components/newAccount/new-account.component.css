@@ -1,3 +1,20 @@
+.new__account--container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
 .new-account-btn {
   cursor: pointer;
+}
+
+.new-account-text {
+  color: #673ab7;
+
+}
+
+@media (min-width: 768px) {
+  .new-account-text {
+    visibility: hidden;
+  }
 }

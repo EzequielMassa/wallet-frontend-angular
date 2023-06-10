@@ -177,6 +177,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   setActive(accountId: number) {
     this.activeAccount = accountId;
     this.persistanceService.set('activeAccount', accountId);
+
     this.store.dispatch(
       getLatestAccountMovementsAction({ activeAccount: this.activeAccount })
     );
