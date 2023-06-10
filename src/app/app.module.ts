@@ -20,12 +20,11 @@ import {LogoutEffect} from "./pages/wallet/pages/auth/store/effects/logout.effec
 import {RegisterEffect} from "./pages/wallet/pages/auth/store/effects/register.effect";
 import {UpdateProfileEffect} from "./pages/wallet/pages/auth/store/effects/update-profile.effect";
 import {AuthService} from "./pages/wallet/pages/auth/services/auth.service";
-
-
 import {LottieModule} from 'ngx-lottie';
 import {SpinnerModule} from "./shared/modules/spinner/spinner.module";
 import {SpinnerInterceptorProvider} from "./shared/interceptors/spinner.interceptor";
 import {SpinnerService} from "./shared/modules/spinner/services/spinner.service";
+import {ToastrModule} from "ngx-toastr";
 
 export function playerFactory(): any {
   return import('lottie-web');
@@ -42,6 +41,7 @@ export function playerFactory(): any {
     TopNavbarModule,
     BottomNavbarModule,
     SpinnerModule,
+    ToastrModule.forRoot(),
     StoreModule.forRoot({}, {}),
     StoreModule.forFeature('auth', reducers),
     StoreDevtoolsModule.instrument({maxAge: 25, logOnly: !isDevMode()}),

@@ -1,16 +1,13 @@
-import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import { Actions, createEffect, ofType } from '@ngrx/effects';
+import {Injectable} from '@angular/core';
+import {Router} from '@angular/router';
+import {Actions, createEffect, ofType} from '@ngrx/effects';
 import {catchError, map, of, switchMap, tap} from 'rxjs';
-import { PersistanceService } from '../../../../../../shared/services/persistance.service';
-import { CurrentUserInterface } from '../../../../../../shared/types/currentUser.interface';
-import { AuthService } from '../../services/auth.service';
-import {
-  registerAction, registerFailureAction,
-  registerSuccessAction,
-} from '../actions/register.action';
+import {PersistanceService} from '../../../../../../shared/services/persistance.service';
+import {CurrentUserInterface} from '../../../../../../shared/types/currentUser.interface';
+import {AuthService} from '../../services/auth.service';
+import {registerAction, registerFailureAction, registerSuccessAction,} from '../actions/register.action';
 import {HttpErrorResponse} from "@angular/common/http";
-import {loginFailureAction} from "../actions/login.actions";
+import {ToastrService} from "ngx-toastr";
 
 @Injectable()
 export class RegisterEffect {
@@ -36,15 +33,20 @@ export class RegisterEffect {
         ofType(registerSuccessAction),
         tap(() => {
           this.router.navigateByUrl('/auth/login');
+        this.showSuccess();
         })
       ),
     { dispatch: false }
   );
 
+  showSuccess() {
+    this.toastr.success('', 'Registro exitoso!',{positionClass: 'toast-bottom-right'});
+  }
   constructor(
     private actions$: Actions,
     private authService: AuthService,
     private persistanceService: PersistanceService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) {}
 }

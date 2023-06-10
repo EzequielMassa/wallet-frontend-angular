@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {Actions, createEffect, ofType} from "@ngrx/effects";
-import {map, switchMap} from "rxjs";
+import {map, switchMap, tap} from "rxjs";
 import {
   createNewDepositPaymentAction,
   createNewDepositPaymentSuccessAction,
@@ -20,6 +20,7 @@ import {OperationInterface} from "../../../../../../shared/types/operation.inter
 import {PersistanceService} from "../../../../../../shared/services/persistance.service";
 import {getCurrentMonthIncomingsAction} from "../../../incomings/store/actions/incomings.action";
 import {getCurrentMonthExpensesAction} from "../../../expenses/store/actions/expenses.action";
+import {ToastrService} from "ngx-toastr";
 
 @Injectable()
 export class AccountsEffect {
@@ -99,6 +100,43 @@ export class AccountsEffect {
       })
     )
   )
-  constructor(private actions$: Actions, private accountService: AccountService, private store: Store, private persistanceService: PersistanceService) {
+
+  accountCreated$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(createNewUserAccountSuccessAction),
+        tap(() => {
+          this.showSuccess('Nueva cuenta creada con exito!');
+        })
+      ),
+    { dispatch: false }
+  );
+
+  depositedPaid$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(createNewDepositPaymentSuccessAction),
+        tap(() => {
+          this.showSuccess('Transacción realizada con exito!');
+        })
+      ),
+    { dispatch: false }
+  );
+
+  transfered$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(createNewTransferSuccessAction),
+        tap(() => {
+          this.showSuccess('Transferencia realizada con exito!');
+        })
+      ),
+    { dispatch: false }
+  );
+
+  showSuccess(title:string) {
+    this.toastr.success('', title,{positionClass: 'toast-bottom-right'});
+  }
+  constructor(private actions$: Actions, private accountService: AccountService, private store: Store, private persistanceService: PersistanceService,    private toastr: ToastrService) {
   }
 }
