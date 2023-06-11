@@ -58,6 +58,7 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       const request: LoginRequestInterface = this.loginForm.value;
       this.store.dispatch(loginAction({ request }));
+			
     }
   }
 }

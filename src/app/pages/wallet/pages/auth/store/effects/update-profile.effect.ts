@@ -1,9 +1,11 @@
 import {Injectable} from "@angular/core";
 import {Actions, createEffect, ofType} from "@ngrx/effects";
 import {updateProfileAction, updateProfileSuccessAction} from "../actions/update-profile.action";
-import {map, switchMap} from "rxjs";
+import {map, switchMap, tap} from "rxjs";
 import {CurrentUserInterface} from "../../../../../../shared/types/currentUser.interface";
 import {AuthService} from "../../services/auth.service";
+import {ToastrService} from "ngx-toastr";
+import {createNewTransferSuccessAction} from "../../../home/store/actions/accounts.action";
 
 
 @Injectable()
@@ -22,9 +24,23 @@ export class UpdateProfileEffect {
     )
   );
 
+  profileUpdated$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(updateProfileSuccessAction),
+        tap(() => {
+          this.showSuccess('Profile updated successfully!');
+        })
+      ),
+    { dispatch: false }
+  );
+  showSuccess(title:string) {
+    this.toastr.success('', title,{positionClass: 'toast-bottom-right'});
+  }
   constructor(
     private actions$: Actions,
     private authService: AuthService,
+    private toastr: ToastrService
   ) {
   }
 }
