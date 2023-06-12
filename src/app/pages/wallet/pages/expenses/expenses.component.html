@@ -4,8 +4,8 @@
   </div>
   <div class="total__container">
     <wal-total [title]="'Egresos del mes'" [total]="totalMonthExpenses"
-               [icon]="'/assets/arrow-up.json'"
-               [iconColor]="'primary:#6d42ba'"></wal-total>
+               [icon]="'/assets/arrow-down.json'"
+               [iconColor]="'primary:#ff6ba4'"></wal-total>
     <wal-total [title]="'Egresos del año'" [total]="totalYearExpenses"
                [icon]="'/assets/arrow-down.json'"
                [iconColor]="'primary:#ff6ba4'"></wal-total>
@@ -16,6 +16,8 @@
     ></wal-generic-operation-list>
   </div>
   <mat-divider class="divider"></mat-divider>
+  <div class="operations__graphics__container">
   <wal-operations-graphics [barChar]="barChar"></wal-operations-graphics>
+  </div>
 </section>
 

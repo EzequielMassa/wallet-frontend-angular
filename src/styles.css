@@ -188,3 +188,7 @@ input:-webkit-autofill:active {
   gap: 30px;
   width: 100%;
 }
+.operations__graphics__container {
+  margin: 25px auto;
+  width: 90%;
+}

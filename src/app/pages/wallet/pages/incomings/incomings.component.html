@@ -8,8 +8,8 @@
                [icon]="'/assets/arrow-up.json'"
                [iconColor]="'primary:#6d42ba'"></wal-total>
     <wal-total [title]="'Ingresos del año'" [total]="totalYearIncomings"
-               [icon]="'/assets/arrow-down.json'"
-               [iconColor]="'primary:#ff6ba4'"></wal-total>
+               [icon]="'/assets/arrow-up.json'"
+               [iconColor]="'primary:#6d42ba'"></wal-total>
   </div>
   <mat-divider class="divider"></mat-divider>
   <div class="operation__list--container">
@@ -17,5 +17,7 @@
     ></wal-generic-operation-list>
   </div>
   <mat-divider class="divider"></mat-divider>
+  <div class="operations__graphics__container">
   <wal-operations-graphics [barChar]="barChar"></wal-operations-graphics>
+  </div>
 </section>

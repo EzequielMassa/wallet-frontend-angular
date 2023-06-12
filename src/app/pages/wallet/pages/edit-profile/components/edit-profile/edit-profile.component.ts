@@ -64,9 +64,7 @@ export class EditProfileComponent implements OnInit, OnDestroy {
     this.subscription = this.currentUser$.pipe().subscribe((currentUser) => this.currentUser = currentUser);
   }
 
-  navigate(): void {
-    this.router.navigate(['/home']);
-  }
+
 
   onSubmit(): void {
     this.updateUserForm.addControl('email', new FormControl(this.currentUser?.email));
