@@ -191,7 +191,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.store.dispatch(getCurrentYearExpensesAction());
   }
   showSuccessActive() {
-    this.toastr.info('', `Active account:  Nº${this.activeAccount}`,{positionClass: 'toast-bottom-right'});
+    this.toastr.info('', `Active account:  Nº${this.activeAccount}`);
   }
   ngOnInit(): void {
     this.store.dispatch(getUserAccountsAction());

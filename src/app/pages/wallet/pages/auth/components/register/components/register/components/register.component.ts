@@ -5,7 +5,7 @@ import {select, Store} from '@ngrx/store';
 import {registerAction} from '../../../../../store/actions/register.action';
 import {RegisterRequestInterface} from '../../../../../types/registerRequest.interface';
 import {Observable} from 'rxjs';
-import {backendErrorsSelector, isSubmittingSelector} from '../../../../../store/selectors/auth.selector';
+import {backendErrorsRegisterSelector, isSubmittingSelector} from '../../../../../store/selectors/auth.selector';
 import {slideInUpOnEnterAnimation, slideOutDownOnLeaveAnimation} from "angular-animations";
 import {BackendErrorsInterface} from "../../../../../../../../../shared/types/backendErrors.interface";
 
@@ -57,7 +57,7 @@ export class RegisterComponent implements OnInit {
 
   private inializeValues(): void {
     this.isSubmitting$ = this.store.pipe(select(isSubmittingSelector));
-    this.backendErrors$ = this.store.pipe(select(backendErrorsSelector));
+    this.backendErrors$ = this.store.pipe(select(backendErrorsRegisterSelector));
   }
 
   onSubmit(): void {

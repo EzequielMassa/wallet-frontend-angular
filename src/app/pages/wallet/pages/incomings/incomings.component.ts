@@ -10,6 +10,7 @@ import {getCurrentMonthIncomingsAction, getCurrentYearIncomingsAction} from "./s
 import {getLatestAccountMovementsAction} from "../home/store/actions/accounts.action";
 import {latestAccountMovementsSelector} from "../home/store/selectors/home.selectors";
 import {fadeInOnEnterAnimation} from "angular-animations";
+import {ToastrService} from "ngx-toastr";
 
 
 @Component({
@@ -33,13 +34,14 @@ export class IncomingsComponent implements OnInit, OnDestroy {
   barCharLabels: string[] = [];
   currentYear: number = moment().get('year')
 
-  constructor( private store: Store, private persistanceService: PersistanceService) {
+  constructor( private store: Store, private persistanceService: PersistanceService, private toastr: ToastrService) {
     this.store.dispatch(getCurrentMonthIncomingsAction())
     this.store.dispatch(getCurrentYearIncomingsAction())
   }
 
   ngOnInit(): void {
     this.initializeValues()
+    this.showSuccessActive()
   }
 
   ngOnDestroy(): void {
@@ -94,5 +96,8 @@ export class IncomingsComponent implements OnInit, OnDestroy {
         return movement.type == 'DEPOSIT' || movement.type == 'TRANSFER_IN'
       })
     }))
+  }
+  showSuccessActive() {
+    this.toastr.info('', `Active account:  Nº${this.activeAccount}`);
   }
 }

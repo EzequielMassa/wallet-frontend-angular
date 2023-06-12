@@ -15,6 +15,7 @@ import {
 import {getCurrentMonthExpensesAction, getCurrentYearExpensesAction} from "./store/actions/expenses.action";
 import {currentMonthExpensesSelector, currentYearExpensesSelector} from "./store/selectors/expenses.selectors";
 import {fadeInOnEnterAnimation} from "angular-animations";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'wal-expenses',
@@ -39,13 +40,14 @@ export class ExpensesComponent implements OnInit, OnDestroy {
   currentYear: number = moment().get('year')
 
 
-  constructor(private accountService: AccountService, private store: Store, private persistanceService: PersistanceService) {
+  constructor(private accountService: AccountService, private store: Store, private persistanceService: PersistanceService,private toastr: ToastrService) {
     this.store.dispatch(getCurrentMonthExpensesAction())
     this.store.dispatch(getCurrentYearExpensesAction())
   }
 
   ngOnInit(): void {
     this.initializeValues()
+    this.showSuccessActive()
   }
 
   ngOnDestroy(): void {
@@ -99,5 +101,7 @@ export class ExpensesComponent implements OnInit, OnDestroy {
       })
     }))
   }
-
+  showSuccessActive() {
+    this.toastr.info('', `Active account:  Nº${this.activeAccount}`);
+  }
 }
