@@ -1,7 +1,6 @@
 import {Component} from '@angular/core';
 import {Store} from "@ngrx/store";
 import {createNewUserAccountAction} from "../../store/actions/accounts.action";
-import {fadeInOnEnterAnimation} from "angular-animations";
 
 @Component({
   selector: 'wal-new-account',

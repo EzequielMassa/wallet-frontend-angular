@@ -1,39 +1,31 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Store, select } from '@ngrx/store';
-import { fadeInOnEnterAnimation } from 'angular-animations';
-import { ChartData } from 'chart.js';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {select, Store} from '@ngrx/store';
+import {fadeInOnEnterAnimation} from 'angular-animations';
+import {ChartData} from 'chart.js';
 import * as moment from 'moment';
-import { AnimationOptions } from 'ngx-lottie';
-import { Observable, Subscription } from 'rxjs';
-import { AccountService } from 'src/app/pages/wallet/pages/home/services/account.service';
-import { PersistanceService } from 'src/app/shared/services/persistance.service';
-import { BarCharDataInterface } from '../../../../shared/types/barCharData.interface';
-import { CurrentUserInterface } from '../../../../shared/types/currentUser.interface';
-import { OperationInterface } from '../../../../shared/types/operation.interface';
-import { currentUserSelector } from '../auth/store/selectors/auth.selector';
-import {
-  getCurrentMonthExpensesAction,
-  getCurrentYearExpensesAction,
-} from '../expenses/store/actions/expenses.action';
-import { currentMonthExpensesSelector } from '../expenses/store/selectors/expenses.selectors';
+import {AnimationOptions} from 'ngx-lottie';
+import {Observable, Subscription} from 'rxjs';
+import {AccountService} from 'src/app/pages/wallet/pages/home/services/account.service';
+import {PersistanceService} from 'src/app/shared/services/persistance.service';
+import {BarCharDataInterface} from '../../../../shared/types/barCharData.interface';
+import {CurrentUserInterface} from '../../../../shared/types/currentUser.interface';
+import {OperationInterface} from '../../../../shared/types/operation.interface';
+import {currentUserSelector} from '../auth/store/selectors/auth.selector';
+import {getCurrentMonthExpensesAction, getCurrentYearExpensesAction,} from '../expenses/store/actions/expenses.action';
+import {currentMonthExpensesSelector} from '../expenses/store/selectors/expenses.selectors';
 import {
   getCurrentMonthIncomingsAction,
   getCurrentYearIncomingsAction,
 } from '../incomings/store/actions/incomings.action';
-import { currentMonthIncomingsSelector } from '../incomings/store/selectors/incomings.selectors';
-import {
-  getLatestAccountMovementsAction,
-  getUserAccountsAction,
-} from './store/actions/accounts.action';
+import {currentMonthIncomingsSelector} from '../incomings/store/selectors/incomings.selectors';
+import {getLatestAccountMovementsAction, getUserAccountsAction,} from './store/actions/accounts.action';
 import {
   isLoadingSelector,
   latestAccountMovementsSelector,
   userAccountsSelector,
 } from './store/selectors/home.selectors';
-import { UserAccountInterface } from './types/userAccount.interface';
+import {UserAccountInterface} from './types/userAccount.interface';
 import {ToastrService} from "ngx-toastr";
-import {ChangedFiles} from "@angular-devkit/build-angular/src/builders/browser-esbuild/watcher";
-import {ActiveDescendantKeyManager} from "@angular/cdk/a11y";
 
 @Component({
   selector: 'wal-home',
