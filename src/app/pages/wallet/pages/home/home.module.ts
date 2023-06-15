@@ -36,6 +36,7 @@ import { defineElement } from 'lord-icon-element';
 import {GenericTitleModule} from "../../../../shared/modules/generic-title/generic-title.module";
 import {LottieComponent} from "ngx-lottie";
 import {MatDividerModule} from "@angular/material/divider";
+import {MatBadgeModule} from "@angular/material/badge";
 @NgModule({
   declarations: [HomeComponent, BalanceComponent, NewAccountComponent, TransactionsServicesComponent],
     imports: [
@@ -53,6 +54,7 @@ import {MatDividerModule} from "@angular/material/divider";
         GenericModalModule,
         GenericOperationListModule,
         MatSlideToggleModule,
+        MatBadgeModule,
         DepositPaymentFormModule,
         OperationsGraphicsModule,
         TotalModule,

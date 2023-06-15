@@ -26,6 +26,7 @@ import {
 } from './store/selectors/home.selectors';
 import {UserAccountInterface} from './types/userAccount.interface';
 import {ToastrService} from "ngx-toastr";
+import {NewAccountBadgeService} from "../../../../shared/services/new-account-badge.service";
 
 @Component({
   selector: 'wal-home',
@@ -52,6 +53,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   currentUserSubscription$!: Subscription;
   incomingSubscription$!: Subscription;
   expensesSubscription$!: Subscription;
+  badgeSubscription$!: Subscription;
+  badgeAction$!:boolean;
 
   slideConfig = {
     dots: true,
@@ -86,7 +89,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     private accountService: AccountService,
     private store: Store,
     private persistanceService: PersistanceService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private badgeService:NewAccountBadgeService
   ) {
     this.accountService
       .getUserAccounts()
@@ -141,6 +145,9 @@ export class HomeComponent implements OnInit, OnDestroy {
         };
       }
     );
+    this.badgeSubscription$ = this.badgeService.badgeState.pipe().subscribe((data) => {
+      this.badgeAction$ = data;
+    })
   }
 
   saludar(): void {
@@ -185,6 +192,11 @@ export class HomeComponent implements OnInit, OnDestroy {
   showSuccessActive() {
     this.toastr.info('', `Active account:  Nº${this.activeAccount}`);
   }
+
+  hideBadge():void {
+    this.badgeService.setbadgeState(true);
+    console.log(this.badgeAction$)
+  }
   ngOnInit(): void {
     this.store.dispatch(getUserAccountsAction());
     this.initializeValues();
@@ -194,5 +206,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.incomingSubscription$.unsubscribe();
     this.expensesSubscription$.unsubscribe();
     this.currentUserSubscription$.unsubscribe();
+    this.badgeSubscription$.unsubscribe()
   }
 }

@@ -21,6 +21,7 @@ import {PersistanceService} from "../../../../../../shared/services/persistance.
 import {getCurrentMonthIncomingsAction} from "../../../incomings/store/actions/incomings.action";
 import {getCurrentMonthExpensesAction} from "../../../expenses/store/actions/expenses.action";
 import {ToastrService} from "ngx-toastr";
+import {NewAccountBadgeService} from "../../../../../../shared/services/new-account-badge.service";
 
 @Injectable()
 export class AccountsEffect {
@@ -107,6 +108,7 @@ export class AccountsEffect {
         ofType(createNewUserAccountSuccessAction),
         tap(() => {
           this.showSuccess('Nueva cuenta creada con exito!');
+          this.badgeService.setbadgeState(false)
         })
       ),
     { dispatch: false }
@@ -137,6 +139,6 @@ export class AccountsEffect {
   showSuccess(title:string) {
     this.toastr.success('', title,{positionClass: 'toast-bottom-right'});
   }
-  constructor(private actions$: Actions, private accountService: AccountService, private store: Store, private persistanceService: PersistanceService, private toastr: ToastrService) {
+  constructor(private actions$: Actions, private accountService: AccountService, private store: Store, private persistanceService: PersistanceService, private toastr: ToastrService, private badgeService:NewAccountBadgeService) {
   }
 }

@@ -13,45 +13,50 @@
     </div>
     <div class="carousel">
 
-      <ngx-slick-carousel class="carousel"
+      <div [matBadgeHidden]="badgeAction$" class="mat-badge" matBadge="New" matBadgePosition="after" matBadgeColor="accent">
+        <ngx-slick-carousel class="carousel"
 
-                          [config]="slideConfig"
-      >
-        <div ngxSlickItem *ngFor="let account of userAccounts$ | async" class="slide slide-balance">
+                            [config]="slideConfig"
+        >
+          <div ngxSlickItem *ngFor="let account of userAccounts$ | async" class="slide slide-balance">
 
-          <wal-balance [accountNumber]="account.accountId" [accountBalance]="account.balance"
-                       class="slide--item"
-          >
-          </wal-balance>
+            <wal-balance [accountNumber]="account.accountId" [accountBalance]="account.balance"
+                         class="slide--item"
+            >
+            </wal-balance>
 
 
-          <ng-container *ngIf="account.accountId == activeAccount;else btnInactive">
-            <mat-slide-toggle class="slide-btn" checked disabled><span class="active">Active</span>
-            </mat-slide-toggle>
-          </ng-container>
+            <ng-container *ngIf="account.accountId == activeAccount;else btnInactive">
+              <mat-slide-toggle class="slide-btn" checked disabled><span class="active">Active</span>
+              </mat-slide-toggle>
+            </ng-container>
 
-          <ng-template #btnInactive>
-            <mat-slide-toggle (click)="
+            <ng-template #btnInactive>
+              <mat-slide-toggle (click)="
       setActive(account.accountId)"
-                              class="slide-btn inactive"><span class="inactive">Set Active</span>
-            </mat-slide-toggle>
-          </ng-template>
-        </div>
+                                class="slide-btn inactive"><span class="inactive">Set Active</span>
+              </mat-slide-toggle>
+            </ng-template>
+          </div>
 
-      </ngx-slick-carousel>
+        </ngx-slick-carousel>
+      </div>
 
       <div class="carousel__actions">
         <lord-icon
           src="/assets/arrow.json"
           trigger="loop"
           colors="primary:#ff2c7d"
-          class="arrow prev-arrow">
+          class="arrow prev-arrow"
+          (click)="hideBadge()">
         </lord-icon>
         <lord-icon
           src="/assets/arrow.json"
           trigger="loop"
           colors="primary:#ff2c7d"
-          class="arrow next-arrow">
+          class="arrow next-arrow"
+          (click)="hideBadge()"
+        >
         </lord-icon>
       </div>
       <div class="new__account--container">
