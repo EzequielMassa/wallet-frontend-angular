@@ -17,7 +17,7 @@
       </div>
     </div>
   </div>
-  <wal-generic-title [title]="'Registro'" class="title"></wal-generic-title>
+  <wal-generic-title [title]="'Register'" class="title"></wal-generic-title>
   <div class="login__container__bottom">
     <h2>Welcome</h2>
 
@@ -39,21 +39,21 @@
         (registerForm.get('firstname')?.dirty ||
         registerForm.get('firstname')?.touched)
         )">
-          Este campo es requerido.
+         This field is required.
        </span>
           <span class="error" *ngIf="(
         registerForm.get('firstname')?.hasError('minlength') &&
         (registerForm.get('firstname')?.dirty ||
         registerForm.get('firstname')?.touched)
         )">
-          El nombre debe tener al menos 3 caracteres.
+        The name must have at least 3 characters.
        </span>
           <span class="error" *ngIf="(
         registerForm.get('firstname')?.hasError('maxlength') &&
         (registerForm.get('firstname')?.dirty ||
         registerForm.get('firstname')?.touched)
         )">
-          El nombre debe tener un maximo de 15 caracteres.
+        The name must have a maximum of 15 characters.
        </span>
         </fieldset>
         <fieldset class="login__form__fieldset">
@@ -70,21 +70,22 @@
         (registerForm.get('lastname')?.dirty ||
         registerForm.get('lastname')?.touched)
         )">
-          Este campo es requerido.
+         This field is required.
        </span>
           <span class="error" *ngIf="(
         registerForm.get('lastname')?.hasError('minlength') &&
         (registerForm.get('lastname')?.dirty ||
         registerForm.get('lastname')?.touched)
         )">
-          El apellido debe tener al menos 3 caracteres.
+         Last name must have at least 3 characters.
        </span>
           <span class="error" *ngIf="(
         registerForm.get('lastname')?.hasError('maxlength') &&
         (registerForm.get('lastname')?.dirty ||
         registerForm.get('lastname')?.touched)
         )">
-          El apellido debe tener un maximo de 15 caracteres.
+
+         The last name must have a maximum of 15 characters.
        </span>
         </fieldset>
         <fieldset class="login__form__fieldset">
@@ -95,6 +96,7 @@
          (registerForm.get('email')?.touched ||
           registerForm.get('email')?.dirty)
 "
+                 placeholder="example@email.com"
                  autoComplete='none'
           />
           <span class="error" *ngIf="(
@@ -102,14 +104,14 @@
         (registerForm.get('email')?.dirty ||
         registerForm.get('email')?.touched)
         )">
-          Este campo es requerido.
+         This field is required.
        </span>
           <span class="error" *ngIf="(
         registerForm.get('email')?.hasError('email') &&
         (registerForm.get('email')?.dirty ||
         registerForm.get('email')?.touched)
         )">
-          El formato es incorrecto.
+         The format is invalid.
        </span>
         </fieldset>
         <fieldset class="login__form__fieldset">
@@ -126,14 +128,15 @@
         (registerForm.get('password')?.dirty ||
         registerForm.get('password')?.touched)
         )">
-          Este campo es requerido.
+          This field is required.
        </span>
           <span class="error" *ngIf="(
         registerForm.get('password')?.hasError('minlength') &&
         (registerForm.get('password')?.dirty ||
         registerForm.get('password')?.touched)
         )">
-          El password debe contener al menos 4 caracteres.
+
+The password must contain at least 4 characters.
        </span>
         </fieldset>
         <wal-backend-error-messages
@@ -146,7 +149,7 @@
         </div>
       </form>
     <div class="login__form__btn__container">
-      <a routerLink="/auth/login"><span><i class="fa-solid fa-arrow-left register--link--icon"></i></span>Volver a iniciar sesión</a>
+      <a routerLink="/auth/login"><span><i class="fa-solid fa-arrow-left register--link--icon"></i></span>Return to login</a>
     </div>
   </div>
 </section>

@@ -15,7 +15,7 @@
 
       <mat-select id="inputAccounts" formControlName="accountId" [(value)]="selected">
         <mat-option *ngFor="
-              let account of userAccounts$ | async" value="{{account.accountId}}">Cuenta
+              let account of userAccounts$ | async" value="{{account.accountId}}">Account
           Nº{{account.accountId}}</mat-option>
       </mat-select>
       <mat-error *ngIf="form.get('accountId')?.hasError('required')">
@@ -30,7 +30,8 @@
                [errorStateMatcher]="matcher"
                class="example-right-align" placeholder="Destiny Account Nº">
 
-        <mat-hint>Ingrese el numero de cuenta a transferir</mat-hint>
+        <mat-hint>
+          Enter the account number to transfer</mat-hint>
         <mat-error *ngIf="form.get('destinyAccount')?.hasError('required')">
           This field is <strong>required</strong>
         </mat-error>
@@ -45,7 +46,8 @@
       <input id="inputAmount" type="number" matInput formControlName="amount" [errorStateMatcher]="matcher"
              class="example-right-align" placeholder="0">
       <span matTextPrefix>$&nbsp;</span>
-      <mat-hint>Ingrese un valor mayor que 0</mat-hint>
+      <mat-hint>
+        Enter a value greater than 0</mat-hint>
       <mat-error *ngIf="form.get('amount')?.hasError('required')">
         This field is <strong>required</strong>
       </mat-error>
@@ -57,9 +59,11 @@
     <mat-form-field appearance="fill" floatLabel="always">
       <mat-label>Description</mat-label>
       <input id="inputConcept" type="text" matInput formControlName="description" [errorStateMatcher]="matcher"
-             class="example-right-align" placeholder="Ingrese una descripcion">
+             class="example-right-align" placeholder="
+Enter a description">
 
-      <mat-hint>Entre 3 y 15 caracteres</mat-hint>
+      <mat-hint>
+        Between 3 and 15 characters</mat-hint>
       <mat-error *ngIf="form.get('description')?.hasError('required')">
         This field is <strong>required</strong>
       </mat-error>

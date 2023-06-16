@@ -8,8 +8,8 @@
       <button mat-icon-button>
         <ng-container [ngSwitch]="link">
           <mat-icon [ngClass]="{'active': activeLink == link}" *ngSwitchCase="'Home'">home</mat-icon>
-          <mat-icon [ngClass]="{'active': activeLink == link}" *ngSwitchCase="'Ingresos'">trending_up</mat-icon>
-          <mat-icon [ngClass]="{'active': activeLink == link}" *ngSwitchCase="'Egresos'">trending_down</mat-icon>
+          <mat-icon [ngClass]="{'active': activeLink == link}" *ngSwitchCase="'Income'">trending_up</mat-icon>
+          <mat-icon [ngClass]="{'active': activeLink == link}" *ngSwitchCase="'Expenses'">trending_down</mat-icon>
         </ng-container>
       </button>
     </a>

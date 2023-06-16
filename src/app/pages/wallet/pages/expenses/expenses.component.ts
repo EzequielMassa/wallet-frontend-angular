@@ -94,7 +94,7 @@ export class ExpensesComponent implements OnInit, OnDestroy {
 
   getYearExpenses() {
     this.store.dispatch(getLatestAccountMovementsAction({activeAccount: this.activeAccount}))
-    this.title = "Egresos del año"
+    this.title = "Year expenses"
     this.expensesAccountMovements$ = this.store.pipe(select(latestAccountMovementsSelector), map((movements) => {
       return movements.filter((movement) => {
         return movement.type == 'PAYMENT' || movement.type == 'TRANSFER_OUT'

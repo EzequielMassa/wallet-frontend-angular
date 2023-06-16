@@ -18,7 +18,7 @@
     </div>
   </div>
   <wal-generic-title
-    [title]="'Iniciar sesion'"
+    [title]="'Login'"
     class="title"
   ></wal-generic-title>
   <div class="login__container__bottom">
@@ -27,6 +27,7 @@
       <fieldset class="login__form__fieldset">
         <label for="emailInput">Email Address </label>
         <input
+          autocomplete="none"
           type="email"
           id="emailInput"
           formControlName="email"
@@ -42,7 +43,7 @@
             (loginForm.get('email')?.dirty || loginForm.get('email')?.touched)
           "
         >
-          Este campo es requerido.
+          This field is required.
         </span>
         <span
           class="error"
@@ -51,7 +52,7 @@
             (loginForm.get('email')?.dirty || loginForm.get('email')?.touched)
           "
         >
-          El formato es incorrecto.
+          The format is invalid.
         </span>
       </fieldset>
       <fieldset class="login__form__fieldset">
@@ -74,7 +75,7 @@
               loginForm.get('password')?.touched)
           "
         >
-          Este campo es requerido.
+         This field is required.
         </span>
         <span
           class="error"
@@ -84,7 +85,7 @@
               loginForm.get('password')?.touched)
           "
         >
-          El password debe contener al menos 4 caracteres.
+        The password must contain at least 4 characters.
         </span>
       </fieldset>
       <wal-backend-error-messages

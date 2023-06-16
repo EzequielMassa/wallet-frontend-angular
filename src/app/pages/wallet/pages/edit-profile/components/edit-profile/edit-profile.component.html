@@ -17,11 +17,11 @@
         (ngSubmit)="onSubmit()"
       >
         <mat-form-field appearance="outline">
-          <mat-label>Editar Nombre</mat-label>
+          <mat-label>Edit Name</mat-label>
           <input
             matInput
             type="text"
-            placeholder="JUAN"
+            placeholder="Jhon"
             id="firstNameInput"
             formControlName="firstname"
             [class.invalid]="
@@ -36,7 +36,7 @@
               (updateUserForm.get('firstname')?.dirty ||
                 updateUserForm.get('firstname')?.touched)
             "
-            >Este campo es requerido.
+            >This field is required.
           </mat-error>
           <mat-error
             *ngIf="
@@ -45,7 +45,7 @@
                 updateUserForm.get('firstname')?.touched)
             "
           >
-            El nombre debe tener al menos 3 caracteres.
+            The name must have at least 3 characters.
           </mat-error>
           <mat-error
             *ngIf="
@@ -54,16 +54,16 @@
                 updateUserForm.get('firstname')?.touched)
             "
           >
-            El nombre debe tener un maximo de 15 caracteres.
+            The name must have a maximum of 15 characters.
           </mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="outline">
-          <mat-label>Editar Apellido</mat-label>
+          <mat-label>Edit last name</mat-label>
           <input
             matInput
             type="text"
-            placeholder="Lopez"
+            placeholder="Doe"
             id="lastNameInput"
             formControlName="lastname"
             [class.invalid]="
@@ -78,7 +78,7 @@
               (updateUserForm.get('lastname')?.dirty ||
                 updateUserForm.get('lastname')?.touched)
             "
-            >Este campo es requerido.
+            >This field is required.
           </mat-error>
           <mat-error
             *ngIf="
@@ -87,7 +87,7 @@
                 updateUserForm.get('lastname')?.touched)
             "
           >
-            El apellido debe tener al menos 3 caracteres.
+            The last name must have at least 3 characters.
           </mat-error>
           <mat-error
             *ngIf="
@@ -96,12 +96,12 @@
                 updateUserForm.get('lastname')?.touched)
             "
           >
-            El apellido debe tener un maximo de 15 caracteres.
+            The last name must have a maximum of 15 characters.
           </mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="outline">
-          <mat-label>Cambiar Password</mat-label>
+          <mat-label>Change Password</mat-label>
           <input
             matInput
             type="text"
@@ -121,12 +121,12 @@
                 updateUserForm.get('password')?.touched)
             "
           >
-            El password debe tener al menos 4 caracteres.
+            The password must have at least 4 characters.
           </mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="outline">
-          <mat-label>URL imagen de perfil</mat-label>
+          <mat-label>Profile image URL</mat-label>
           <input
             matInput
             type="text"

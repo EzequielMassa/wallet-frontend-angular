@@ -9,7 +9,7 @@ import {slideInDownOnEnterAnimation} from "angular-animations";
   animations: [slideInDownOnEnterAnimation()]
 })
 export class TopNavbarComponent {
-  links = ['Home', 'Ingresos', 'Egresos'];
+  links = ['Home', 'Income', 'Expenses'];
   activeLink = this.links[0];
   background: ThemePalette = "primary";
 

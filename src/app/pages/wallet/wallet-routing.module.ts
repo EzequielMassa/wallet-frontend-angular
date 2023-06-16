@@ -13,12 +13,12 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'ingresos',
+    path: 'income',
     loadChildren: () => import('./pages/incomings/incomings.module').then((i) => i.IncomingsModule),
     canActivate: [AuthGuard],
   },
   {
-    path: 'egresos',
+    path: 'expenses',
     loadChildren: () => import('./pages/expenses/expenses.module').then((e) => e.ExpensesModule),
     canActivate: [AuthGuard],
   },

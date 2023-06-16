@@ -42,7 +42,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   activeAccount!: number;
   activeAccountSubscription$!: Subscription;
   isLoading$!: Observable<boolean>;
-  title: string = 'Ultimos movimientos';
+  title: string = 'Latest movements';
   latestAccountMovements$!: Observable<OperationInterface[]>;
   barCharLabels!: string[];
   barCharDataIncomings!: BarCharDataInterface;
@@ -127,7 +127,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.barCharLabels = [monthIncomings[0]];
         this.barCharDataIncomings = {
           data: [monthIncomings[1]],
-          label: 'Ingresos',
+          label: 'Incomings',
           backgroundColor: ['rgba(103, 58, 183, 0.7)'],
         };
       }
@@ -136,7 +136,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       (monthExpenses) => {
         this.barCharDataExpenses = {
           data: [monthExpenses[1]],
-          label: 'Egresos',
+          label: 'Expenses',
           backgroundColor: ['rgba(255, 44, 125, 0.7)'],
         };
         this.barChar = {
@@ -157,18 +157,18 @@ export class HomeComponent implements OnInit, OnDestroy {
       .pipe()
       .subscribe((user: CurrentUserInterface | null) => {
         if (am_pm === 'AM' && parseInt(hour) > 6 && parseInt(hour) < 12) {
-          this.saludo = `Buenos dias ${user?.firstname}`;
+          this.saludo = `Good morning ${user?.firstname}`;
           this.options = {
             path: '/assets/lottie/lottie-dia-icono.json',
           };
         } else {
           if (am_pm === 'PM' && (parseInt(hour) >= 12 || parseInt(hour) < 6)) {
-            this.saludo = `Buenas tardes ${user?.firstname}`;
+            this.saludo = `Good afternoon ${user?.firstname}`;
             this.options = {
               path: '/assets/lottie/lottie-tarde-icono.json',
             };
           } else {
-            this.saludo = `Buenas noches ${user?.firstname}`;
+            this.saludo = `Good night ${user?.firstname}`;
             this.options = {
               path: '/assets/lottie/lottie-noche-icono.json',
             };
@@ -195,7 +195,6 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   hideBadge():void {
     this.badgeService.setbadgeState(true);
-    console.log(this.badgeAction$)
   }
   ngOnInit(): void {
     this.store.dispatch(getUserAccountsAction());

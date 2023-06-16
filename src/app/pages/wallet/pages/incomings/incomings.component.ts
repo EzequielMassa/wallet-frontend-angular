@@ -90,7 +90,7 @@ export class IncomingsComponent implements OnInit, OnDestroy {
 
   getYearIncomings() {
     this.store.dispatch(getLatestAccountMovementsAction({activeAccount: this.activeAccount}))
-    this.title = "Ingresos del año"
+    this.title = "Year incomings"
     this.IncomingsAccountMovements$ = this.store.pipe(select(latestAccountMovementsSelector), map((movements) => {
       return movements.filter((movement) => {
         return movement.type == 'DEPOSIT' || movement.type == 'TRANSFER_IN'
