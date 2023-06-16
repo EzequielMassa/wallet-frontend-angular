@@ -1,4 +1,4 @@
-<section class="login" [@slideInUpOnEnter] [@slideInUpOnLeave]>
+<section class="login" [@slideInUpOnEnter] [@slideOutDownOnLeave]>
   <div class="login__container__top">
     <div class="login__top__banner">
       <img
@@ -11,12 +11,10 @@
         <h5>Developed by Ezequiel Massa</h5>
       </div>
     </div>
-    <div class="login__bottom__banner">
-      <img
-        src="../../../../../../../../../../assets/images/Wavy_Tech-31_Single-01.jpg"
-        alt=""
-        class="login__bottom__banner--img"
-      />
+    <div class="login__bottom__banner" [@flipOnEnter]>
+      <div class="lottie-animation">
+        <ng-lottie [options]="options"> </ng-lottie>
+      </div>
     </div>
   </div>
   <wal-generic-title [title]="'Registro'" class="title"></wal-generic-title>
@@ -26,12 +24,15 @@
       <form class="login__form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
         <fieldset class="login__form__fieldset">
           <label for="firstNameInput">First Name </label>
-          <input type="text" id="firstNameInput" formControlName="firstname"
-                 [class.invalid]="
-         registerForm.get('firstname')?.invalid &&
-         (registerForm.get('firstname')?.touched ||
-          registerForm.get('firstname')?.dirty)
-"
+          <input
+            type="text"
+            id="firstNameInput"
+            formControlName="firstname"
+            [class.invalid]="
+             registerForm.get('firstname')?.invalid &&
+             (registerForm.get('firstname')?.touched ||
+             registerForm.get('firstname')?.dirty)"
+            autoComplete='none'
           />
           <span class="error" *ngIf="(
         registerForm.get('firstname')?.hasError('required') &&
@@ -61,7 +62,9 @@
          registerForm.get('lastname')?.invalid &&
          (registerForm.get('lastname')?.touched ||
           registerForm.get('lastname')?.dirty)
-"/>
+"
+                 autoComplete='none'
+          />
           <span class="error" *ngIf="(
         registerForm.get('lastname')?.hasError('required') &&
         (registerForm.get('lastname')?.dirty ||
@@ -92,6 +95,7 @@
          (registerForm.get('email')?.touched ||
           registerForm.get('email')?.dirty)
 "
+                 autoComplete='none'
           />
           <span class="error" *ngIf="(
         registerForm.get('email')?.hasError('required') &&

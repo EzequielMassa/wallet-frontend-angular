@@ -12,8 +12,9 @@ import {AuthService} from "../../../../services/auth.service";
 import {MatButtonModule} from "@angular/material/button";
 import {GenericTitleModule} from "../../../../../../../../shared/modules/generic-title/generic-title.module";
 import {
-    BackendErrorMessagesModule
+  BackendErrorMessagesModule
 } from "../../../../../../../../shared/modules/backend-error-messages/backend-error-messages.module";
+import {LottieComponent} from "ngx-lottie";
 
 @NgModule({
   declarations: [RegisterComponent],
@@ -26,6 +27,7 @@ import {
         StoreModule.forFeature('auth', reducers),
         EffectsModule.forFeature([RegisterEffect]),
         BackendErrorMessagesModule,
+        LottieComponent,
     ],
   providers: [AuthService]
 

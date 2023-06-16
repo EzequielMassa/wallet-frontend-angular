@@ -6,8 +6,9 @@ import {registerAction} from '../../../../../store/actions/register.action';
 import {RegisterRequestInterface} from '../../../../../types/registerRequest.interface';
 import {Observable} from 'rxjs';
 import {backendErrorsRegisterSelector, isSubmittingSelector} from '../../../../../store/selectors/auth.selector';
-import {slideInUpOnEnterAnimation, slideOutDownOnLeaveAnimation} from "angular-animations";
+import {flipOnEnterAnimation, slideInUpOnEnterAnimation, slideOutDownOnLeaveAnimation} from "angular-animations";
 import {BackendErrorsInterface} from "../../../../../../../../../shared/types/backendErrors.interface";
+import {AnimationOptions} from "ngx-lottie";
 
 @Component({
   selector: 'wal-register',
@@ -16,13 +17,16 @@ import {BackendErrorsInterface} from "../../../../../../../../../shared/types/ba
   animations: [
     slideInUpOnEnterAnimation(),
     slideOutDownOnLeaveAnimation(),
+    flipOnEnterAnimation(),
   ]
 })
 export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
   isSubmitting$!: Observable<boolean>;
   backendErrors$!: Observable<BackendErrorsInterface | null>;
-
+  options: AnimationOptions = {
+    path: '/assets/lottie/lottie-credit-cards.json',
+  };
   constructor(private fb: FormBuilder, private store: Store) {
   }
 
