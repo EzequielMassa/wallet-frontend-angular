@@ -137,7 +137,7 @@ export class AccountsEffect {
   );
 
   showSuccess(title:string) {
-    this.toastr.success('', title,{positionClass: 'toast-bottom-right'});
+    this.toastr.success('', title,{positionClass: 'toast-top-right'});
   }
   constructor(private actions$: Actions, private accountService: AccountService, private store: Store, private persistanceService: PersistanceService, private toastr: ToastrService, private badgeService:NewAccountBadgeService) {
   }

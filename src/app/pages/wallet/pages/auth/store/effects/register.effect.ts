@@ -40,7 +40,7 @@ export class RegisterEffect {
   );
 
   showSuccess() {
-    this.toastr.success('', 'Registro exitoso!',{positionClass: 'toast-bottom-right'});
+    this.toastr.success('', 'Successful registration!',{positionClass: 'toast-bottom-right'});
   }
   constructor(
     private actions$: Actions,
