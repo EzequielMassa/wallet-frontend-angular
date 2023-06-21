@@ -1,10 +1,10 @@
 import {Injectable} from "@angular/core";
 import {Actions, createEffect, ofType} from "@ngrx/effects";
-import {map, switchMap, tap} from "rxjs";
+import {catchError, map, of, switchMap, tap} from "rxjs";
 import {
-  createNewDepositPaymentAction,
+  createNewDepositPaymentAction, createNewDepositPaymentFailureAction,
   createNewDepositPaymentSuccessAction,
-  createNewTransferAction,
+  createNewTransferAction, createNewTransferFailureAction,
   createNewTransferSuccessAction,
   createNewUserAccountAction,
   createNewUserAccountSuccessAction,
@@ -22,6 +22,8 @@ import {getCurrentMonthIncomingsAction} from "../../../incomings/store/actions/i
 import {getCurrentMonthExpensesAction} from "../../../expenses/store/actions/expenses.action";
 import {ToastrService} from "ngx-toastr";
 import {NewAccountBadgeService} from "../../../../../../shared/services/new-account-badge.service";
+import {HttpErrorResponse} from "@angular/common/http";
+import {loginFailureAction} from "../../../auth/store/actions/login.actions";
 
 @Injectable()
 export class AccountsEffect {
@@ -64,6 +66,10 @@ export class AccountsEffect {
             const activeAccount = parseInt(this.persistanceService.get('activeAccount'))
             this.store.dispatch(getLatestAccountMovementsAction({activeAccount: activeAccount}))
             return createNewDepositPaymentSuccessAction({request});
+          }),
+          catchError((errorResponse: HttpErrorResponse) => {
+            this.showFailure(errorResponse.error.message)
+            return of(createNewDepositPaymentFailureAction({ errors: errorResponse.error }));
           })
         );
       })
@@ -81,6 +87,10 @@ export class AccountsEffect {
             const activeAccount = parseInt(this.persistanceService.get('activeAccount'))
             this.store.dispatch(getLatestAccountMovementsAction({activeAccount: activeAccount}))
             return createNewTransferSuccessAction({request});
+          }),
+          catchError((errorResponse: HttpErrorResponse) => {
+            this.showFailure(errorResponse.error.message)
+            return of(createNewTransferFailureAction({ errors: errorResponse.error}));
           })
         );
       })
@@ -107,7 +117,7 @@ export class AccountsEffect {
       this.actions$.pipe(
         ofType(createNewUserAccountSuccessAction),
         tap(() => {
-          this.showSuccess('Nueva cuenta creada con exito!');
+          this.showSuccess('New account created successfully!');
           this.badgeService.setbadgeState(false)
         })
       ),
@@ -119,7 +129,7 @@ export class AccountsEffect {
       this.actions$.pipe(
         ofType(createNewDepositPaymentSuccessAction),
         tap(() => {
-          this.showSuccess('Transacción realizada con exito!');
+          this.showSuccess('Transaction successful!');
         })
       ),
     { dispatch: false }
@@ -130,14 +140,17 @@ export class AccountsEffect {
       this.actions$.pipe(
         ofType(createNewTransferSuccessAction),
         tap(() => {
-          this.showSuccess('Transferencia realizada con exito!');
+          this.showSuccess('Transfer succesful!');
         })
       ),
     { dispatch: false }
   );
 
   showSuccess(title:string) {
-    this.toastr.success('', title,{positionClass: 'toast-top-right'});
+    this.toastr.success('', title,{positionClass: 'toast-bottom-right'});
+  }
+  showFailure(title:string) {
+    this.toastr.error('', title,{positionClass: 'toast-bottom-right'});
   }
   constructor(private actions$: Actions, private accountService: AccountService, private store: Store, private persistanceService: PersistanceService, private toastr: ToastrService, private badgeService:NewAccountBadgeService) {
   }

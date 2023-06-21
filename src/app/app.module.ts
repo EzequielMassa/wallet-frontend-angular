@@ -42,8 +42,8 @@ export function playerFactory(): any {
     BottomNavbarModule,
     SpinnerModule,
     ToastrModule.forRoot({
-      timeOut: 3000,
-      positionClass: 'toast-top-right',
+      timeOut: 3500,
+      positionClass: 'toast-bottom-right',
       preventDuplicates: true,}),
     StoreModule.forRoot({}, {}),
     StoreModule.forFeature('auth', reducers),

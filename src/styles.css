@@ -192,3 +192,6 @@ input:-webkit-autofill:active {
   margin: 25px auto;
   width: 90%;
 }
+.toast-bottom-right {
+  bottom: 50px !important;
+}

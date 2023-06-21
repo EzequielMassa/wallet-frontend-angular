@@ -4,6 +4,7 @@ import {UserAccountInterface} from "../../types/userAccount.interface";
 import {DepositPaymentInterface} from "../../types/DepositPayment.interface";
 import {TransferInterface} from "../../types/Transfer.interface";
 import {OperationInterface} from "../../../../../../shared/types/operation.interface";
+import {BackendErrorsInterface} from "../../../../../../shared/types/backendErrors.interface";
 
 
 //GET ACCOUNTS ACTIONS
@@ -40,7 +41,8 @@ export const createNewDepositPaymentSuccessAction = createAction(
   props<{ request: DepositPaymentInterface }>()
 )
 export const createNewDepositPaymentFailureAction = createAction(
-  ActionTypesHome.CREATE_NEW_DEPOSIT_PAYMENT_FAILURE
+  ActionTypesHome.CREATE_NEW_DEPOSIT_PAYMENT_FAILURE,
+  props<{ errors: BackendErrorsInterface }>()
 )
 
 //CREATE NEW TRANSFER ACTIONS
@@ -53,7 +55,8 @@ export const createNewTransferSuccessAction = createAction(
   props<{ request: TransferInterface }>()
 )
 export const createNewTransferFailureAction = createAction(
-  ActionTypesHome.CREATE_NEW_TRANSFER_FAILURE
+  ActionTypesHome.CREATE_NEW_TRANSFER_FAILURE,
+  props<{ errors: BackendErrorsInterface }>()
 )
 
 //GET LATEST ACCOUNT MOVEMENTS

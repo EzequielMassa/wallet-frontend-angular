@@ -18,3 +18,8 @@ export const latestAccountMovementsSelector = createSelector(
   homeFeatureSelector,
   (homeState: HomeStateInterface) => homeState.latestAccountMovements
 );
+
+export const backendErrorsSelector = createSelector(
+  homeFeatureSelector,
+  (homeState: HomeStateInterface) => homeState.backendErrors
+);
