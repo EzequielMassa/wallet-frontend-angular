@@ -1,0 +1,38 @@
+.lottie-animation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  gap: 10px;
+}
+
+.not__found__title h1{
+  color: rgba(0 0 0 / 50%);
+  font-size:1.8rem;
+}
+
+.not__found__link a {
+  font-size: 1.2rem;
+  text-decoration: none;
+  padding-top: 20px;
+  color: #ff2c7d;
+  cursor: pointer;
+
+}
+
+.not__found__link:hover {
+  transform: scale(1.2);
+  transition: all 0.5s ease;
+}
+
+.not__found__link a:visited {
+  color: #ff2c7d;
+}
+
+@media (min-width: 768px) {
+  .not__found__title h1{
+    font-size:3rem;
+  }
+}

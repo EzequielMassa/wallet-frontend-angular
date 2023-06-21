@@ -27,6 +27,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/edit-profile/edit-profile.module').then((e) => e.EditProfileModule),
     canActivate: [AuthGuard],
   },
+  {
+  path: '**',
+  loadChildren: () => import('./pages/page-error/page-error.module').then((p) => p.PageErrorModule)
+},
 ];
 
 @NgModule({

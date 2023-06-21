@@ -15,15 +15,18 @@ import {
   BackendErrorMessagesModule
 } from "../../../../../../../../shared/modules/backend-error-messages/backend-error-messages.module";
 import {LottieComponent} from "ngx-lottie";
+import { TermsConditionsModalComponent } from './components/terms-conditions-modal/terms-conditions-modal.component';
+import {MatDialogModule} from "@angular/material/dialog";
 
 @NgModule({
-  declarations: [RegisterComponent],
+  declarations: [RegisterComponent, TermsConditionsModalComponent],
     imports: [
         CommonModule,
         RegisterRoutingModule,
         ReactiveFormsModule,
         GenericTitleModule,
         MatButtonModule,
+      MatDialogModule,
         StoreModule.forFeature('auth', reducers),
         EffectsModule.forFeature([RegisterEffect]),
         BackendErrorMessagesModule,

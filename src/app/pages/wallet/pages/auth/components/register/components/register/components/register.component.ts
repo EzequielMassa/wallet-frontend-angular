@@ -9,6 +9,8 @@ import {backendErrorsRegisterSelector, isSubmittingSelector} from '../../../../.
 import {flipOnEnterAnimation, slideInUpOnEnterAnimation, slideOutDownOnLeaveAnimation} from "angular-animations";
 import {BackendErrorsInterface} from "../../../../../../../../../shared/types/backendErrors.interface";
 import {AnimationOptions} from "ngx-lottie";
+import {MatDialog} from "@angular/material/dialog";
+import {TermsConditionsModalComponent} from "./terms-conditions-modal/terms-conditions-modal.component";
 
 @Component({
   selector: 'wal-register',
@@ -24,10 +26,11 @@ export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
   isSubmitting$!: Observable<boolean>;
   backendErrors$!: Observable<BackendErrorsInterface | null>;
+  isTermsAcepted!: boolean;
   options: AnimationOptions = {
     path: '/assets/lottie/lottie-credit-cards.json',
   };
-  constructor(private fb: FormBuilder, private store: Store) {
+  constructor(private fb: FormBuilder, private store: Store,public dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -64,10 +67,22 @@ export class RegisterComponent implements OnInit {
     this.backendErrors$ = this.store.pipe(select(backendErrorsRegisterSelector));
   }
 
+  openDialog() {
+    const dialogRef = this.dialog.open(TermsConditionsModalComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.isTermsAcepted = result;
+      if (this.isTermsAcepted){
+        const request: RegisterRequestInterface = this.registerForm.value;
+        this.store.dispatch(registerAction({request}));
+      }
+    });
+  }
+
+
   onSubmit(): void {
     if (this.registerForm.valid) {
-      const request: RegisterRequestInterface = this.registerForm.value;
-      this.store.dispatch(registerAction({request}));
+      this.openDialog();
     }
   }
 }
