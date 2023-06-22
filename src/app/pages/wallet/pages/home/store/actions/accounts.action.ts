@@ -5,6 +5,7 @@ import {DepositPaymentInterface} from "../../types/DepositPayment.interface";
 import {TransferInterface} from "../../types/Transfer.interface";
 import {OperationInterface} from "../../../../../../shared/types/operation.interface";
 import {BackendErrorsInterface} from "../../../../../../shared/types/backendErrors.interface";
+import {UsersDTOInterface} from "../../types/usersDTO.interface";
 
 
 //GET ACCOUNTS ACTIONS
@@ -70,4 +71,17 @@ export const getLatestAccountMovementsSuccessAction = createAction(
 )
 export const getLatestAccountMovementsFailureAction = createAction(
   ActionTypesHome.GETLATESTACCOUNTMOVEMENTS_FAILURE
+)
+
+
+//GET ALL USERS
+export const getAllUsers = createAction(
+  ActionTypesHome.GET_ALL_USERS,
+)
+export const getAllUsersSuccesAction = createAction(
+  ActionTypesHome.GET_ALL_USERS_SUCCESS,
+  props<{ users: UsersDTOInterface[] }>()
+)
+export const getAllUsersFailureAction = createAction(
+  ActionTypesHome.GET_ALL_USERS_FAILURE
 )

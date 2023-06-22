@@ -3,17 +3,21 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Observable, Subscription} from "rxjs";
 import {UserAccountInterface} from "../../../../../pages/wallet/pages/home/types/userAccount.interface";
 import {select, Store} from "@ngrx/store";
-import {userAccountsSelector} from "../../../../../pages/wallet/pages/home/store/selectors/home.selectors";
+import {
+  allUsersSelector,
+  userAccountsSelector
+} from "../../../../../pages/wallet/pages/home/store/selectors/home.selectors";
 import {GenericModalService} from "../../services/generic-modal.service";
 import {
   createNewDepositPaymentAction,
-  createNewTransferAction
+  createNewTransferAction, getAllUsers
 } from "../../../../../pages/wallet/pages/home/store/actions/accounts.action";
 import {DepositPaymentInterface} from "../../../../../pages/wallet/pages/home/types/DepositPayment.interface";
 import {MyErrorStateMatcher} from "../../../../utils/error-state-mantcher";
 import {MatDialogRef} from "@angular/material/dialog";
 import {GenericModalComponent} from "../../../generic-modal/components/generic-modal/generic-modal.component";
 import {TransferInterface} from "../../../../../pages/wallet/pages/home/types/Transfer.interface";
+import {UsersDTOInterface} from "../../../../../pages/wallet/pages/home/types/usersDTO.interface";
 
 
 @Component({
@@ -24,6 +28,7 @@ import {TransferInterface} from "../../../../../pages/wallet/pages/home/types/Tr
 export class DepositPaymentFormComponent implements OnInit, OnDestroy {
   form!: FormGroup;
   userAccounts$!: Observable<UserAccountInterface[]>;
+  users$!: Observable<UsersDTOInterface[]>;
   subscriptionModal: Subscription;
   matcher = new MyErrorStateMatcher();
   selected = 'option1';
@@ -58,6 +63,11 @@ export class DepositPaymentFormComponent implements OnInit, OnDestroy {
   }
 
   private initializeTransferForm() {
+    this.store.dispatch(getAllUsers());
+    this.users$ = this.store.pipe(select(allUsersSelector))
+    this.users$.subscribe(result => {
+      console.log(result)
+    })
     this.form = this.fb.group({
       accountId: [null, Validators.required],
       destinyAccount: ['', [Validators.required, Validators.min(1)]],

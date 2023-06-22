@@ -18,7 +18,7 @@ export class AuthGuard implements CanActivate {
   }
 
   canActivate(): boolean {
-        this.currentUser$.pipe(
+   /*     this.currentUser$.pipe(
           filter(currentUser => currentUser !== null),
           map((currentUser: CurrentUserInterface | null) => {
             this.currentUser = currentUser;
@@ -27,7 +27,7 @@ export class AuthGuard implements CanActivate {
         if (!this.currentUser) {
           this.router.navigateByUrl('/auth/login');
           return false;
-        }
+        }*/
     return true;
   }
 }

@@ -25,7 +25,7 @@
 
     <ng-container *ngIf="(formTypeProps == 'transfer')">
       <mat-form-field appearance="fill" floatLabel="always">
-        <mat-label>Destiny Account</mat-label>
+   <!--     <mat-label>Destiny Account</mat-label>
         <input id="inputDestiny" type="number" matInput formControlName="destinyAccount"
                [errorStateMatcher]="matcher"
                class="example-right-align" placeholder="Destiny Account Nº">
@@ -37,7 +37,13 @@
         </mat-error>
         <mat-error *ngIf="form.get('destinyAccount')?.hasError('min')">
           You must provide an existing account
-        </mat-error>
+        </mat-error>-->
+        <mat-label>Select a User to Transfer</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let user of users$ | async" [value]="user.id">
+         <wal-user-card [user]="user"></wal-user-card>
+          </mat-option>
+        </mat-select>
       </mat-form-field>
     </ng-container>
 

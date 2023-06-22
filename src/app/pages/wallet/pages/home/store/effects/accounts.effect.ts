@@ -7,7 +7,7 @@ import {
   createNewTransferAction, createNewTransferFailureAction,
   createNewTransferSuccessAction,
   createNewUserAccountAction,
-  createNewUserAccountSuccessAction,
+  createNewUserAccountSuccessAction, getAllUsers, getAllUsersSuccesAction,
   getLatestAccountMovementsAction,
   getLatestAccountMovementsSuccessAction,
   getUserAccountsAction,
@@ -24,6 +24,7 @@ import {ToastrService} from "ngx-toastr";
 import {NewAccountBadgeService} from "../../../../../../shared/services/new-account-badge.service";
 import {HttpErrorResponse} from "@angular/common/http";
 import {loginFailureAction} from "../../../auth/store/actions/login.actions";
+import {UsersDTOInterface} from "../../types/usersDTO.interface";
 
 @Injectable()
 export class AccountsEffect {
@@ -106,6 +107,19 @@ export class AccountsEffect {
             this.store.dispatch(getCurrentMonthIncomingsAction())
             this.store.dispatch(getCurrentMonthExpensesAction())
             return getLatestAccountMovementsSuccessAction({latestMovements});
+          }),
+        );
+      })
+    )
+  )
+
+  users$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(getAllUsers),
+      switchMap(() => {
+        return this.accountService.getAllUsers().pipe(
+          map((users: UsersDTOInterface[]) => {
+            return getAllUsersSuccesAction({users});
           }),
         );
       })

@@ -8,6 +8,7 @@ import {MatInputModule} from "@angular/material/input";
 import {MatSelectModule} from "@angular/material/select";
 import {MatCardModule} from "@angular/material/card";
 import {MatDialogModule} from "@angular/material/dialog";
+import {UserCardModule} from "../user-card/user-card.module";
 
 
 @NgModule({
@@ -24,7 +25,9 @@ import {MatDialogModule} from "@angular/material/dialog";
     MatInputModule,
     MatSelectModule,
     MatCardModule,
-    MatDialogModule
+    MatSelectModule,
+    MatDialogModule,
+    UserCardModule
   ],
   providers: [GenericModalService]
 })

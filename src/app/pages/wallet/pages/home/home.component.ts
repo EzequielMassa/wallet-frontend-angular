@@ -18,8 +18,9 @@ import {
   getCurrentYearIncomingsAction,
 } from '../incomings/store/actions/incomings.action';
 import {currentMonthIncomingsSelector} from '../incomings/store/selectors/incomings.selectors';
-import {getLatestAccountMovementsAction, getUserAccountsAction,} from './store/actions/accounts.action';
+import {getAllUsers, getLatestAccountMovementsAction, getUserAccountsAction,} from './store/actions/accounts.action';
 import {
+  allUsersSelector,
   isLoadingSelector,
   latestAccountMovementsSelector,
   userAccountsSelector,
@@ -27,6 +28,7 @@ import {
 import {UserAccountInterface} from './types/userAccount.interface';
 import {ToastrService} from "ngx-toastr";
 import {NewAccountBadgeService} from "../../../../shared/services/new-account-badge.service";
+import {UsersDTOInterface} from "./types/usersDTO.interface";
 
 @Component({
   selector: 'wal-home',
@@ -39,6 +41,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   saludo!: string;
   options!: AnimationOptions;
   userAccounts$!: Observable<UserAccountInterface[]>;
+
   activeAccount!: number;
   activeAccountSubscription$!: Subscription;
   isLoading$!: Observable<boolean>;
@@ -105,6 +108,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.setActive(this.activeAccount);
         this.store.dispatch(getCurrentMonthIncomingsAction());
         this.store.dispatch(getCurrentMonthExpensesAction());
+
       });
   }
 

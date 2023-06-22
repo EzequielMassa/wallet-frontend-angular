@@ -7,6 +7,7 @@ import {PersistanceService} from "../../../../../shared/services/persistance.ser
 import {DepositPaymentInterface} from "../types/DepositPayment.interface";
 import {TransferInterface} from "../types/Transfer.interface";
 import {OperationInterface} from "../../../../../shared/types/operation.interface";
+import {UsersDTOInterface} from "../types/usersDTO.interface";
 
 @Injectable({
   providedIn: 'root',
@@ -63,6 +64,11 @@ export class AccountService {
   getLatestAccountMovements(activeAccount: number): Observable<OperationInterface[]> {
     const url: string = environment.apiUrl + `/api/v1/movements/id/${activeAccount}`;
     return this.http.get<OperationInterface[]>(url);
+  }
+
+  getAllUsers(): Observable<UsersDTOInterface[]> {
+    const url: string = environment.apiUrl + `/api/v1/user/get-all`;
+    return this.http.get<UsersDTOInterface[]>(url);
   }
 }
 

@@ -37,6 +37,7 @@ import {GenericTitleModule} from "../../../../shared/modules/generic-title/gener
 import {LottieComponent} from "ngx-lottie";
 import {MatDividerModule} from "@angular/material/divider";
 import {MatBadgeModule} from "@angular/material/badge";
+import {UserCardModule} from "../../../../shared/modules/user-card/user-card.module";
 @NgModule({
   declarations: [HomeComponent, BalanceComponent, NewAccountComponent, TransactionsServicesComponent],
     imports: [
@@ -57,6 +58,7 @@ import {MatBadgeModule} from "@angular/material/badge";
         MatBadgeModule,
         DepositPaymentFormModule,
         OperationsGraphicsModule,
+        UserCardModule,                   //BOORAR LUEGO
         TotalModule,
         StoreModule.forFeature('home', homeReducers),
         StoreModule.forFeature('incomings', incomingsReducers),

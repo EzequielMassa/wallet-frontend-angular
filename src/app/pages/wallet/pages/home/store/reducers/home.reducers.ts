@@ -6,7 +6,7 @@ import {
   createNewTransferAction, createNewTransferFailureAction,
   createNewTransferSuccessAction,
   createNewUserAccountAction,
-  createNewUserAccountSuccessAction,
+  createNewUserAccountSuccessAction, getAllUsers, getAllUsersSuccesAction,
   getLatestAccountMovementsAction,
   getLatestAccountMovementsSuccessAction,
   getUserAccountsAction,
@@ -17,6 +17,7 @@ const initialState: HomeStateInterface = {
   isLoading: false,
   currentUserAccounts: [],
   latestAccountMovements: [],
+  users: [],
   backendErrors: null
 }
 
@@ -106,6 +107,21 @@ const homeReducer = createReducer(
       ...state,
       isLoading: false,
       latestAccountMovements: action.latestMovements,
+      backendErrors: null
+    })
+  ),
+  on(
+    getAllUsers, (state): HomeStateInterface => ({
+      ...state,
+      isLoading: true,
+      backendErrors: null
+    })
+  ),
+  on(
+    getAllUsersSuccesAction, (state, action): HomeStateInterface => ({
+      ...state,
+      isLoading: false,
+      users: action.users,
       backendErrors: null
     })
   ),

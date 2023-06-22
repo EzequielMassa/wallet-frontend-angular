@@ -23,3 +23,7 @@ export const backendErrorsSelector = createSelector(
   homeFeatureSelector,
   (homeState: HomeStateInterface) => homeState.backendErrors
 );
+export const allUsersSelector = createSelector(
+  homeFeatureSelector,
+  (homeState: HomeStateInterface) => homeState.users
+);
