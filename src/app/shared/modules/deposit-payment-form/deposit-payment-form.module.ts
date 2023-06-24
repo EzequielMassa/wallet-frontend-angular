@@ -1,23 +1,20 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {DepositPaymentFormComponent} from './components/deposit-payment-form/deposit-payment-form.component';
-import {ReactiveFormsModule} from "@angular/forms";
-import {GenericModalService} from "./services/generic-modal.service";
-import {MatFormFieldModule} from "@angular/material/form-field";
-import {MatInputModule} from "@angular/material/input";
-import {MatSelectModule} from "@angular/material/select";
-import {MatCardModule} from "@angular/material/card";
-import {MatDialogModule} from "@angular/material/dialog";
-import {UserCardModule} from "../user-card/user-card.module";
-
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { UserCardModule } from '../user-card/user-card.module';
+import { DepositPaymentFormComponent } from './components/deposit-payment-form/deposit-payment-form.component';
+import { GenericModalService } from './services/generic-modal.service';
 
 @NgModule({
-  declarations: [
-    DepositPaymentFormComponent
-  ],
-  exports: [
-    DepositPaymentFormComponent
-  ],
+  declarations: [DepositPaymentFormComponent],
+  exports: [DepositPaymentFormComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -27,9 +24,10 @@ import {UserCardModule} from "../user-card/user-card.module";
     MatCardModule,
     MatSelectModule,
     MatDialogModule,
-    UserCardModule
+    MatExpansionModule,
+    MatButtonModule,
+    UserCardModule,
   ],
-  providers: [GenericModalService]
+  providers: [GenericModalService],
 })
-export class DepositPaymentFormModule {
-}
+export class DepositPaymentFormModule {}

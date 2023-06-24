@@ -3,5 +3,6 @@
 }
 
 .mt__card__container {
-  height: 100%;
+  height: 90vh;
+  overflow: auto;
 }

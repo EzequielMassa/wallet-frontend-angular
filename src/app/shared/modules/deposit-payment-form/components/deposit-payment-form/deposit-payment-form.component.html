@@ -1,10 +1,13 @@
 <form [formGroup]="form">
-
   <ng-container>
-
     <mat-form-field appearance="fill">
-      <ng-container *ngIf="(formTypeProps == 'deposit') || (formTypeProps == 'payment') ; else labelTransfer">
-        <mat-label>Select account to {{formTypeProps}}</mat-label>
+      <ng-container
+        *ngIf="
+          formTypeProps == 'deposit' || formTypeProps == 'payment';
+          else labelTransfer
+        "
+      >
+        <mat-label>Select account to {{ formTypeProps }}</mat-label>
       </ng-container>
 
       <ng-container>
@@ -13,47 +16,89 @@
         </ng-template>
       </ng-container>
 
-      <mat-select id="inputAccounts" formControlName="accountId" [(value)]="selected">
-        <mat-option *ngFor="
-              let account of userAccounts$ | async" value="{{account.accountId}}">Account
-          Nº{{account.accountId}}</mat-option>
+      <mat-select
+        id="inputAccounts"
+        formControlName="accountId"
+        [(value)]="selected"
+      >
+        <mat-option
+          *ngFor="let account of userAccounts$ | async"
+          value="{{ account.accountId }}"
+          >Account Nº{{ account.accountId }}</mat-option
+        >
       </mat-select>
       <mat-error *ngIf="form.get('accountId')?.hasError('required')">
         This field is <strong>required</strong>
       </mat-error>
     </mat-form-field>
 
-    <ng-container *ngIf="(formTypeProps == 'transfer')">
-      <mat-form-field appearance="fill" floatLabel="always">
-   <!--     <mat-label>Destiny Account</mat-label>
-        <input id="inputDestiny" type="number" matInput formControlName="destinyAccount"
-               [errorStateMatcher]="matcher"
-               class="example-right-align" placeholder="Destiny Account Nº">
+    <ng-container *ngIf="formTypeProps == 'transfer'">
+      <div class="transfer__form__container">
+        <mat-label>Select user account to transfer</mat-label>
+        <div class="example-action-buttons">
+          <button mat-button (click)="accordion.openAll()">Expand All</button>
+          <button mat-button (click)="accordion.closeAll()">
+            Collapse All
+          </button>
+        </div>
 
-        <mat-hint>
-          Enter the account number to transfer</mat-hint>
+        <mat-accordion class="example-headers-align" multi>
+          <mat-expansion-panel *ngFor="let user of users$ | async">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <div
+                  class="accordion__img"
+                  [ngStyle]="{
+                    'background-image': 'url(' + user.urlImg + ')',
+                    'background-size': 'cover',
+                    'background-repeat': 'no-repeat'
+                  }"
+                ></div>
+                {{ user.firstName }} {{ user.lastName }}
+              </mat-panel-title>
+              <mat-panel-description>
+                {{ user.email }}
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <mat-form-field>
+              <mat-label>Select account</mat-label>
+
+              <mat-select
+                id="inputDestiny"
+                formControlName="destinyAccount"
+                [(value)]="userAccountSelected"
+                [errorStateMatcher]="matcher"
+              >
+                <mat-option
+                  *ngFor="let account of user.accounts"
+                  value="{{ account.accountId }}"
+                  >Account Nº{{ account.accountId }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </mat-expansion-panel>
+        </mat-accordion>
+
         <mat-error *ngIf="form.get('destinyAccount')?.hasError('required')">
-          This field is <strong>required</strong>
+          You must select an account to <strong>transfer</strong>
         </mat-error>
-        <mat-error *ngIf="form.get('destinyAccount')?.hasError('min')">
-          You must provide an existing account
-        </mat-error>-->
-        <mat-label>Select a User to Transfer</mat-label>
-        <mat-select>
-          <mat-option *ngFor="let user of users$ | async" [value]="user.id">
-         <wal-user-card [user]="user"></wal-user-card>
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+      </div>
     </ng-container>
 
     <mat-form-field appearance="fill" floatLabel="always">
       <mat-label>Amount</mat-label>
-      <input id="inputAmount" type="number" matInput formControlName="amount" [errorStateMatcher]="matcher"
-             class="example-right-align" placeholder="0">
+      <input
+        id="inputAmount"
+        type="number"
+        matInput
+        formControlName="amount"
+        [errorStateMatcher]="matcher"
+        class="example-right-align"
+        placeholder="0"
+      />
       <span matTextPrefix>$&nbsp;</span>
-      <mat-hint>
-        Enter a value greater than 0</mat-hint>
+      <mat-hint> Enter a value greater than 0</mat-hint>
       <mat-error *ngIf="form.get('amount')?.hasError('required')">
         This field is <strong>required</strong>
       </mat-error>
@@ -64,12 +109,18 @@
 
     <mat-form-field appearance="fill" floatLabel="always">
       <mat-label>Description</mat-label>
-      <input id="inputConcept" type="text" matInput formControlName="description" [errorStateMatcher]="matcher"
-             class="example-right-align" placeholder="
-Enter a description">
+      <input
+        id="inputConcept"
+        type="text"
+        matInput
+        formControlName="description"
+        [errorStateMatcher]="matcher"
+        class="example-right-align"
+        placeholder="
+Enter a description"
+      />
 
-      <mat-hint>
-        Between 3 and 15 characters</mat-hint>
+      <mat-hint> Between 3 and 15 characters</mat-hint>
       <mat-error *ngIf="form.get('description')?.hasError('required')">
         This field is <strong>required</strong>
       </mat-error>
@@ -80,6 +131,5 @@ Enter a description">
         Please enter a maximum of 15 characters.
       </mat-error>
     </mat-form-field>
-
   </ng-container>
 </form>
