@@ -1,5 +1,11 @@
 .mat-card-actions-btns {
   margin-right: 20px;
+  margin-top: 20px;
+}
+
+.mt__card__title h2{
+  margin: 0;
+  padding-left: 0;
 }
 
 .mt__card__container {

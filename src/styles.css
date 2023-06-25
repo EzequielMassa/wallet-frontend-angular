@@ -9,6 +9,10 @@ body {
 
 }
 
+.mat-content {
+  overflow-x: auto !important;
+}
+
 .title {
   padding: 25px 0 0 1%;
   color: #673ab7;
