@@ -1,20 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { select, Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import {
-  backendErrorsSelector,
-  isSubmittingSelector,
-} from '../../../../../store/selectors/auth.selector';
-import { LoginRequestInterface } from '../../../../../types/loginRequest.interface';
-import { loginAction } from '../../../../../store/actions/login.actions';
-import { AnimationOptions } from 'ngx-lottie';
+import { Store, select } from '@ngrx/store';
 import {
   fadeInOnEnterAnimation,
   fadeOutOnLeaveAnimation,
   flipOnEnterAnimation,
 } from 'angular-animations';
+import { AnimationOptions } from 'ngx-lottie';
+import { Observable } from 'rxjs';
+import { logoutAction } from 'src/app/pages/wallet/pages/auth/store/actions/logout.actions';
 import { BackendErrorsInterface } from 'src/app/shared/types/backendErrors.interface';
+import { loginAction } from '../../../../../store/actions/login.actions';
+import {
+  backendErrorsSelector,
+  isSubmittingSelector,
+} from '../../../../../store/selectors/auth.selector';
+import { LoginRequestInterface } from '../../../../../types/loginRequest.interface';
 
 @Component({
   selector: 'wal-login',
@@ -35,7 +36,9 @@ export class LoginComponent implements OnInit {
     path: '/assets/lottie/lottie-credit-cards.json',
   };
 
-  constructor(private fb: FormBuilder, private store: Store) {}
+  constructor(private fb: FormBuilder, private store: Store) {
+    this.store.dispatch(logoutAction());
+  }
 
   ngOnInit(): void {
     this.initializeLoginForm();
@@ -58,7 +61,6 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       const request: LoginRequestInterface = this.loginForm.value;
       this.store.dispatch(loginAction({ request }));
-			
     }
   }
 }

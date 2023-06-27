@@ -8,7 +8,6 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { UserCardModule } from '../user-card/user-card.module';
 import { DepositPaymentFormComponent } from './components/deposit-payment-form/deposit-payment-form.component';
 import { GenericModalService } from './services/generic-modal.service';
 
@@ -26,7 +25,6 @@ import { GenericModalService } from './services/generic-modal.service';
     MatDialogModule,
     MatExpansionModule,
     MatButtonModule,
-    UserCardModule,
   ],
   providers: [GenericModalService],
 })

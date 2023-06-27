@@ -6,7 +6,6 @@ body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-
 }
 
 .mat-content {
@@ -20,17 +19,16 @@ body {
   width: 90%;
 }
 
-
-   .overlay {
-     position: fixed;
-     display: block;
-     width: 100%;
-     height: 100%;
-     top: 0;
-     left: 0;
-     background-color: rgba(74, 74, 74, .8);
-     z-index: 99999;
-   }
+.overlay {
+  position: fixed;
+  display: block;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(74, 74, 74, 0.8);
+  z-index: 99999;
+}
 
 .spinner {
   position: absolute;
@@ -46,6 +44,7 @@ body {
   justify-content: center;
   align-items: center;
   margin: 0 auto;
+  padding-top: 1.5rem;
 }
 
 .login__container__top {
@@ -163,26 +162,24 @@ input:-webkit-autofill:active {
   color: red;
 }
 
-
 .deposit-icon {
   color: rgba(103, 58, 183, 1);
-  font-size: 1.3rem
+  font-size: 1.3rem;
 }
 
 .payment-icon {
   color: rgba(255, 44, 125, 1);
-  font-size: 1.3rem
+  font-size: 1.3rem;
 }
 
 .transfer-in-icon {
   color: rgba(103, 58, 183, 1);
-  font-size: 1.2rem
+  font-size: 1.2rem;
 }
-
 
 .transfer-out-icon {
   color: rgba(255, 44, 125, 1);
-  font-size: 1.2rem
+  font-size: 1.2rem;
 }
 
 .total__container {
