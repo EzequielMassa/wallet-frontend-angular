@@ -1,29 +1,31 @@
-import {HTTP_INTERCEPTORS, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest,} from '@angular/common/http';
-import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs';
-import {PersistanceService} from '../../../../../shared/services/persistance.service';
+import {
+  HTTP_INTERCEPTORS,
+  HttpEvent,
+  HttpHandler,
+  HttpInterceptor,
+  HttpRequest,
+} from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { PersistanceService } from '../../../../../shared/services/persistance.service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-  constructor(private persistanceService: PersistanceService) {
-  }
+  constructor(private persistanceService: PersistanceService) {}
 
   intercept(
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-
     let intRequest = request;
     let token = this.persistanceService.get('accessToken');
 
     if (token != null) {
       intRequest.clone({
         setHeaders: {
-          Authorization: `Bearer ${token}`
-        }
+          Authorization: `Bearer ${token}`,
+        },
       });
-
-      console.log("intercept")
     }
     return next.handle(intRequest);
   }

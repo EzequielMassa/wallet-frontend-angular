@@ -1,16 +1,14 @@
-import {Component, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
-import {ChartConfiguration, ChartData, ChartEvent, ChartType} from 'chart.js';
-import {BaseChartDirective} from 'ng2-charts';
+import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
 import DataLabelsPlugin from 'chartjs-plugin-datalabels';
+import { BaseChartDirective } from 'ng2-charts';
 
 @Component({
   selector: 'wal-operations-graphics',
   templateUrl: './operations-graphics.component.html',
-  styleUrls: ['./operations-graphics.component.css']
+  styleUrls: ['./operations-graphics.component.css'],
 })
 export class OperationsGraphicsComponent implements OnInit, OnDestroy {
-
-
   @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
   @Input('barChar') barChartProps!: ChartData<'bar'>;
 
@@ -21,8 +19,7 @@ export class OperationsGraphicsComponent implements OnInit, OnDestroy {
       x: {},
       y: {
         min: 0,
-
-      }
+      },
     },
     plugins: {
       legend: {
@@ -34,37 +31,36 @@ export class OperationsGraphicsComponent implements OnInit, OnDestroy {
           title: {
             font: {
               size: '14',
-              weight: 'normal'
-            }
+              weight: 'normal',
+            },
           },
-          
-        }
-      }
+        },
+      },
     },
   };
   public barChartType: ChartType = 'bar';
-  public barChartPlugins = [
-    DataLabelsPlugin
-  ];
+  public barChartPlugins = [DataLabelsPlugin];
 
   // events
-  public chartClicked({event, active}: { event?: ChartEvent, active?: {}[] }): void {
-    console.log(event, active);
-  }
+  public chartClicked({
+    event,
+    active,
+  }: {
+    event?: ChartEvent;
+    active?: {}[];
+  }): void {}
 
+  public chartHovered({
+    event,
+    active,
+  }: {
+    event?: ChartEvent;
+    active?: {}[];
+  }): void {}
 
-  public chartHovered({event, active}: { event?: ChartEvent, active?: {}[] }): void {
+  ngOnInit(): void {}
 
-  }
+  ngOnDestroy(): void {}
 
-  ngOnInit(): void {
-  }
-
-  ngOnDestroy(): void {
-
-  }
-
-  constructor() {
-
-  }
+  constructor() {}
 }

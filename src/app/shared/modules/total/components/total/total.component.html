@@ -1,22 +1,19 @@
 <mat-card class="total__item">
-
   <mat-card-header>
     <mat-card-title class="total__title">
-     <!-- <i class="{{iconProps}}"></i>-->
       <lord-icon
-        src="{{iconProps}}"
+        src="{{ iconProps }}"
         trigger="loop"
-        colors="{{iconColorProps}}"
+        colors="{{ iconColorProps }}"
       >
       </lord-icon>
     </mat-card-title>
     <mat-card-subtitle>
-      <h4>{{titleProps}}</h4>
+      <h4>{{ titleProps }}</h4>
     </mat-card-subtitle>
   </mat-card-header>
 
   <mat-card-content>
-    <h3>{{totalProps | currency}}</h3>
+    <h3>{{ totalProps | currency }}</h3>
   </mat-card-content>
-
 </mat-card>

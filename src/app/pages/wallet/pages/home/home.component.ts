@@ -45,7 +45,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   saludo!: string;
   options!: AnimationOptions;
   userAccounts$!: Observable<UserAccountInterface[]>;
-
   activeAccount!: number;
   activeAccountSubscription$!: Subscription;
   isLoading$!: Observable<boolean>;

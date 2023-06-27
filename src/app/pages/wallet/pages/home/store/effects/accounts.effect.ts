@@ -1,30 +1,33 @@
-import {Injectable} from "@angular/core";
-import {Actions, createEffect, ofType} from "@ngrx/effects";
-import {catchError, map, of, switchMap, tap} from "rxjs";
+import { HttpErrorResponse } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { Store } from '@ngrx/store';
+import { ToastrService } from 'ngx-toastr';
+import { catchError, map, of, switchMap, tap } from 'rxjs';
+import { NewAccountBadgeService } from '../../../../../../shared/services/new-account-badge.service';
+import { PersistanceService } from '../../../../../../shared/services/persistance.service';
+import { OperationInterface } from '../../../../../../shared/types/operation.interface';
+import { getCurrentMonthExpensesAction } from '../../../expenses/store/actions/expenses.action';
+import { getCurrentMonthIncomingsAction } from '../../../incomings/store/actions/incomings.action';
+import { AccountService } from '../../services/account.service';
+import { UserAccountInterface } from '../../types/userAccount.interface';
+import { UsersDTOInterface } from '../../types/usersDTO.interface';
 import {
-  createNewDepositPaymentAction, createNewDepositPaymentFailureAction,
+  createNewDepositPaymentAction,
+  createNewDepositPaymentFailureAction,
   createNewDepositPaymentSuccessAction,
-  createNewTransferAction, createNewTransferFailureAction,
+  createNewTransferAction,
+  createNewTransferFailureAction,
   createNewTransferSuccessAction,
   createNewUserAccountAction,
-  createNewUserAccountSuccessAction, getAllUsers, getAllUsersSuccesAction,
+  createNewUserAccountSuccessAction,
+  getAllUsers,
+  getAllUsersSuccesAction,
   getLatestAccountMovementsAction,
   getLatestAccountMovementsSuccessAction,
   getUserAccountsAction,
-  getUserAccountsSuccesAction
-} from "../actions/accounts.action";
-import {AccountService} from "../../services/account.service";
-import {UserAccountInterface} from "../../types/userAccount.interface";
-import {Store} from "@ngrx/store";
-import {OperationInterface} from "../../../../../../shared/types/operation.interface";
-import {PersistanceService} from "../../../../../../shared/services/persistance.service";
-import {getCurrentMonthIncomingsAction} from "../../../incomings/store/actions/incomings.action";
-import {getCurrentMonthExpensesAction} from "../../../expenses/store/actions/expenses.action";
-import {ToastrService} from "ngx-toastr";
-import {NewAccountBadgeService} from "../../../../../../shared/services/new-account-badge.service";
-import {HttpErrorResponse} from "@angular/common/http";
-import {loginFailureAction} from "../../../auth/store/actions/login.actions";
-import {UsersDTOInterface} from "../../types/usersDTO.interface";
+  getUserAccountsSuccesAction,
+} from '../actions/accounts.action';
 
 @Injectable()
 export class AccountsEffect {
@@ -34,12 +37,12 @@ export class AccountsEffect {
       switchMap(() => {
         return this.accountService.getUserAccounts().pipe(
           map((currentUserAccounts: UserAccountInterface[]) => {
-            return getUserAccountsSuccesAction({currentUserAccounts});
-          }),
+            return getUserAccountsSuccesAction({ currentUserAccounts });
+          })
         );
       })
     )
-  )
+  );
 
   createAccounts$ = createEffect(() =>
     this.actions$.pipe(
@@ -47,71 +50,92 @@ export class AccountsEffect {
       switchMap(() => {
         return this.accountService.createNewUserAccount().pipe(
           map(() => {
-            this.store.dispatch(getUserAccountsAction())
-            const activeAccount = parseInt(this.persistanceService.get('activeAccount'))
-            this.store.dispatch(getLatestAccountMovementsAction({activeAccount: activeAccount}))
+            this.store.dispatch(getUserAccountsAction());
+            const activeAccount = parseInt(
+              this.persistanceService.get('activeAccount')
+            );
+            this.store.dispatch(
+              getLatestAccountMovementsAction({ activeAccount: activeAccount })
+            );
             return createNewUserAccountSuccessAction();
           })
         );
       })
     )
-  )
+  );
 
   depositPayment$ = createEffect(() =>
     this.actions$.pipe(
       ofType(createNewDepositPaymentAction),
-      switchMap(({request}) => {
+      switchMap(({ request }) => {
         return this.accountService.createDepositPayment(request).pipe(
           map(() => {
-            this.store.dispatch(getUserAccountsAction())
-            const activeAccount = parseInt(this.persistanceService.get('activeAccount'))
-            this.store.dispatch(getLatestAccountMovementsAction({activeAccount: activeAccount}))
-            return createNewDepositPaymentSuccessAction({request});
+            this.store.dispatch(getUserAccountsAction());
+            const activeAccount = parseInt(
+              this.persistanceService.get('activeAccount')
+            );
+            this.store.dispatch(
+              getLatestAccountMovementsAction({ activeAccount: activeAccount })
+            );
+            return createNewDepositPaymentSuccessAction({ request });
           }),
           catchError((errorResponse: HttpErrorResponse) => {
-            this.showFailure(errorResponse.error.message)
-            return of(createNewDepositPaymentFailureAction({ errors: errorResponse.error }));
+            this.showFailure(errorResponse.error.message);
+            return of(
+              createNewDepositPaymentFailureAction({
+                errors: errorResponse.error,
+              })
+            );
           })
         );
       })
     )
-  )
-
+  );
 
   transfer$ = createEffect(() =>
     this.actions$.pipe(
       ofType(createNewTransferAction),
-      switchMap(({request}) => {
+      switchMap(({ request }) => {
         return this.accountService.createTransfer(request).pipe(
           map(() => {
-            this.store.dispatch(getUserAccountsAction())
-            const activeAccount = parseInt(this.persistanceService.get('activeAccount'))
-            this.store.dispatch(getLatestAccountMovementsAction({activeAccount: activeAccount}))
-            return createNewTransferSuccessAction({request});
+            this.store.dispatch(getUserAccountsAction());
+            const activeAccount = parseInt(
+              this.persistanceService.get('activeAccount')
+            );
+            this.store.dispatch(
+              getLatestAccountMovementsAction({ activeAccount: activeAccount })
+            );
+            return createNewTransferSuccessAction({ request });
           }),
           catchError((errorResponse: HttpErrorResponse) => {
-            this.showFailure(errorResponse.error.message)
-            return of(createNewTransferFailureAction({ errors: errorResponse.error}));
+            this.showFailure(errorResponse.error.message);
+            return of(
+              createNewTransferFailureAction({ errors: errorResponse.error })
+            );
           })
         );
       })
     )
-  )
+  );
 
   latestMovements$ = createEffect(() =>
     this.actions$.pipe(
       ofType(getLatestAccountMovementsAction),
-      switchMap(({activeAccount}) => {
-        return this.accountService.getLatestAccountMovements(activeAccount).pipe(
-          map((latestMovements: OperationInterface[]) => {
-            this.store.dispatch(getCurrentMonthIncomingsAction())
-            this.store.dispatch(getCurrentMonthExpensesAction())
-            return getLatestAccountMovementsSuccessAction({latestMovements});
-          }),
-        );
+      switchMap(({ activeAccount }) => {
+        return this.accountService
+          .getLatestAccountMovements(activeAccount)
+          .pipe(
+            map((latestMovements: OperationInterface[]) => {
+              this.store.dispatch(getCurrentMonthIncomingsAction());
+              this.store.dispatch(getCurrentMonthExpensesAction());
+              return getLatestAccountMovementsSuccessAction({
+                latestMovements,
+              });
+            })
+          );
       })
     )
-  )
+  );
 
   users$ = createEffect(() =>
     this.actions$.pipe(
@@ -119,12 +143,12 @@ export class AccountsEffect {
       switchMap(() => {
         return this.accountService.getAllUsers().pipe(
           map((users: UsersDTOInterface[]) => {
-            return getAllUsersSuccesAction({users});
-          }),
+            return getAllUsersSuccesAction({ users });
+          })
         );
       })
     )
-  )
+  );
 
   accountCreated$ = createEffect(
     () =>
@@ -132,7 +156,7 @@ export class AccountsEffect {
         ofType(createNewUserAccountSuccessAction),
         tap(() => {
           this.showSuccess('New account created successfully!');
-          this.badgeService.setbadgeState(false)
+          this.badgeService.setbadgeState(false);
         })
       ),
     { dispatch: false }
@@ -160,12 +184,18 @@ export class AccountsEffect {
     { dispatch: false }
   );
 
-  showSuccess(title:string) {
-    this.toastr.success('', title,{positionClass: 'toast-bottom-right'});
+  showSuccess(title: string) {
+    this.toastr.success('', title, { positionClass: 'toast-bottom-right' });
   }
-  showFailure(title:string) {
-    this.toastr.error('', title,{positionClass: 'toast-bottom-right'});
+  showFailure(title: string) {
+    this.toastr.error('', title, { positionClass: 'toast-bottom-right' });
   }
-  constructor(private actions$: Actions, private accountService: AccountService, private store: Store, private persistanceService: PersistanceService, private toastr: ToastrService, private badgeService:NewAccountBadgeService) {
-  }
+  constructor(
+    private actions$: Actions,
+    private accountService: AccountService,
+    private store: Store,
+    private persistanceService: PersistanceService,
+    private toastr: ToastrService,
+    private badgeService: NewAccountBadgeService
+  ) {}
 }
