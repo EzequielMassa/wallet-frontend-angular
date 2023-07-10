@@ -28,6 +28,7 @@ import { UsersDTOInterface } from '../../../../../pages/wallet/pages/home/types/
 import { MyErrorStateMatcher } from '../../../../utils/error-state-mantcher';
 import { GenericModalComponent } from '../../../generic-modal/components/generic-modal/generic-modal.component';
 import { GenericModalService } from '../../services/generic-modal.service';
+import {PersistanceService} from "../../../../services/persistance.service";
 
 @Component({
   selector: 'wal-deposit-payment-form',
@@ -38,10 +39,11 @@ export class DepositPaymentFormComponent implements OnInit, OnDestroy {
   form!: FormGroup;
   userAccounts$!: Observable<UserAccountInterface[]>;
   users$!: Observable<UsersDTOInterface[]>;
+  activeAccount!: number;
   subscriptionModal: Subscription;
   matcher = new MyErrorStateMatcher();
-  selected = 'option1';
-  userAccountSelected: string = 'opttion1';
+  selected:number;
+  userAccountSelected: number = 0;
   @Input('formType') formTypeProps!: any;
   @Output('formEvent') formEventProps = new EventEmitter<any>();
   @ViewChild(MatAccordion) accordion!: MatAccordion;
@@ -50,8 +52,11 @@ export class DepositPaymentFormComponent implements OnInit, OnDestroy {
     private fb: FormBuilder,
     private store: Store,
     private modalService: GenericModalService,
-    public dialogRef: MatDialogRef<GenericModalComponent>
+    public dialogRef: MatDialogRef<GenericModalComponent>,
+    public persistanceService: PersistanceService
   ) {
+    this.activeAccount = this.persistanceService.get('activeAccount');
+    this.selected = this.activeAccount;
     this.userAccounts$ = this.store.pipe(select(userAccountsSelector));
     this.subscriptionModal = this.modalService.data.subscribe((data) => {
       if (data == true) {
@@ -69,6 +74,7 @@ export class DepositPaymentFormComponent implements OnInit, OnDestroy {
     } else {
       this.initializeTransferForm();
     }
+
   }
 
   private initializeForm() {

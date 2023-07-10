@@ -70,11 +70,13 @@
                 [(value)]="userAccountSelected"
                 [errorStateMatcher]="matcher"
               >
-                <mat-option
-                  *ngFor="let account of user.accounts"
-                  value="{{ account.accountId }}"
+                <ng-container *ngFor="let account of user.accounts">
+                  <mat-option
+                    *ngIf="selected != account.accountId"
+                    value="{{ account.accountId }}"
                   >Account Nº{{ account.accountId }}
-                </mat-option>
+                  </mat-option>
+                </ng-container>
               </mat-select>
             </mat-form-field>
           </mat-expansion-panel>
