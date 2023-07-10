@@ -12,6 +12,17 @@ body {
   overflow-x: auto !important;
 }
 
+
+.mat-expansion-panel-header .mat-content {
+  display: inline-block;
+}
+.mat-expansion-panel-header {
+  padding: 20px 0 !important;
+}
+.mat-expansion-panel-header-title, .mat-expansion-panel-header-description{
+  padding: 10px !important;
+}
+
 .title {
   padding: 25px 0 0 1%;
   color: #673ab7;
