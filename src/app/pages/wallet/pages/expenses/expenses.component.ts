@@ -29,7 +29,7 @@ export class ExpensesComponent implements OnInit, OnDestroy {
   totalMonthExpenses!: number;
   yearExpensses: number[] = [];
   totalYearExpenses!: number;
-  private activeAccount!: number;
+  activeAccount!: number;
   currentMonthExpenses$!: Observable<any>;
   currentYearExpenses$!: Observable<any>;
   expensesMonthSubscription$!: Subscription;
@@ -39,6 +39,7 @@ export class ExpensesComponent implements OnInit, OnDestroy {
   barChar!: ChartData<'bar'>
   barCharLabels: string[] = [];
   currentYear: number = moment().get('year')
+  currentMonth: string = moment().format('MMMM')
 
 
   constructor(private accountService: AccountService, private store: Store, private persistanceService: PersistanceService,private toastr: ToastrService) {
@@ -95,7 +96,7 @@ export class ExpensesComponent implements OnInit, OnDestroy {
 
   getYearExpenses() {
     this.store.dispatch(getLatestAccountMovementsAction({activeAccount: this.activeAccount}))
-    this.title = "Year expenses"
+    this.title = `Expenses movements of ${this.currentYear}`
     this.expensesAccountMovements$ = this.store.pipe(select(latestAccountMovementsSelector), map((movements) => {
       return movements.filter((movement) => {
         return movement.type == 'PAYMENT' || movement.type == 'TRANSFER_OUT'

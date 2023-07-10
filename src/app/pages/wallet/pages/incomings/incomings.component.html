@@ -1,13 +1,13 @@
-
 <section class="incomings__container" [@fadeInOnEnter]>
   <div class="incomings__title">
-    <h2>Incomings </h2>
+    <h2>Year incomings resume </h2>
+    <h3>Active account Nº : <span>{{ activeAccount }}</span></h3>
   </div>
   <div class="total__container">
-    <wal-total [title]="'Month incomings'" [total]="totalMonthIncoming"
+    <wal-total [title]="currentMonth +' '+ 'incomings'" [total]="totalMonthIncoming"
                [icon]="'/assets/arrow-up.json'"
                [iconColor]="'primary:#6d42ba'"></wal-total>
-    <wal-total [title]="'Year incomings'" [total]="totalYearIncomings"
+    <wal-total [title]="currentYear +' '+ 'incomings'" [total]="totalYearIncomings"
                [icon]="'/assets/arrow-up.json'"
                [iconColor]="'primary:#6d42ba'"></wal-total>
   </div>
@@ -18,6 +18,6 @@
   </div>
   <mat-divider class="divider"></mat-divider>
   <div class="operations__graphics__container">
-  <wal-operations-graphics [barChar]="barChar"></wal-operations-graphics>
+    <wal-operations-graphics [barChar]="barChar"></wal-operations-graphics>
   </div>
 </section>

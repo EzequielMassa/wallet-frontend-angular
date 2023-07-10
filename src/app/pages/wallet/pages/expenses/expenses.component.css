@@ -11,10 +11,21 @@
   padding-left: 5%;
 }
 
+.expenses__title h3 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.60);
+}
+
+.expenses__title h3 span {
+  font-size: 1.4rem;
+  color: rgba(103, 58, 183, 0.60);
+}
+
 .expenses__title h2 {
   font-size: 1.5rem;
 }
-
 @media (min-width: 768px) {
 
   .total__container {

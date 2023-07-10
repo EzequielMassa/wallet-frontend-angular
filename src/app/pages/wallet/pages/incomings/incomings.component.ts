@@ -24,7 +24,7 @@ export class IncomingsComponent implements OnInit, OnDestroy {
   totalMonthIncoming!: number;
   YearIncomings: number[] = [];
   totalYearIncomings!: number;
-  private activeAccount!: number;
+  activeAccount!: number;
   currentMonthIncomings$!: Observable<any>;
   currentYearIncomings$!: Observable<any>;
   incomingMonthSubscription$!: Subscription;
@@ -34,8 +34,9 @@ export class IncomingsComponent implements OnInit, OnDestroy {
   barChar!: ChartData<'bar'>
   barCharLabels: string[] = [];
   currentYear: number = moment().get('year')
+  currentMonth: string = moment().format('MMMM')
 
-  constructor( private store: Store, private persistanceService: PersistanceService, private toastr: ToastrService) {
+  constructor(private store: Store, private persistanceService: PersistanceService, private toastr: ToastrService) {
     this.store.dispatch(getCurrentMonthIncomingsAction())
     this.store.dispatch(getCurrentYearIncomingsAction())
   }
@@ -91,13 +92,14 @@ export class IncomingsComponent implements OnInit, OnDestroy {
 
   getYearIncomings() {
     this.store.dispatch(getLatestAccountMovementsAction({activeAccount: this.activeAccount}))
-    this.title = "Year incomings"
+    this.title = `Incomings movements of ${this.currentYear}`
     this.IncomingsAccountMovements$ = this.store.pipe(select(latestAccountMovementsSelector), map((movements) => {
       return movements.filter((movement) => {
         return movement.type == 'DEPOSIT' || movement.type == 'TRANSFER_IN'
       })
     }))
   }
+
   showSuccessActive() {
     this.toastr.info('', `Active account:  Nº${this.activeAccount}`);
   }

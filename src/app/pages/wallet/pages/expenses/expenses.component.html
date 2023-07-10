@@ -1,12 +1,13 @@
 <section class="expenses__container" [@fadeInOnEnter]>
   <div class="expenses__title">
-    <h2>Expenses </h2>
+    <h2>Year expenses resume </h2>
+    <h3>Active account Nº : <span>{{ activeAccount }}</span></h3>
   </div>
   <div class="total__container">
-    <wal-total [title]="'Month expenses'" [total]="totalMonthExpenses"
+    <wal-total [title]="currentMonth +' '+ 'expenses'" [total]="totalMonthExpenses"
                [icon]="'/assets/arrow-down.json'"
                [iconColor]="'primary:#ff6ba4'"></wal-total>
-    <wal-total [title]="'Year expenses'" [total]="totalYearExpenses"
+    <wal-total [title]="currentYear +' '+ 'expenses'" [total]="totalYearExpenses"
                [icon]="'/assets/arrow-down.json'"
                [iconColor]="'primary:#ff6ba4'"></wal-total>
   </div>
@@ -17,7 +18,7 @@
   </div>
   <mat-divider class="divider"></mat-divider>
   <div class="operations__graphics__container">
-  <wal-operations-graphics [barChar]="barChar"></wal-operations-graphics>
+    <wal-operations-graphics [barChar]="barChar"></wal-operations-graphics>
   </div>
 </section>
 
