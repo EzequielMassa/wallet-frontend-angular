@@ -77,6 +77,7 @@ export class DepositPaymentFormComponent implements OnInit, OnDestroy {
       amount: ['', [Validators.required, Validators.min(1)]],
       description: [
         '',
+
         [
           Validators.required,
           Validators.minLength(3),

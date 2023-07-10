@@ -48,11 +48,11 @@
         <span
           class="error"
           *ngIf="
-            loginForm.get('email')?.hasError('email') &&
+            loginForm.get('email')?.hasError('pattern') &&
             (loginForm.get('email')?.dirty || loginForm.get('email')?.touched)
           "
         >
-          The format is invalid.
+          The email format is invalid.
         </span>
       </fieldset>
       <fieldset class="login__form__fieldset">
@@ -94,12 +94,12 @@
       >
       </wal-backend-error-messages>
       <div class="login__form__btn__container">
-        <a routerLink="/auth/login/password-forgot">Forgot Password?</a>
-        <button mat-flat-button color="primary" type="submit">Login</button>
+        <a id="password-forgot-link" routerLink="/auth/login/password-forgot">Forgot Password?</a>
+        <button id="login-btn" mat-flat-button color="primary" type="submit">Login</button>
       </div>
       <div><router-outlet></router-outlet></div>
       <div class="login__form__btn__register_container">
-        <a mat-raised-button routerLink="/auth/register">Register</a>
+        <a id="register-link"  mat-raised-button routerLink="/auth/register">Register</a>
       </div>
     </form>
   </div>

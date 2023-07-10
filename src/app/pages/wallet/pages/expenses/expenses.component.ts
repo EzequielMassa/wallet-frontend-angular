@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {map, Observable, Subscription} from "rxjs";
 import {OperationInterface} from "../../../../shared/types/operation.interface";
 import {ChartData} from "chart.js";
-import * as moment from "moment/moment";
+
 import {AccountService} from "../home/services/account.service";
 import {select, Store} from "@ngrx/store";
 import {PersistanceService} from "../../../../shared/services/persistance.service";
@@ -16,6 +16,7 @@ import {getCurrentMonthExpensesAction, getCurrentYearExpensesAction} from "./sto
 import {currentMonthExpensesSelector, currentYearExpensesSelector} from "./store/selectors/expenses.selectors";
 import {fadeInOnEnterAnimation} from "angular-animations";
 import {ToastrService} from "ngx-toastr";
+import moment from "moment";
 
 @Component({
   selector: 'wal-expenses',

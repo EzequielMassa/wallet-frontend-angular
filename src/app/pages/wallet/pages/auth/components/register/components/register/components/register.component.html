@@ -17,7 +17,8 @@
       </div>
     </div>
   </div>
-  <wal-generic-title [title]="'Register'" class="title"></wal-generic-title>
+  <wal-generic-title [title]="'Register'" class="title">
+  </wal-generic-title>
   <div class="login__container__bottom">
     <h2>Welcome</h2>
 
@@ -107,11 +108,11 @@
          This field is required.
        </span>
           <span class="error" *ngIf="(
-        registerForm.get('email')?.hasError('email') &&
+        registerForm.get('email')?.hasError('pattern') &&
         (registerForm.get('email')?.dirty ||
         registerForm.get('email')?.touched)
         )">
-         The format is invalid.
+         Email format is invalid.
        </span>
         </fieldset>
         <fieldset class="login__form__fieldset">
@@ -145,7 +146,7 @@ The password must contain at least 4 characters.
         >
         </wal-backend-error-messages>
         <div class="login__form__btn__container register--link">
-          <button mat-flat-button color="primary" type="submit">Register</button>
+          <button id="register-btn" mat-flat-button color="primary" type="submit">Register</button>
         </div>
       </form>
     <div class="login__form__btn__container">

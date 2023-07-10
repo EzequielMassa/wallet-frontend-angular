@@ -1,4 +1,3 @@
-import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 
 import {RegisterRoutingModule} from './register-routing.module';
@@ -15,18 +14,20 @@ import {
   BackendErrorMessagesModule
 } from "../../../../../../../../shared/modules/backend-error-messages/backend-error-messages.module";
 import {LottieComponent} from "ngx-lottie";
-import { TermsConditionsModalComponent } from './components/terms-conditions-modal/terms-conditions-modal.component';
+import {TermsConditionsModalComponent} from './components/terms-conditions-modal/terms-conditions-modal.component';
 import {MatDialogModule} from "@angular/material/dialog";
+import {CommonModule} from "@angular/common";
 
 @NgModule({
   declarations: [RegisterComponent, TermsConditionsModalComponent],
     imports: [
-        CommonModule,
+
+      CommonModule,
         RegisterRoutingModule,
         ReactiveFormsModule,
         GenericTitleModule,
         MatButtonModule,
-      MatDialogModule,
+       MatDialogModule,
         StoreModule.forFeature('auth', reducers),
         EffectsModule.forFeature([RegisterEffect]),
         BackendErrorMessagesModule,

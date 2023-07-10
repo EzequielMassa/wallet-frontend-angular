@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { fadeInOnEnterAnimation } from 'angular-animations';
 import { ChartData } from 'chart.js';
-import * as moment from 'moment';
+import moment from 'moment';
 import { AnimationOptions } from 'ngx-lottie';
 import { ToastrService } from 'ngx-toastr';
 import { Observable, Subscription } from 'rxjs';

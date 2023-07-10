@@ -8,7 +8,7 @@ import {
 } from 'angular-animations';
 import { AnimationOptions } from 'ngx-lottie';
 import { Observable } from 'rxjs';
-import { logoutAction } from 'src/app/pages/wallet/pages/auth/store/actions/logout.actions';
+
 import { BackendErrorsInterface } from 'src/app/shared/types/backendErrors.interface';
 import { loginAction } from '../../../../../store/actions/login.actions';
 import {
@@ -16,6 +16,7 @@ import {
   isSubmittingSelector,
 } from '../../../../../store/selectors/auth.selector';
 import { LoginRequestInterface } from '../../../../../types/loginRequest.interface';
+import {logoutAction} from "../../../../../store/actions/logout.actions";
 
 @Component({
   selector: 'wal-login',
@@ -47,7 +48,10 @@ export class LoginComponent implements OnInit {
 
   initializeLoginForm(): void {
     this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
+      email: ['',[Validators.compose([
+        Validators.pattern(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/),
+        Validators.required
+      ])]],
       password: ['', [Validators.required, Validators.minLength(4)]],
     });
   }
@@ -63,4 +67,6 @@ export class LoginComponent implements OnInit {
       this.store.dispatch(loginAction({ request }));
     }
   }
+
+
 }

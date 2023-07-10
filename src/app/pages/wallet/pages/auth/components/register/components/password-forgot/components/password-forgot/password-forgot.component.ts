@@ -45,7 +45,10 @@ export class PasswordForgotComponent implements OnInit {
 
   initializePasswordForgotForm(): void {
     this.passwordForgotForm = this.fb.group({
-      mailTo: ['', [Validators.required, Validators.email]],
+      mailTo: ['', [Validators.compose([
+        Validators.pattern(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/),
+        Validators.required
+      ])]],
     });
   }
   initializeValues(): void {

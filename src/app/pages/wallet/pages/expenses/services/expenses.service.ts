@@ -2,8 +2,9 @@ import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {PersistanceService} from "../../../../../shared/services/persistance.service";
 import {Observable} from "rxjs";
-import * as moment from "moment";
+
 import {environment} from "../../../../../../environments/environment.development";
+import moment from "moment";
 
 @Injectable({
   providedIn: 'root',

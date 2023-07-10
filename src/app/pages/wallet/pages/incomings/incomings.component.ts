@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit} from "@angular/core";
 import {map, Observable, Subscription} from "rxjs";
 import {OperationInterface} from "../../../../shared/types/operation.interface";
 import {ChartData} from "chart.js";
-import * as moment from "moment";
+
 import {select, Store} from "@ngrx/store";
 import {PersistanceService} from "../../../../shared/services/persistance.service";
 import {currentMonthIncomingsSelector, currentYearIncomingsSelector} from "./store/selectors/incomings.selectors";
@@ -11,6 +11,7 @@ import {getLatestAccountMovementsAction} from "../home/store/actions/accounts.ac
 import {latestAccountMovementsSelector} from "../home/store/selectors/home.selectors";
 import {fadeInOnEnterAnimation} from "angular-animations";
 import {ToastrService} from "ngx-toastr";
+import moment from "moment";
 
 
 @Component({

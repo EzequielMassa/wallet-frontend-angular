@@ -1,8 +1,6 @@
 import {isDevMode, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {FooterModule} from 'src/app/shared/modules/footer/footer.module';
-import {TopNavbarModule} from 'src/app/shared/modules/top-navbar/top-navbar.module';
 import {AppRoutingModule} from './app-routing.module';
 
 import {HttpClientModule} from '@angular/common/http';
@@ -25,6 +23,8 @@ import {SpinnerModule} from "./shared/modules/spinner/spinner.module";
 import {SpinnerInterceptorProvider} from "./shared/interceptors/spinner.interceptor";
 import {SpinnerService} from "./shared/modules/spinner/services/spinner.service";
 import {ToastrModule} from "ngx-toastr";
+import {FooterModule} from "./shared/modules/footer/footer.module";
+import {TopNavbarModule} from "./shared/modules/top-navbar/top-navbar.module";
 
 export function playerFactory(): any {
   return import('lottie-web');
