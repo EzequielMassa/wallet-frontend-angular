@@ -4,6 +4,13 @@ import {RegisterModule} from 'src/app/pages/wallet/pages/auth/components/registe
 
 const routes: Routes = [
   {
+    path: '',
+    loadChildren: () =>
+      import('./components/register/components/login/login.module').then(
+        (l) => l.LoginModule
+      ),
+  },
+  {
     path: 'login',
     loadChildren: () =>
       import('./components/register/components/login/login.module').then(
