@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:8080',
+  apiUrl: 'http://wallet-v1-env.eba-ipztfzcp.us-east-1.elasticbeanstalk.com',
 };
