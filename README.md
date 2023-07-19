@@ -69,10 +69,8 @@
   </li>
 </ul>
 
-
-
-
-librerias , frameworks y otros recursos utilizados:
+<h3>Librerias , frameworks y otros recursos utilizados:
+</h3>
 
 angular material version 15.2.2
 https://material.angular.io/
@@ -102,11 +100,9 @@ https://www.npmjs.com/package/ngx-toastr
 jest version 29.5.0
 https://jestjs.io/
 
-
-
-
-
-principales tecnologias:
+<h4>
+  principales tecnologias:
+</h4>
 desarrolado en angular version 15.1.4
 typescipt version 4.9.4
 rxjs version 7.8.0  
