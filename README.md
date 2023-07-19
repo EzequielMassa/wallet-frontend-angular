@@ -1,27 +1,69 @@
 # wallet
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.4.
+principales funciones de la aplicacion:
+creacion de nuevos usuarios
+verificacion de correcto login con credenciales
+email de recupero de contraseña
+edicion del perfil del usuario
+creacion de nuevas cuentas
+seteo de cuenta activa
+transacciones de cuenta (depositos , pagos , transferencias)
+detalle y filtrado de movimientos de la cuenta activa
+grafico de movimientos de la cuenta activa
 
-## Development server
+principales caracteristicas tecnicas:
+implementacion de clean architecture
+modelado de datos con typescript
+programacion reactiva con RXJS
+manejo de estados globales de la app con NGRX
+lazy loading de modulos / componentes para mejor performance
+sistema de rutas personalizadas protegidas con guards
+manejo de errores provenientes del backend
+formularios reactivos con validaciones de campos 
+implementacion de SEO
+angular material style + custom CSS
+test unitarios con JEST / covertura de tests
+https://ezequielmassa.github.io/wallet-frontend-angular-tests-coverage/
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+librerias , frameworks y otros recursos utilizados:
 
-## Code scaffolding
+angular material version 15.2.2
+https://material.angular.io/
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+moment js version 2.29.4
+https://momentjs.com/
 
-## Build
+ngrx version 15.4.0
+https://ngrx.io/
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+chart js version 4.2.1
+https://www.chartjs.org/
 
-## Running unit tests
+lord icons version 4.1.1
+https://lordicon.com/
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+lottie web version 5.11.0
+https://lottiefiles.com/web-player
 
-## Running end-to-end tests
+slick carousel version 1.8.1 
+https://www.npmjs.com/package/slick-carousel
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+ngx-toastr version 16.2.0
+https://www.npmjs.com/package/ngx-toastr
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+jest version 29.5.0
+https://jestjs.io/
+
+
+
+
+
+principales tecnologias:
+desarrolado en angular version 15.1.4
+typescipt version 4.9.4
+rxjs version 7.8.0  
+ngrx version 15.4.0
+
+
+
