@@ -1,4 +1,4 @@
-<h3 align="center">Wallet Frontend Documentation</h3>
+<h1 align="center">Wallet Frontend Documentation</h1>
 
 <h2>Principales funciones de la aplicacion:</h2>
 <ul>
@@ -31,27 +31,46 @@
   </li>
 </ul>
 
+<h2>Principales caracteristicas tecnicas:</h2>
+<ul>
+  <li>
+    implementacion de clean architecture
+  </li>
+    <li>
+    modelado de datos con typescript
+  </li>
+    <li>
+    programacion reactiva con RXJS
+  </li>
+    <li>
+    manejo de estados globales de la app con NGRX
+  </li>
+    <li>
+    lazy loading de modulos / componentes para mejor performance
+  </li>
+    <li>
+    sistema de rutas personalizadas protegidas con guards
+  </li>
+    <li>
+    manejo de errores provenientes del backend
+  </li>
+    <li>
+    formularios reactivos con validaciones de campos 
+  </li>
+    <li>
+    implementacion de SEO
+  </li>
+    <li>
+    angular material style + custom CSS
+  </li>
+    <li>
+    test unitarios con JEST / covertura de tests
+    https://ezequielmassa.github.io/wallet-frontend-angular-tests-coverage/
+  </li>
+</ul>
 
 
 
-
-
-
-
-
-principales caracteristicas tecnicas:
-implementacion de clean architecture
-modelado de datos con typescript
-programacion reactiva con RXJS
-manejo de estados globales de la app con NGRX
-lazy loading de modulos / componentes para mejor performance
-sistema de rutas personalizadas protegidas con guards
-manejo de errores provenientes del backend
-formularios reactivos con validaciones de campos 
-implementacion de SEO
-angular material style + custom CSS
-test unitarios con JEST / covertura de tests
-https://ezequielmassa.github.io/wallet-frontend-angular-tests-coverage/
 
 librerias , frameworks y otros recursos utilizados:
 
