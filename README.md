@@ -1,8 +1,16 @@
-# wallet
+<h3 align="center">Wallet Frontend Documentation</h3>
 
-principales funciones de la aplicacion:
-creacion de nuevos usuarios
-verificacion de correcto login con credenciales
+<h2>Principales funciones de la aplicacion:</h2>
+<ul>
+  <li>
+    creacion de nuevos usuarios
+  </li>
+   <li>
+    verificacion de correcto login con credenciales
+  </li>
+</ul>
+
+
 email de recupero de contraseña
 edicion del perfil del usuario
 creacion de nuevas cuentas
