@@ -105,10 +105,23 @@ https://jestjs.io/
 <h4>
   principales tecnologias:
 </h4>
-desarrolado en angular version 15.1.4
-typescipt version 4.9.4
-rxjs version 7.8.0  
-ngrx version 15.4.0
+<ul>
+  <li>
+    desarrolado en angular version 15.1.4
+  </li>
+    <li>
+    typescipt version 4.9.4
+  </li>
+    <li>
+    rxjs version 7.8.0  
+  </li>
+  <li>
+    ngrx version 15.4.0
+  </li>
+</ul>
+
+
+
 
 
 
