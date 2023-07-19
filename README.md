@@ -8,16 +8,36 @@
    <li>
     verificacion de correcto login con credenciales
   </li>
+   <li>
+    email de recupero de contraseña
+  </li>
+   <li>
+    edicion del perfil del usuario
+  </li>
+   <li>
+    creacion de nuevas cuentas
+  </li>
+   <li>
+    seteo de cuenta activa
+  </li>
+   <li>
+    transacciones de cuenta (depositos , pagos , transferencias)
+  </li>
+   <li> 
+    detalle y filtrado de movimientos de la cuenta activa
+  </li>
+   <li>
+    grafico de movimientos de la cuenta activa
+  </li>
 </ul>
 
 
-email de recupero de contraseña
-edicion del perfil del usuario
-creacion de nuevas cuentas
-seteo de cuenta activa
-transacciones de cuenta (depositos , pagos , transferencias)
-detalle y filtrado de movimientos de la cuenta activa
-grafico de movimientos de la cuenta activa
+
+
+
+
+
+
 
 principales caracteristicas tecnicas:
 implementacion de clean architecture
