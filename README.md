@@ -2,76 +2,76 @@
 
 ![Proyecto nuevo](https://github.com/EzequielMassa/wallet-frontend-angular/assets/94617066/da130ae4-73d5-445b-aef9-333e6bb326aa)
 
-<h2>Principales funciones de la aplicacion:</h2>
+<h2>Main functions of the application:</h2>
 <ul>
   <li>
-    creacion de nuevos usuarios
+    creation of new users
   </li>
    <li>
-    verificacion de correcto login con credenciales
+    verification of correct login with credentials
   </li>
    <li>
-    email de recupero de contraseña
+    password recovery email
   </li>
    <li>
-    edicion del perfil del usuario
+    edit user profile
   </li>
    <li>
-    creacion de nuevas cuentas
+   creation of new accounts
   </li>
    <li>
-    seteo de cuenta activa
+    active account setup
   </li>
    <li>
-    transacciones de cuenta (depositos , pagos , transferencias)
+    account transactions (deposits, payments, transfers)
   </li>
    <li> 
-    detalle y filtrado de movimientos de la cuenta activa
+    detail and filtering of active account movements
   </li>
    <li>
-    grafico de movimientos de la cuenta activa
+    graph of movements of the active account
   </li>
 </ul>
 
-<h2>Principales caracteristicas tecnicas:</h2>
+<h2>Main technical characteristics:</h2>
 <ul>
   <li>
-    implementacion de clean architecture
+    implementation of clean architecture
   </li>
     <li>
-    modelado de datos con typescript
+    data modeling with typescript
   </li>
     <li>
-    programacion reactiva con RXJS
+    reactive programming with RXJS
   </li>
     <li>
-    manejo de estados globales de la app con NGRX
+    managing global app states with NGRX
   </li>
     <li>
-    lazy loading de modulos / componentes para mejor performance
+    lazy loading of modules / components for better performance
   </li>
     <li>
-    sistema de rutas personalizadas protegidas con guards
+   system of custom routes protected with guards
   </li>
     <li>
-    manejo de errores provenientes del backend
+   handling of errors coming from the backend
   </li>
     <li>
-    formularios reactivos con validaciones de campos 
-  </li>
+        reactive forms with field validations 
+    </li>
     <li>
-    implementacion de SEO
+  SEO implementation
   </li>
     <li>
     angular material style + custom CSS
   </li>
     <li>
-    test unitarios con JEST / covertura de tests
+    unit tests with JEST / test coverage
     https://ezequielmassa.github.io/wallet-frontend-angular-tests-coverage/
   </li>
 </ul>
 
-<h3>Librerias , frameworks y otros recursos utilizados:
+<h3>Libraries, frameworks and other resources used:
 </h3>
 
 angular material version 15.2.2
@@ -103,11 +103,11 @@ jest version 29.5.0
 https://jestjs.io/
 
 <h4>
-  principales tecnologias:
+ Main technologies:
 </h4>
 <ul>
   <li>
-    desarrolado en angular version 15.1.4
+    developed in angular version 15.1.4
   </li>
     <li>
     typescipt version 4.9.4
