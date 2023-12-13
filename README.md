@@ -1,27 +1,127 @@
-# wallet
+<h1 align="center">Wallet Frontend Documentation</h1>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.4.
+![Proyecto nuevo](https://github.com/EzequielMassa/wallet-frontend-angular/assets/94617066/da130ae4-73d5-445b-aef9-333e6bb326aa)
 
-## Development server
+<h2>Main functions of the application:</h2>
+<ul>
+  <li>
+    creation of new users
+  </li>
+   <li>
+    verification of correct login with credentials
+  </li>
+   <li>
+    password recovery email
+  </li>
+   <li>
+    edit user profile
+  </li>
+   <li>
+   creation of new accounts
+  </li>
+   <li>
+    active account setup
+  </li>
+   <li>
+    account transactions (deposits, payments, transfers)
+  </li>
+   <li> 
+    detail and filtering of active account movements
+  </li>
+   <li>
+    graph of movements of the active account
+  </li>
+</ul>
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+<h2>Main technical characteristics:</h2>
+<ul>
+  <li>
+    implementation of clean architecture
+  </li>
+    <li>
+    data modeling with typescript
+  </li>
+    <li>
+    reactive programming with RXJS
+  </li>
+    <li>
+    managing global app states with NGRX
+  </li>
+    <li>
+    lazy loading of modules / components for better performance
+  </li>
+    <li>
+   system of custom routes protected with guards
+  </li>
+    <li>
+   handling of errors coming from the backend
+  </li>
+    <li>
+        reactive forms with field validations 
+    </li>
+    <li>
+  SEO implementation
+  </li>
+    <li>
+    angular material style + custom CSS
+  </li>
+    <li>
+    unit tests with JEST / test coverage
+    https://ezequielmassa.github.io/wallet-frontend-angular-tests-coverage/
+  </li>
+</ul>
 
-## Code scaffolding
+<h3>Libraries, frameworks and other resources used:
+</h3>
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+angular material version 15.2.2
+https://material.angular.io/
 
-## Build
+moment js version 2.29.4
+https://momentjs.com/
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+ngrx version 15.4.0
+https://ngrx.io/
 
-## Running unit tests
+chart js version 4.2.1
+https://www.chartjs.org/
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+lord icons version 4.1.1
+https://lordicon.com/
 
-## Running end-to-end tests
+lottie web version 5.11.0
+https://lottiefiles.com/web-player
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+slick carousel version 1.8.1 
+https://www.npmjs.com/package/slick-carousel
 
-## Further help
+ngx-toastr version 16.2.0
+https://www.npmjs.com/package/ngx-toastr
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+jest version 29.5.0
+https://jestjs.io/
+
+<h4>
+ Main technologies:
+</h4>
+<ul>
+  <li>
+    developed in angular version 15.1.4
+  </li>
+    <li>
+    typescipt version 4.9.4
+  </li>
+    <li>
+    rxjs version 7.8.0  
+  </li>
+  <li>
+    ngrx version 15.4.0
+  </li>
+</ul>
+
+
+
+
+
+
